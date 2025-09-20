@@ -27,9 +27,11 @@ Week 2:
 Week 3:
 - HARD PIVOT(DITCH THE PI... For Now At Least...) ✓
 - Design some graphics ✓
-- Wire up buttons/backlight/audio jack on the Teensy
-- Write entire Teensy control code
-- Modify processing code to be desktop ready
+- Wire up buttons on the Teensy ✓
+- Write entire Teensy keybind control code ✓
+- Wire up backlight
+- Write c++ code for flash function
+- Modify processing code to work with Teensy
 - Test with standard webcam
 - Begin User Interface Work for desktop app
 - Do all of the PCB Tutorials
