@@ -46,5 +46,8 @@ void keyPressed() {
   } else if (key == 'r') {
     reset();
     println("reset");
+  } else if (key == 't') {
+    reset();
+    println("reset");
   }
 }
