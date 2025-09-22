@@ -1,4 +1,4 @@
-float[] genSinWav() {
+float[] genSinWav() { //create sin wav arr
   float[] sinewave = new float[640];
 
   for (int i = 0; i < 640; i++) {
@@ -7,7 +7,7 @@ float[] genSinWav() {
   return sinewave;
 }
 
-float[] genBasicEnv() {
+float[] genBasicEnv() { //create reset env
   float attackTime = 0.1;
   float sustainTime = 0.5;
   float releaseTime = 0.4;

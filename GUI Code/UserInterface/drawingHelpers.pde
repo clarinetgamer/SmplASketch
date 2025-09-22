@@ -1,11 +1,11 @@
-void drawScreen() {
+void drawScreen() { //draw blank screen 
   fill(255);
   stroke(0);
   strokeWeight(2);
   rect(40, 20, 640, 320);
 }
 
-void drawScreenBox() {
+void drawScreenBox() {//draw screen outline
   stroke(0);
   strokeWeight(2);
   noFill();
@@ -13,7 +13,7 @@ void drawScreenBox() {
 }
 
 
-void drawWav(float[] wavArr) {
+void drawWav(float[] wavArr) { //takes wav arr draws it
   stroke(225, 0, 0);
   strokeWeight(2);
   float[] wav = mappedFlArr(wavArr);
@@ -22,7 +22,7 @@ void drawWav(float[] wavArr) {
   }
 }
 
-void drawEnv(float[] envArr) {
+void drawEnv(float[] envArr) { //takes env arr draws it
   stroke(225, 0, 0);
   strokeWeight(2);
   float[] env = mapEnv(envArr);

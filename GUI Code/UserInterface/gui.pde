@@ -17,6 +17,7 @@
 public void knob1_turn1(GKnob source, GEvent event) { //_CODE_:knob1:727750:
   println("knob1 - GKnob >> GEvent." + event + " @ " + millis());
   mode = source.getValueF();
+  
 } //_CODE_:knob1:727750:
 
 public void imgButton1_click1(GImageButton source, GEvent event) { //_CODE_:imgButton1:704728:
@@ -49,6 +50,7 @@ public void imgButton7_click1(GImageButton source, GEvent event) { //_CODE_:imgB
 
 public void knob2_turn1(GKnob source, GEvent event) { //_CODE_:knob2:873452:
   println("knob2 - GKnob >> GEvent." + event + " @ " + millis());
+  volume = Math.round(source.getValueI()) * 0.1;//Round volume
 } //_CODE_:knob2:873452:
 
 
@@ -101,7 +103,7 @@ public void createGUI(){
   knob2.setOverArcOnly(false);
   knob2.setIncludeOverBezel(false);
   knob2.setShowTrack(true);
-  knob2.setLimits(0.2, 0.0, 1.0);
+  knob2.setLimits(2.0, 0.0, 10.0);
   knob2.setNbrTicks(11);
   knob2.setStickToTicks(true);
   knob2.setShowTicks(true);
