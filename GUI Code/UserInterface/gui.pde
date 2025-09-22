@@ -19,14 +19,37 @@ public void knob1_turn1(GKnob source, GEvent event) { //_CODE_:knob1:727750:
   mode = source.getValueF();
 } //_CODE_:knob1:727750:
 
-public void knob2_turn1(GKnob source, GEvent event) { //_CODE_:knob2:601452:
-  println("knob2 - GKnob >> GEvent." + event + " @ " + millis());
-  volume = source.getValueF();
-} //_CODE_:knob2:601452:
-
 public void imgButton1_click1(GImageButton source, GEvent event) { //_CODE_:imgButton1:704728:
   println("imgButton1 - GImageButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:imgButton1:704728:
+
+public void imgButton2_click1(GImageButton source, GEvent event) { //_CODE_:imgButton2:649965:
+  println("imgButton2 - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:imgButton2:649965:
+
+public void imgButton3_click1(GImageButton source, GEvent event) { //_CODE_:imgButton3:585026:
+  println("imgButton3 - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:imgButton3:585026:
+
+public void imgButton5_click1(GImageButton source, GEvent event) { //_CODE_:imgButton5:805293:
+  println("imgButton5 - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:imgButton5:805293:
+
+public void imgButton4_click1(GImageButton source, GEvent event) { //_CODE_:imgButton4:750609:
+  println("imgButton4 - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:imgButton4:750609:
+
+public void imgButton6_click1(GImageButton source, GEvent event) { //_CODE_:imgButton6:249241:
+  println("imgButton6 - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:imgButton6:249241:
+
+public void imgButton7_click1(GImageButton source, GEvent event) { //_CODE_:imgButton7:641804:
+  println("imgButton7 - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:imgButton7:641804:
+
+public void knob2_turn1(GKnob source, GEvent event) { //_CODE_:knob2:873452:
+  println("knob2 - GKnob >> GEvent." + event + " @ " + millis());
+} //_CODE_:knob2:873452:
 
 
 
@@ -37,7 +60,7 @@ public void createGUI(){
   G4P.setGlobalColorScheme(GCScheme.BLUE_SCHEME);
   G4P.setMouseOverEnabled(false);
   surface.setTitle("Smple-A-Sketch");
-  knob1 = new GKnob(this, 54, 360, 72, 72, 0.8);
+  knob1 = new GKnob(this, 72, 360, 72, 72, 0.8);
   knob1.setTurnRange(160, 20);
   knob1.setTurnMode(GKnob.CTRL_HORIZONTAL);
   knob1.setSensitivity(1);
@@ -52,7 +75,25 @@ public void createGUI(){
   knob1.setLocalColorScheme(GCScheme.YELLOW_SCHEME);
   knob1.setOpaque(false);
   knob1.addEventHandler(this, "knob1_turn1");
-  knob2 = new GKnob(this, 576, 360, 72, 72, 0.8);
+  displaylabel = new GLabel(this, 36, 24, 640, 320);
+  displaylabel.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  displaylabel.setLocalColorScheme(GCScheme.SCHEME_8);
+  displaylabel.setOpaque(false);
+  imgButton1 = new GImageButton(this, 224, 364, new String[] { "BigLogo.png", "BigLogo.png", "BigLogo.png" } );
+  imgButton1.addEventHandler(this, "imgButton1_click1");
+  imgButton2 = new GImageButton(this, 48, 396, new String[] { "Wav.png", "Wav.png", "Wav.png" } );
+  imgButton2.addEventHandler(this, "imgButton2_click1");
+  imgButton3 = new GImageButton(this, 96, 348, new String[] { "env.png", "env.png", "env.png" } );
+  imgButton3.addEventHandler(this, "imgButton3_click1");
+  imgButton5 = new GImageButton(this, 150, 396, new String[] { "img.png", "img.png", "img.png" } );
+  imgButton5.addEventHandler(this, "imgButton5_click1");
+  imgButton4 = new GImageButton(this, 84, 433, new String[] { "mode.png", "mode.png", "mode.png" } );
+  imgButton4.addEventHandler(this, "imgButton4_click1");
+  imgButton6 = new GImageButton(this, 588, 433, new String[] { "vol.png", "vol.png", "vol.png" } );
+  imgButton6.addEventHandler(this, "imgButton6_click1");
+  imgButton7 = new GImageButton(this, 556, 350, new String[] { "VolKnob.png", "VolKnob.png", "VolKnob.png" } );
+  imgButton7.addEventHandler(this, "imgButton7_click1");
+  knob2 = new GKnob(this, 564, 360, 72, 72, 0.8);
   knob2.setTurnRange(110, 70);
   knob2.setTurnMode(GKnob.CTRL_HORIZONTAL);
   knob2.setSensitivity(1);
@@ -61,35 +102,23 @@ public void createGUI(){
   knob2.setIncludeOverBezel(false);
   knob2.setShowTrack(true);
   knob2.setLimits(0.2, 0.0, 1.0);
-  knob2.setNbrTicks(10);
+  knob2.setNbrTicks(11);
   knob2.setStickToTicks(true);
   knob2.setShowTicks(true);
   knob2.setLocalColorScheme(GCScheme.YELLOW_SCHEME);
   knob2.setOpaque(false);
   knob2.addEventHandler(this, "knob2_turn1");
-  displaylabel = new GLabel(this, 40, 20, 640, 320);
-  displaylabel.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
-  displaylabel.setLocalColorScheme(GCScheme.SCHEME_8);
-  displaylabel.setOpaque(false);
-  imgButton1 = new GImageButton(this, 288, 378, new String[] { "Logo.png", "Logo.png", "Logo.png" } );
-  imgButton1.addEventHandler(this, "imgButton1_click1");
-  label1 = new GLabel(this, 576, 432, 72, 24);
-  label1.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
-  label1.setText("Volume");
-  label1.setLocalColorScheme(GCScheme.SCHEME_13);
-  label1.setOpaque(false);
-  label2 = new GLabel(this, 60, 432, 60, 24);
-  label2.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
-  label2.setText("Mode");
-  label2.setLocalColorScheme(GCScheme.SCHEME_14);
-  label2.setOpaque(false);
 }
 
 // Variable declarations 
 // autogenerated do not edit
 GKnob knob1; 
-GKnob knob2; 
 GLabel displaylabel; 
 GImageButton imgButton1; 
-GLabel label1; 
-GLabel label2; 
+GImageButton imgButton2; 
+GImageButton imgButton3; 
+GImageButton imgButton5; 
+GImageButton imgButton4; 
+GImageButton imgButton6; 
+GImageButton imgButton7; 
+GKnob knob2; 
