@@ -2,6 +2,8 @@ import java.util.Map;
 import processing.sound.*;
 import g4p_controls.*;
 
+Sound s;
+
 boolean test = true;
 
 //Camera Dimensions Setup
@@ -19,6 +21,8 @@ void setup() {
   searchForCamera();
   //clear cache
   clearCache();
+  //Setup volume control
+  s = new Sound(this);
 }
 
 void draw() {
