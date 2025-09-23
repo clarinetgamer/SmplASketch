@@ -1,6 +1,5 @@
-Env env = new Env(this);
 
-float sustainLevel = 0.3; //keep the same
+float sustainLevel = 1.0; //keep the same
 
 float envMult = 1;
 
@@ -14,17 +13,19 @@ float[] getTimeVals() { //translate envImage processing code into values needed 
 }
 
 void playEnv(AudioSample sample) { //takes in a sample object and using the variables plays an envelope
+  Env env = new Env(this);
   float[] time = getTimeVals();
-  float attackTime = time[0]; //0.001;
-  float sustainTime = time[1]; //0.004;
-  float releaseTime = time[2]; //0.4;
-  env.play(sample, attackTime * envMult, sustainTime * envMult, sustainLevel * envMult, releaseTime);
+  float attackTime = time[0];
+  float sustainTime = time[1];
+  float releaseTime = time[2];
+  env.play(sample, attackTime * envMult, sustainTime * envMult, sustainLevel, releaseTime);
 }
 
-void playDemoEnv(AudioSample sample) { //takes in a sample object and using the variables plays an envelope
+void playDemoEnv(AudioSample sample) { //takes in a demo object and using the variables plays a demo envelope
+  Env env = new Env(this);
   float[] time = resetEnv;
-  float attackTime = time[0]; //0.001;
-  float sustainTime = time[1]; //0.004;
-  float releaseTime = time[2]; //0.4;
-  env.play(sample, attackTime * envMult, sustainTime * envMult, sustainLevel * envMult, releaseTime);
+  float attackTime = time[0];
+  float sustainTime = time[1];
+  float releaseTime = time[2];
+  env.play(sample, attackTime * envMult, sustainTime * envMult, sustainLevel, releaseTime);
 }

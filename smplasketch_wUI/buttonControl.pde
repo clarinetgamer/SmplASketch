@@ -38,13 +38,13 @@ void decEnvMult() {
 }
 
 void resetWav() {
-  wavMult=0;
+  wavMult=1;
   clearWav = true;
   filereset.save("wav_image.jpg");
 }
 
 void resetEnv() {
-  envMult =0;
+  envMult =1;
   clearEnv = true;
   filereset.save("env_image.jpg");
 }

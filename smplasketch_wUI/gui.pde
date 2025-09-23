@@ -15,7 +15,7 @@
  */
 
 public void knob1_turn1(GKnob source, GEvent event) { //_CODE_:knob1:727750:
-  println("knob1 - GKnob >> GEvent." + event + " @ " + millis());
+  //println("knob1 - GKnob >> GEvent." + event + " @ " + millis());
   mode = source.getValueF();
 } //_CODE_:knob1:727750:
 
@@ -48,7 +48,7 @@ public void imgButton7_click1(GImageButton source, GEvent event) { //_CODE_:imgB
 } //_CODE_:imgButton7:641804:
 
 public void knob2_turn1(GKnob source, GEvent event) { //_CODE_:knob2:873452:
-  println("knob2 - GKnob >> GEvent." + event + " @ " + millis());
+  //println("knob2 - GKnob >> GEvent." + event + " @ " + millis());
   volume = Math.round(source.getValueI()) * 0.1;//Round volume
 } //_CODE_:knob2:873452:
 
