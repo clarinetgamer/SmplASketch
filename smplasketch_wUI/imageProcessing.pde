@@ -1,4 +1,4 @@
-PImage wavImg;
+PImage wavImg; //<>//
 PImage envImg;
 PImage modWavImg;
 PImage modEnvImg;
@@ -39,7 +39,7 @@ float[] processImage(PImage img, PImage modImg, Boolean isWav) { //takes the ima
 
       // Change displayed pixel to represent coordinates counted
       modImg.pixels[loc] =  color(r, g, b);
-    } //<>//
+    }
     if (readRedPix.isEmpty()) {
       wav[x]=0;
     } else {
@@ -75,7 +75,7 @@ boolean isOnStraight(float f1, float f2, float f3) { //returns a value is surrou
 float[] processEnvImage() { //feeds in env imgs to processing function and returns splits
   float[] splits = new float[2];
   float[] scan = processImage(envImg, modEnvImg, false);
-  int counter = 1; 
+  int counter = 1;
   while (!isOnStraight(scan[counter-1], scan[counter], scan[counter+1])) {
     counter++;
   }

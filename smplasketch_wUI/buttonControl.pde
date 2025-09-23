@@ -1,7 +1,6 @@
 boolean clearWav = true;
 boolean clearEnv = true;
 
-
 void wavSnap() {
   takePicture("wav_image");
   wavImg = loadImage("wav_image.jpg");
@@ -41,25 +40,27 @@ void decEnvMult() {
 void resetWav() {
   wavMult=0;
   clearWav = true;
+  filereset.save("wav_image.jpg");
 }
 
 void resetEnv() {
   envMult =0;
   clearEnv = true;
+  filereset.save("env_image.jpg");
 }
 
 void smpl() {
   float[] wav;
   if (clearWav) {
-  wav = resetSin;
+    wav = resetSin;
   } else {
-  wav = processWavImage();
+    wav = processWavImage();
   }
   AudioSample smpl = createSample(wav);
   playWav(smpl);
-  if(clearEnv) {
-  playDemoEnv(smpl);
+  if (clearEnv) {
+    playDemoEnv(smpl);
   } else {
-  playEnv(smpl);
+    playEnv(smpl);
   }
 }

@@ -1,3 +1,5 @@
+PImage filereset = createImage(camwidth, camheight, RGB);
+
 float[] genSinWav() { //create sin wav arr
   float[] sinewave = new float[640];
 
@@ -12,4 +14,10 @@ float[] genBasicEnv() { //create reset env
   float sustainTime = 0.5;
   float releaseTime = 0.4;
   return new float[]{attackTime, sustainTime, releaseTime};
+}
+
+void clearCache() {
+  resetWav();
+  resetEnv();
+  println("Image Cache Cleared");
 }

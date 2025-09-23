@@ -17,6 +17,8 @@ void setup() {
   modWavImg = createImage(camwidth, camheight, RGB); // Create image to write other data to
   modEnvImg = createImage(camwidth, camheight, RGB); // Create env image to write other data to
   searchForCamera();
+  //clear cache
+  clearCache();
 }
 
 void draw() {
@@ -52,5 +54,9 @@ void keyPressed() { //test true is for keyboard control test false is obscure as
   } else if ((test == true && key == 't')||(test == false && key == '¤')) {
     resetEnv();
     println("resetEnv");
+  } else if (key == (char)27) {//Escape key always exits program
+    clearCache();
+    println("Program Exit");
+    exit();
   }
 }

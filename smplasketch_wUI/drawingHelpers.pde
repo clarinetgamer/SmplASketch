@@ -1,4 +1,4 @@
-void drawScreen() { //draw blank screen 
+void drawScreen() { //draw blank screen
   fill(255);
   stroke(0);
   strokeWeight(2);
