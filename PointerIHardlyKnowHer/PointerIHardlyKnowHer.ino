@@ -35,9 +35,9 @@ void loop() {
     clear();
   }
   if(buttonState[3] == LOW && lastButtonState[3] == HIGH) {
-    Keyboard.press('s');
+    Keyboard.press('Œ');//smpl
     delay(100);
-    Keyboard.release('s');
+    Keyboard.release('Œ');
   }
   if(buttonState[2] == LOW && lastButtonState[2] == HIGH) {
     downInc();
@@ -56,60 +56,60 @@ void checkButtons() {
 
 void snap(){
   if (wav == true) {
-    Keyboard.press('w');
+    Keyboard.press('€');//wavsnap
     delay(100);
     wav = false;
-    Keyboard.release('w');
+    Keyboard.release('€');
   } else if (env == true) {
-    Keyboard.press('e');
+    Keyboard.press('ƒ');//envsnap
     delay(100);
     env = false;
-    Keyboard.release('e');
+    Keyboard.release('ƒ');
   }
   
 }
 
 void clear(){
   if (wav == true) {
-    Keyboard.press('r');
+    Keyboard.press('™');//reset wav
     delay(100);
     wav = false;
-    Keyboard.release('r');
+    Keyboard.release('™');
   } else if (env == true) {
-    Keyboard.press('t');
+    Keyboard.press('¤'); //reset env
     delay(100);
     env = false;
-    Keyboard.release('t');
+    Keyboard.release('¤');
   }
   
 }
 
 void upInc(){
   if (wav == true) {
-    Keyboard.press('=');
+    Keyboard.press('Š');//inc wav
     delay(100);
     wav = false;
-    Keyboard.release('=');
+    Keyboard.release('Š');
   } else if (env == true) {
-    Keyboard.press(']');
+    Keyboard.press('‡');//inc env
     delay(100);
     env = false;
-    Keyboard.release(']');
+    Keyboard.release('‡');
   }
   
 }
 
 void downInc(){
   if (wav == true) {
-    Keyboard.press('-');
+    Keyboard.press('‰');//dec wav
     delay(100);
     wav = false;
-    Keyboard.release('-');
+    Keyboard.release('‰');
   } else if (env == true) {
-    Keyboard.press('[');
+    Keyboard.press('†');//dec env
     delay(100);
     env = false;
-    Keyboard.release('[');
+    Keyboard.release('†');
   }
   
 }
