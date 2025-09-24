@@ -23,11 +23,13 @@ void setup() {
   clearCache();
   //Setup volume control
   s = new Sound(this);
+  s.volume(0.2);
 }
 
 void draw() {
   background(143, 3, 3);
   checkMode();
+  checkForConnection();
 }
 
 void keyPressed() { //test true is for keyboard control test false is obscure ascii to talk to teensy

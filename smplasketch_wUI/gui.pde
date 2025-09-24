@@ -14,44 +14,59 @@
  * =========================================================
  */
 
-public void knob1_turn1(GKnob source, GEvent event) { //_CODE_:knob1:727750:
+public void knob1_turn1(GKnob source, GEvent event) { //_CODE_:modeknob:727750:
   //println("knob1 - GKnob >> GEvent." + event + " @ " + millis());
-  mode = source.getValueF();
-} //_CODE_:knob1:727750:
+  setModeKnob(source);
+} //_CODE_:modeknob:727750:
 
-public void imgButton1_click1(GImageButton source, GEvent event) { //_CODE_:imgButton1:704728:
-  println("imgButton1 - GImageButton >> GEvent." + event + " @ " + millis());
-} //_CODE_:imgButton1:704728:
+public void imgButton1_click1(GImageButton source, GEvent event) { //_CODE_:logo:704728:
+  //println("imgButton1 - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:logo:704728:
 
-public void imgButton2_click1(GImageButton source, GEvent event) { //_CODE_:imgButton2:649965:
-  println("imgButton2 - GImageButton >> GEvent." + event + " @ " + millis());
-} //_CODE_:imgButton2:649965:
+public void wavButton_click1(GImageButton source, GEvent event) { //_CODE_:wavButton:649965:
+  //println("imgButton2 - GImageButton >> GEvent." + event + " @ " + millis());
+  openWavMenu();
+} //_CODE_:wavButton:649965:
 
-public void imgButton3_click1(GImageButton source, GEvent event) { //_CODE_:imgButton3:585026:
-  println("imgButton3 - GImageButton >> GEvent." + event + " @ " + millis());
-} //_CODE_:imgButton3:585026:
+public void envButton_click1(GImageButton source, GEvent event) { //_CODE_:envButton:585026:
+  //println("imgButton3 - GImageButton >> GEvent." + event + " @ " + millis());
+  openEnvMenu();
+} //_CODE_:envButton:585026:
 
-public void imgButton5_click1(GImageButton source, GEvent event) { //_CODE_:imgButton5:805293:
-  println("imgButton5 - GImageButton >> GEvent." + event + " @ " + millis());
-} //_CODE_:imgButton5:805293:
+public void imgButton_click1(GImageButton source, GEvent event) { //_CODE_:imgButton:805293:
+  //println("imgButton5 - GImageButton >> GEvent." + event + " @ " + millis());
+  openImgMenu();
+} //_CODE_:imgButton:805293:
 
-public void imgButton4_click1(GImageButton source, GEvent event) { //_CODE_:imgButton4:750609:
-  println("imgButton4 - GImageButton >> GEvent." + event + " @ " + millis());
-} //_CODE_:imgButton4:750609:
+public void ModeText_click1(GImageButton source, GEvent event) { //_CODE_:ModeText:750609:
+  //println("imgButton4 - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:ModeText:750609:
 
-public void imgButton6_click1(GImageButton source, GEvent event) { //_CODE_:imgButton6:249241:
-  println("imgButton6 - GImageButton >> GEvent." + event + " @ " + millis());
-} //_CODE_:imgButton6:249241:
+public void VolText_click1(GImageButton source, GEvent event) { //_CODE_:VolText:249241:
+  //println("imgButton6 - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:VolText:249241:
 
-public void imgButton7_click1(GImageButton source, GEvent event) { //_CODE_:imgButton7:641804:
-  println("imgButton7 - GImageButton >> GEvent." + event + " @ " + millis());
-} //_CODE_:imgButton7:641804:
+public void KnobNums_click1(GImageButton source, GEvent event) { //_CODE_:KnobNums:641804:
+  //println("imgButton7 - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:KnobNums:641804:
 
-public void knob2_turn1(GKnob source, GEvent event) { //_CODE_:knob2:873452:
+public void knob2_turn1(GKnob source, GEvent event) { //_CODE_:volknob:873452:
   //println("knob2 - GKnob >> GEvent." + event + " @ " + millis());
-  volume = Math.round(source.getValueI()) * 0.1;//Round volume
-  s.volume(volume);
-} //_CODE_:knob2:873452:
+  setVolKnob(source);
+} //_CODE_:volknob:873452:
+
+public void greenCon_click1(GImageButton source, GEvent event) { //_CODE_:greenCon:794411:
+  //println("imgButton8 - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:greenCon:794411:
+
+public void redCon_click1(GImageButton source, GEvent event) { //_CODE_:redCon:582663:
+  //println("imgButton9 - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:redCon:582663:
+
+public void helpButton_click1(GImageButton source, GEvent event) { //_CODE_:helpButton:816277:
+  //println("helpButton - GImageButton >> GEvent." + event + " @ " + millis());
+  openHelpMenu();
+} //_CODE_:helpButton:816277:
 
 
 
@@ -62,65 +77,74 @@ public void createGUI(){
   G4P.setGlobalColorScheme(GCScheme.BLUE_SCHEME);
   G4P.setMouseOverEnabled(false);
   surface.setTitle("Smpl-A-Sketch");
-  knob1 = new GKnob(this, 72, 360, 72, 72, 0.8);
-  knob1.setTurnRange(160, 20);
-  knob1.setTurnMode(GKnob.CTRL_HORIZONTAL);
-  knob1.setSensitivity(1);
-  knob1.setShowArcOnly(false);
-  knob1.setOverArcOnly(false);
-  knob1.setIncludeOverBezel(false);
-  knob1.setShowTrack(true);
-  knob1.setLimits(0.0, 0.0, 2.0);
-  knob1.setNbrTicks(3);
-  knob1.setStickToTicks(true);
-  knob1.setShowTicks(true);
-  knob1.setLocalColorScheme(GCScheme.YELLOW_SCHEME);
-  knob1.setOpaque(false);
-  knob1.addEventHandler(this, "knob1_turn1");
+  modeknob = new GKnob(this, 72, 360, 72, 72, 0.8);
+  modeknob.setTurnRange(160, 20);
+  modeknob.setTurnMode(GKnob.CTRL_HORIZONTAL);
+  modeknob.setSensitivity(1);
+  modeknob.setShowArcOnly(false);
+  modeknob.setOverArcOnly(false);
+  modeknob.setIncludeOverBezel(false);
+  modeknob.setShowTrack(true);
+  modeknob.setLimits(0.0, 0.0, 2.0);
+  modeknob.setNbrTicks(3);
+  modeknob.setStickToTicks(true);
+  modeknob.setShowTicks(true);
+  modeknob.setLocalColorScheme(GCScheme.YELLOW_SCHEME);
+  modeknob.setOpaque(false);
+  modeknob.addEventHandler(this, "knob1_turn1");
   displaylabel = new GLabel(this, 36, 24, 640, 320);
   displaylabel.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   displaylabel.setLocalColorScheme(GCScheme.SCHEME_8);
   displaylabel.setOpaque(false);
-  imgButton1 = new GImageButton(this, 224, 364, new String[] { "BigLogo.png", "BigLogo.png", "BigLogo.png" } );
-  imgButton1.addEventHandler(this, "imgButton1_click1");
-  imgButton2 = new GImageButton(this, 48, 396, new String[] { "Wav.png", "Wav.png", "Wav.png" } );
-  imgButton2.addEventHandler(this, "imgButton2_click1");
-  imgButton3 = new GImageButton(this, 96, 348, new String[] { "env.png", "env.png", "env.png" } );
-  imgButton3.addEventHandler(this, "imgButton3_click1");
-  imgButton5 = new GImageButton(this, 150, 396, new String[] { "img.png", "img.png", "img.png" } );
-  imgButton5.addEventHandler(this, "imgButton5_click1");
-  imgButton4 = new GImageButton(this, 84, 433, new String[] { "mode.png", "mode.png", "mode.png" } );
-  imgButton4.addEventHandler(this, "imgButton4_click1");
-  imgButton6 = new GImageButton(this, 588, 433, new String[] { "vol.png", "vol.png", "vol.png" } );
-  imgButton6.addEventHandler(this, "imgButton6_click1");
-  imgButton7 = new GImageButton(this, 556, 350, new String[] { "VolKnob.png", "VolKnob.png", "VolKnob.png" } );
-  imgButton7.addEventHandler(this, "imgButton7_click1");
-  knob2 = new GKnob(this, 564, 360, 72, 72, 0.8);
-  knob2.setTurnRange(110, 70);
-  knob2.setTurnMode(GKnob.CTRL_HORIZONTAL);
-  knob2.setSensitivity(1);
-  knob2.setShowArcOnly(false);
-  knob2.setOverArcOnly(false);
-  knob2.setIncludeOverBezel(false);
-  knob2.setShowTrack(true);
-  knob2.setLimits(2.0, 0.0, 10.0);
-  knob2.setNbrTicks(11);
-  knob2.setStickToTicks(true);
-  knob2.setShowTicks(true);
-  knob2.setLocalColorScheme(GCScheme.YELLOW_SCHEME);
-  knob2.setOpaque(false);
-  knob2.addEventHandler(this, "knob2_turn1");
+  logo = new GImageButton(this, 224, 364, new String[] { "BigLogo.png", "BigLogo.png", "BigLogo.png" } );
+  logo.addEventHandler(this, "imgButton1_click1");
+  wavButton = new GImageButton(this, 48, 396, 19, 15, new String[] { "wavBg.png", "wavBg.png", "wavBg.png" } );
+  wavButton.addEventHandler(this, "wavButton_click1");
+  envButton = new GImageButton(this, 96, 348, 25, 10, new String[] { "envBg.png", "envBg.png", "envBg.png" } );
+  envButton.addEventHandler(this, "envButton_click1");
+  imgButton = new GImageButton(this, 150, 396, 19, 16, new String[] { "camBg.png", "camBg.png", "camBg.png" } );
+  imgButton.addEventHandler(this, "imgButton_click1");
+  ModeText = new GImageButton(this, 84, 433, new String[] { "mode.png", "mode.png", "mode.png" } );
+  ModeText.addEventHandler(this, "ModeText_click1");
+  VolText = new GImageButton(this, 588, 433, new String[] { "vol.png", "vol.png", "vol.png" } );
+  VolText.addEventHandler(this, "VolText_click1");
+  KnobNums = new GImageButton(this, 556, 350, new String[] { "VolKnob.png", "VolKnob.png", "VolKnob.png" } );
+  KnobNums.addEventHandler(this, "KnobNums_click1");
+  volknob = new GKnob(this, 564, 360, 72, 72, 0.8);
+  volknob.setTurnRange(110, 70);
+  volknob.setTurnMode(GKnob.CTRL_HORIZONTAL);
+  volknob.setSensitivity(1);
+  volknob.setShowArcOnly(false);
+  volknob.setOverArcOnly(false);
+  volknob.setIncludeOverBezel(false);
+  volknob.setShowTrack(true);
+  volknob.setLimits(2.0, 0.0, 10.0);
+  volknob.setNbrTicks(11);
+  volknob.setStickToTicks(true);
+  volknob.setShowTicks(true);
+  volknob.setLocalColorScheme(GCScheme.YELLOW_SCHEME);
+  volknob.setOpaque(false);
+  volknob.addEventHandler(this, "knob2_turn1");
+  greenCon = new GImageButton(this, 689, 5, new String[] { "congreen.png", "congreen.png", "congreen.png" } );
+  greenCon.addEventHandler(this, "greenCon_click1");
+  redCon = new GImageButton(this, 689, 5, new String[] { "conred.png", "conred.png", "conred.png" } );
+  redCon.addEventHandler(this, "redCon_click1");
+  helpButton = new GImageButton(this, 11, 5, new String[] { "help.png", "help.png", "help.png" } );
+  helpButton.addEventHandler(this, "helpButton_click1");
 }
 
 // Variable declarations 
 // autogenerated do not edit
-GKnob knob1; 
+GKnob modeknob; 
 GLabel displaylabel; 
-GImageButton imgButton1; 
-GImageButton imgButton2; 
-GImageButton imgButton3; 
-GImageButton imgButton5; 
-GImageButton imgButton4; 
-GImageButton imgButton6; 
-GImageButton imgButton7; 
-GKnob knob2; 
+GImageButton logo; 
+GImageButton wavButton; 
+GImageButton envButton; 
+GImageButton imgButton; 
+GImageButton ModeText; 
+GImageButton VolText; 
+GImageButton KnobNums; 
+GKnob volknob; 
+GImageButton greenCon; 
+GImageButton redCon; 
+GImageButton helpButton; 

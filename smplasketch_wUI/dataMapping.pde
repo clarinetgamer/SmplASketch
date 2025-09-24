@@ -11,8 +11,8 @@ float[] mappedFlArr(float[] flArr) { //Map wav values to fit the ui screen
 
 float[] mapEnv(float[] env) { //Map envelope values to fit the ui screen
   float totalTime = env[0]+env[1]+env[2];
-  float attackTime = map(env[0], 0, totalTime, 0, 640);
-  float sustainTime = map(env[0], 0, totalTime, 0, 640);
-  float releaseTime = map(env[0], 0, totalTime, 0, 640);
+  float attackTime = map(env[0], 0.0, totalTime, 0, 640);
+  float sustainTime = map(env[1], 0.0, totalTime, 0, 640);
+  float releaseTime = map(env[2], 0.0, totalTime, 0, 640);
   return new float[]{attackTime, sustainTime, releaseTime};
 }

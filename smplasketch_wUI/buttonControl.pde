@@ -1,6 +1,14 @@
 boolean clearWav = true;
 boolean clearEnv = true;
 
+void checkForConnection() { //add to interface with device/camera
+  if(key == 'i') {
+  drawConnectionIcon(true);
+  } else if (key == 'o') {
+  drawConnectionIcon(false);
+  }
+}
+
 void wavSnap() {
   takePicture("wav_image");
   wavImg = loadImage("wav_image.jpg");
