@@ -1,5 +1,6 @@
 float[] resetSin = genSinWav();
 float[] resetEnv = genBasicEnv();
+float mode = 0.0; //0.0 is Wav Mode 1.0 is Env Mode 2.0 is IMG mode
 float prevMode = 0.0;
 
 void wavMode(float[] wav) { //Draw Screen, draw wav, draw outline
