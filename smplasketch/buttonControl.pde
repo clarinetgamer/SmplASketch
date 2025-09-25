@@ -85,17 +85,20 @@ void photowaveformSmpl() {
   AudioSample smplR = createSample(wavR);
   AudioSample smplG = createSample(wavG);
   AudioSample smplB = createSample(wavB);
-  playWav(smplR);
-  find440(smplR);
-  //playWav(smplG);
-  //playWav(smplB);
+  AudioSample body = createSample(resetSin);
+  playWav(body, 0.75*wavMult);
+  playWav(smplR, 1.0*wavMult);
+  playWav(smplG, 1.5*wavMult);
+  playWav(smplB, 2.0*wavMult);
   if (clearEnv) {
+    playDemoEnv(body);
     playDemoEnv(smplR);
-    //playDemoEnv(smplG);
-    //playDemoEnv(smplB);
+    playDemoEnv(smplG);
+    playDemoEnv(smplB);
   } else {
+    playEnv(body);
     playEnv(smplR);
-    //playEnv(smplG);
-    //playEnv(smplB);
+    playEnv(smplG);
+    playEnv(smplB);
   }
 }

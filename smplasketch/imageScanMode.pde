@@ -1,9 +1,8 @@
-PImage imageMode;
-PitchDetector roughMatinee = new PitchDetector(this, 0.0);
+PImage imageMode; //<>// //<>// //<>// //<>//
 
-void initImgFromFile(String imgName){
+void initImgFromFile(String imgName) {
   imageMode = loadImage(imgName);
-  imageMode.resize(640,480);
+  imageMode.resize(640, 480);
 }
 
 ArrayList<float[]> processMultiImage(PImage img) {
@@ -49,7 +48,38 @@ ArrayList<float[]> processMultiImage(PImage img) {
   return returnThis;
 }
 
-void find440(AudioSample s){
-  roughMatinee.input(s);
-  println(roughMatinee.analyze());
+void wait(int time) {
+  int start = millis();
+  while (millis() <= start+time) {
+  }
 }
+
+//come back to this later
+//float adjacent440(AudioSample sample) {
+//  playWav(sample);
+//  PitchDetector roughMatinee = new PitchDetector(this, 0.8);
+//  roughMatinee.input(sample);
+//  float[] pitchAndConfidence = new float[2];
+//  wait(300);
+//  float pitch = roughMatinee.analyze(pitchAndConfidence);
+//  wait(300);
+//  while (pitchAndConfidence[1] < 0 && pitchAndConfidence[0] != 0.0) {
+//    pitch = roughMatinee.analyze(pitchAndConfidence);
+//    wait(10);
+//  }
+//  float ogPitch = pitch;
+//  print(ogPitch);
+//  float rateAdjust = (440.0 / ogPitch)*0.7;
+//  playWav(sample, rateAdjust);
+//  wait(300);
+//  pitch = roughMatinee.analyze(pitchAndConfidence);
+//  wait(300); //<>//
+//  while (pitchAndConfidence[1] < 0 || pitchAndConfidence[0] <= ogPitch) {
+//    playWav(sample, rateAdjust);
+//    wait(300);
+//    pitch = roughMatinee.analyze(pitchAndConfidence);
+//    wait(300); //<>//
+//  }
+//  println(pitch); //<>//
+//  return rateAdjust;
+//}

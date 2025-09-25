@@ -13,6 +13,11 @@ void playWav(AudioSample sample) { //takes in sample object and plays it
   sample.loop();
 }
 
+void playWav(AudioSample sample, float rate) { //takes in sample object and plays it
+  sample.rate(rate); //add pitch shift due to button input
+  sample.loop();
+}
+
 
 // Envelope Generation
 float[] getTimeVals() { //translate envImage processing code into values needed to play the envelope back
