@@ -2,10 +2,10 @@ boolean clearWav = true;
 boolean clearEnv = true;
 
 void checkForConnection() { //add to interface with device/camera
-  if(key == 'i') {
-  drawConnectionIcon(true);
+  if (key == 'i') {
+    drawConnectionIcon(true);
   } else if (key == 'o') {
-  drawConnectionIcon(false);
+    drawConnectionIcon(false);
   }
 }
 
@@ -58,17 +58,44 @@ void resetEnv() {
 }
 
 void smpl() {
-  float[] wav;
-  if (clearWav) {
-    wav = resetSin;
+  if (mode != 2.0) {
+    float[] wav;
+    if (clearWav) {
+      wav = resetSin;
+    } else {
+      wav = processWavImage();
+    }
+    AudioSample smpl = createSample(wav);
+    playWav(smpl);
+    if (clearEnv) {
+      playDemoEnv(smpl);
+    } else {
+      playEnv(smpl);
+    }
   } else {
-    wav = processWavImage();
+    photowaveformSmpl();
   }
-  AudioSample smpl = createSample(wav);
-  playWav(smpl);
+}
+
+void photowaveformSmpl() {
+  ArrayList<float[]> processed = processMultiImage(imageMode);
+  float[] wavR = processed.get(0);
+  float[] wavG = processed.get(1);
+  float[] wavB = processed.get(2);
+  AudioSample smplR = createSample(wavR);
+  AudioSample smplG = createSample(wavG);
+  AudioSample smplB = createSample(wavB);
+  playWav(smplR);
+  find440(smplR);
+  //playWav(smplG);
+  //playWav(smplB);
   if (clearEnv) {
-    playDemoEnv(smpl);
+    playDemoEnv(smplR);
+    //playDemoEnv(smplG);
+    //playDemoEnv(smplB);
   } else {
-    playEnv(smpl);
+    playEnv(smplR);
+    //playEnv(smplG);
+    //playEnv(smplB);
   }
 }

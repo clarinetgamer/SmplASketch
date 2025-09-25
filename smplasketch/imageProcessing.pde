@@ -46,9 +46,9 @@ float[] processImage(PImage img, PImage modImg, Boolean isWav) { //takes the ima
       int avg = findAvgY(readRedPix);
       float avgFl;
       if (isWav) {
-        avgFl = map(avg, 0, camheight, 1, -1);//very confused why it's flipped but that's how the numbers work out
+        avgFl = map(avg, 0, camheight, -1, 1);//very confused why it's flipped but that's how the numbers work out
       } else {
-        avgFl = map(avg, 0, camheight, 1000, 0);//very confused why it's flipped but that's how the numbers work out
+        avgFl = map(avg, 0, camheight, 0, 1000);//very confused why it's flipped but that's how the numbers work out
       }
       wav[x] = avgFl;
     }

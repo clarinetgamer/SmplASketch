@@ -18,6 +18,7 @@ void setup() {
   //Img processing setup
   modWavImg = createImage(camwidth, camheight, RGB); // Create image to write other data to
   modEnvImg = createImage(camwidth, camheight, RGB); // Create env image to write other data to
+  initImgFromFile("test.png");
   searchForCamera();
   //clear cache
   clearCache();

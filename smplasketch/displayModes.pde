@@ -16,6 +16,18 @@ void envMode(float[] env) {//Draw Screen, draw env, draw outline
 }
 void imgMode() { //Draw Screen, draw wavs(need to add), draw outline
   drawScreen();
+  ArrayList<float[]> arrList = processMultiImage(imageMode);
+  int counter = 0;
+  for (float[] f : arrList) {
+    if (counter == 0) {
+      drawWav(f, 255, 0, 0);
+    } else if (counter == 1) {
+      drawWav(f, 0, 255, 0);
+    } else if (counter == 2) {
+      drawWav(f, 0, 0, 255);
+    }
+    counter++;
+  }
   drawScreenBox();
 }
 
