@@ -41,17 +41,18 @@ Week 4:
 - Wire up backlight ✓
 - Write c++ code for flash function ✓
 - Design PCB ✓
-- More UI Stuff/Desktop Features
+- Add Photo to soundwave feature to processing sketch ✓
 - Order plexiglass ✓
 - Explore Webcam Options/Order ✓
 - Design Plexiglass housing CAD ✓
 - Design Backlight housing CAD ✓ 
+- Order PCB ✓
+- More UI Stuff/Desktop Features
 - Documentation
 - Weekly Youtube Upload
 Week 5:
 - First Design/Print/Cut of Housing
 - Design separate housing for camera module
-- Add Photo to soundwave feature to processing sketch 
 - Documentation
 - Weekly Youtube Upload
 Week 6:
