@@ -1,6 +1,7 @@
 int buttons[7] = { 28, 30, 31, 32, 33, 35, 37 };
 bool buttonState[7] = { HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH };
 bool lastButtonState[7] = { HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH };
+int led = 36;
 
 
 
@@ -22,6 +23,7 @@ void setup() {
   for (int i = 0; i < 7; i++) {
     pinMode(buttons[i], INPUT_PULLUP);
   }
+  pinMode(led, OUTPUT);
 }
 
 void loop() {
@@ -55,6 +57,8 @@ void checkButtons() {
 }
 
 void snap(){
+  digitalWrite(led, HIGH);
+  delay(500);
   if (wav == true) {
     Keyboard.press('€');//wavsnap
     delay(100);
@@ -66,7 +70,8 @@ void snap(){
     env = false;
     Keyboard.release('ƒ');
   }
-  
+  delay(500);
+  digitalWrite(led, LOW);
 }
 
 void clear(){
