@@ -37,13 +37,13 @@ Week 3:
 - Documentation ✓
 - Weekly Youtube Upload ✓
 Week 4:
-- Do remaining PCB Tutorials
-- Wire up backlight
-- Write c++ code for flash function
+- Do remaining PCB Tutorials ✓
+- Wire up backlight ✓
+- Write c++ code for flash function ✓
 - Design PCB for Teensy/buttons
 - More UI Stuff/Desktop Features
-- Design and test multiple variations/materials of the plexiglass slide
-- Explore Webcam Options
+- Order plexiglass
+- Explore Webcam Options/Order
 - Documentation
 - Weekly Youtube Upload
 Week 5:
