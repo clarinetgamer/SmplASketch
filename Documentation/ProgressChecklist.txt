@@ -40,10 +40,12 @@ Week 4:
 - Do remaining PCB Tutorials ✓
 - Wire up backlight ✓
 - Write c++ code for flash function ✓
-- Design PCB for Teensy/buttons ✓
+- Design PCB ✓
 - More UI Stuff/Desktop Features
 - Order plexiglass ✓
 - Explore Webcam Options/Order ✓
+- Design Plexiglass housing CAD ✓
+- Design Backlight housing CAD ✓ 
 - Documentation
 - Weekly Youtube Upload
 Week 5:
