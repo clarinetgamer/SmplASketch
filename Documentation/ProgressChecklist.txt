@@ -46,7 +46,7 @@ Week 4:
 - Explore Webcam Options/Order ✓
 - Design Plexiglass housing CAD ✓
 - Design Backlight housing CAD ✓ 
-- Order PCB
+- Order PCB ✓
 - More UI Stuff/Desktop Features
 - Documentation
 - Weekly Youtube Upload
