@@ -446,7 +446,7 @@
 			)
 		)
 		(property "Value" "MountingHole"
-			(at 0 3.7 0)
+			(at -9.19 1.85 0)
 			(layer "F.Fab")
 			(uuid "2b429b6f-3750-40f0-bc8a-4a5f90ce928e")
 			(effects
@@ -845,7 +845,7 @@
 		(descr "Mounting Hole 2.7mm, no annular")
 		(tags "mounting hole 2.7mm no annular")
 		(property "Reference" "H1"
-			(at 0 -3.7 0)
+			(at 4.61 -1.85 0)
 			(layer "F.SilkS")
 			(uuid "644ca964-a49e-4c95-a2e7-e30123233285")
 			(effects
@@ -856,7 +856,7 @@
 			)
 		)
 		(property "Value" "MountingHole"
-			(at 0 3.7 0)
+			(at 8.61 0.65 0)
 			(layer "F.Fab")
 			(uuid "5f52b383-9db0-47b4-9803-d1606a0b729b")
 			(effects
@@ -1225,7 +1225,7 @@
 		(descr "Mounting Hole 2.7mm, no annular")
 		(tags "mounting hole 2.7mm no annular")
 		(property "Reference" "H4"
-			(at 0 -3.7 0)
+			(at 5.61 -0.15 0)
 			(layer "F.SilkS")
 			(uuid "3384e620-9589-42fb-add7-1dae0359c775")
 			(effects
@@ -1236,7 +1236,7 @@
 			)
 		)
 		(property "Value" "MountingHole"
-			(at 0 3.7 0)
+			(at 9.61 1.35 0)
 			(layer "F.Fab")
 			(uuid "f5081918-c75c-489d-814e-1f9321543a1c")
 			(effects
@@ -2526,7 +2526,7 @@
 		(descr "Mounting Hole 2.7mm, no annular")
 		(tags "mounting hole 2.7mm no annular")
 		(property "Reference" "H2"
-			(at 0 -3.7 0)
+			(at -5.19 -1.35 0)
 			(layer "F.SilkS")
 			(uuid "985b3bff-837b-466f-86f3-3650242b5363")
 			(effects
@@ -2537,7 +2537,7 @@
 			)
 		)
 		(property "Value" "MountingHole"
-			(at 0 3.7 0)
+			(at -9.19 0.65 0)
 			(layer "F.Fab")
 			(uuid "90903a2b-8fe2-49c3-8eb0-418f2288f20f")
 			(effects
