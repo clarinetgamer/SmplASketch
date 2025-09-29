@@ -44,10 +44,14 @@ Week 4:
 - Add Photo to soundwave feature to processing sketch ✓
 - Order plexiglass ✓
 - Explore Webcam Options/Order ✓
+- Take apart webcam ✓
 - Design Plexiglass housing CAD ✓
 - Design Backlight housing CAD ✓ 
 - Order PCB ✓
-- More UI Stuff/Desktop Features
+- Add Envelope Menu UI ✓
+- Add Envelope Menu Capability
+- Add Waveform Menu UI
+- Add Waveform Menu Capability
 - Documentation
 - Weekly Youtube Upload
 Week 5:
