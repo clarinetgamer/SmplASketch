@@ -73,17 +73,7 @@ synchronized public void win_draw1(PApplet appc, GWinData data) { //_CODE_:envWi
 } //_CODE_:envWindow:707014:
 
 public void checkbox1_clicked1(GCheckbox source, GEvent event) { //_CODE_:checkbox1:403739:
-  if (event == GEvent.DESELECTED) {
-    hideAllEnv.setVisible(false);
-    option1.setSelected(true);
-  } else if (event == GEvent.SELECTED) {
-    hideAllEnv.setVisible(true);
-    option1.setSelected(true);
-    hideSlidersEnv.setVisible(true);
-    custom_slider1.setLimits(5, 0, 10);
-    custom_slider2.setLimits(5, 0, 10);
-    custom_slider3.setLimits(5, 0, 10);
-  }
+  deviceControlEnv(event);
 } //_CODE_:checkbox1:403739:
 
 public void custom_slider1_change1(GCustomSlider source, GEvent event) { //_CODE_:custom_slider1:443042:
@@ -99,32 +89,15 @@ public void custom_slider3_change1(GCustomSlider source, GEvent event) { //_CODE
 } //_CODE_:custom_slider3:577796:
 
 public void option1_clicked1(GOption source, GEvent event) { //_CODE_:sustain:236083:
-  if (event == GEvent.SELECTED) {
-    hideSlidersEnv.setVisible(true);
-    custom_slider1.setLimits(5, 0, 10);
-    custom_slider2.setLimits(5, 0, 10);
-    custom_slider3.setLimits(5, 0, 10);
-    //SUSTAIN MODE FUNCTION
-  }
+  sustainMode(event);
 } //_CODE_:sustain:236083:
 
 public void option2_clicked1(GOption source, GEvent event) { //_CODE_:sliderRatios:316247:
-  if (event == GEvent.SELECTED) {
-    hideSlidersEnv.setVisible(false);
-    custom_slider1.setLimits(5, 0, 10);
-    custom_slider2.setLimits(5, 0, 10);
-    custom_slider3.setLimits(5, 0, 10);
-    //RATIO MODE FUNCTION
-  }
+  sliderModeEnv(event);
 } //_CODE_:sliderRatios:316247:
 
 public void option1_clicked2(GOption source, GEvent event) { //_CODE_:option1:402650:
-  if (event == GEvent.SELECTED) {
-    hideSlidersEnv.setVisible(true);
-    custom_slider1.setLimits(5, 0, 10);
-    custom_slider2.setLimits(5, 0, 10);
-    custom_slider3.setLimits(5, 0, 10);
-  }
+  envModeReset(event);
 } //_CODE_:option1:402650:
 
 public void imgButton1_click2(GImageButton source, GEvent event) { //_CODE_:hideAllEnv:656167:

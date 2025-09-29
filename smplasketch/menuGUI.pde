@@ -14,3 +14,5 @@ void createHelpGUI() {
   helpMenuImg = new GImageButton(helpMenu, 0, 0, new String[] { "HelpMenu.png", "HelpMenu.png", "HelpMenu.png" } );
   helpMenu.loop();
 }
+
+// Envelope Editor
