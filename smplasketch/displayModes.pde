@@ -43,6 +43,11 @@ void checkMode() { //Would do else ifs but this logic makes the knob smoother
   if (1.0 == mode || prevMode == 1.0) {
     if (clearEnv) {
       envMode(resetEnv);
+    } else if (susMode) {
+      envMode(new float[]{0.1, 0.9, 0});
+    } else if (sliderMode) {
+      float[] mappedSliders = new float[]{map(sliderVals[0], 0, 10, 0., 1.), map(sliderVals[1], 0, 10, 0., 1.), map(sliderVals[2], 0, 10, 0., 1.)};
+      envMode(mappedSliders);
     } else {
       envMode(getTimeVals());
     }

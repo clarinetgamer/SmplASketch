@@ -15,31 +15,25 @@
  */
 
 public void knob1_turn1(GKnob source, GEvent event) { //_CODE_:modeknob:727750:
-  //println("knob1 - GKnob >> GEvent." + event + " @ " + millis());
   setModeKnob(source);
 } //_CODE_:modeknob:727750:
 
 public void imgButton1_click1(GImageButton source, GEvent event) { //_CODE_:logo:704728:
-  //println("imgButton1 - GImageButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:logo:704728:
 
 public void wavButton_click1(GImageButton source, GEvent event) { //_CODE_:wavButton:649965:
-  //println("imgButton2 - GImageButton >> GEvent." + event + " @ " + millis());
   openWavMenu();
 } //_CODE_:wavButton:649965:
 
 public void envButton_click1(GImageButton source, GEvent event) { //_CODE_:envButton:585026:
-  //println("imgButton3 - GImageButton >> GEvent." + event + " @ " + millis());
   openEnvMenu();
 } //_CODE_:envButton:585026:
 
 public void imgButton_click1(GImageButton source, GEvent event) { //_CODE_:imgButton:805293:
-  //println("imgButton5 - GImageButton >> GEvent." + event + " @ " + millis());
   openImgMenu();
 } //_CODE_:imgButton:805293:
 
 public void ModeText_click1(GImageButton source, GEvent event) { //_CODE_:ModeText:750609:
-  //println("imgButton4 - GImageButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:ModeText:750609:
 
 public void VolText_click1(GImageButton source, GEvent event) { //_CODE_:VolText:249241:
@@ -51,7 +45,6 @@ public void KnobNums_click1(GImageButton source, GEvent event) { //_CODE_:KnobNu
 } //_CODE_:KnobNums:641804:
 
 public void knob2_turn1(GKnob source, GEvent event) { //_CODE_:volknob:873452:
-  //println("knob2 - GKnob >> GEvent." + event + " @ " + millis());
   setVolKnob(source);
 } //_CODE_:volknob:873452:
 
@@ -64,16 +57,19 @@ public void redCon_click1(GImageButton source, GEvent event) { //_CODE_:redCon:5
 } //_CODE_:redCon:582663:
 
 public void helpButton_click1(GImageButton source, GEvent event) { //_CODE_:helpButton:816277:
-  //println("helpButton - GImageButton >> GEvent." + event + " @ " + millis());
   openHelpMenu();
 } //_CODE_:helpButton:816277:
 
 synchronized public void win_draw1(PApplet appc, GWinData data) { //_CODE_:envWindow:707014:
-  appc.background(143, 3, 3);
+  appc.background(230);
 } //_CODE_:envWindow:707014:
 
+public void closingEnv(GWindow window) { //_CODE_:envWindow:608261:
+  println("envWindow - window closed at " + millis());
+} //_CODE_:envWindow:608261:
+
 public void checkbox1_clicked1(GCheckbox source, GEvent event) { //_CODE_:checkbox1:403739:
-  deviceControlEnv(event);
+  println("checkbox1 - GCheckbox >> GEvent." + event + " @ " + millis());
 } //_CODE_:checkbox1:403739:
 
 public void custom_slider1_change1(GCustomSlider source, GEvent event) { //_CODE_:custom_slider1:443042:
@@ -89,23 +85,23 @@ public void custom_slider3_change1(GCustomSlider source, GEvent event) { //_CODE
 } //_CODE_:custom_slider3:577796:
 
 public void option1_clicked1(GOption source, GEvent event) { //_CODE_:sustain:236083:
-  sustainMode(event);
+  println("sustain - GOption >> GEvent." + event + " @ " + millis());
 } //_CODE_:sustain:236083:
 
 public void option2_clicked1(GOption source, GEvent event) { //_CODE_:sliderRatios:316247:
-  sliderModeEnv(event);
+  println("sliderRatios - GOption >> GEvent." + event + " @ " + millis());
 } //_CODE_:sliderRatios:316247:
 
 public void option1_clicked2(GOption source, GEvent event) { //_CODE_:option1:402650:
-  envModeReset(event);
+  println("option1 - GOption >> GEvent." + event + " @ " + millis());
 } //_CODE_:option1:402650:
 
 public void imgButton1_click2(GImageButton source, GEvent event) { //_CODE_:hideAllEnv:656167:
-  println("imgButton1 - GImageButton >> GEvent." + event + " @ " + millis());
+  println("hideAllEnv - GImageButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:hideAllEnv:656167:
 
 public void imgButton2_click1(GImageButton source, GEvent event) { //_CODE_:hideSlidersEnv:513038:
-  println("imgButton2 - GImageButton >> GEvent." + event + " @ " + millis());
+  println("hideSlidersEnv - GImageButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:hideSlidersEnv:513038:
 
 synchronized public void win_draw2(PApplet appc, GWinData data) { //_CODE_:wavWindow:973281:
@@ -195,6 +191,7 @@ public void createGUI(){
   envWindow.noLoop();
   envWindow.setActionOnClose(G4P.CLOSE_WINDOW);
   envWindow.addDrawHandler(this, "win_draw1");
+  envWindow.addOnCloseHandler(this, "closingEnv");
   checkbox1 = new GCheckbox(envWindow, 166, 22, 108, 22);
   checkbox1.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   checkbox1.setText("Device Control");

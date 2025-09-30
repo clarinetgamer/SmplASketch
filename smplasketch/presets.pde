@@ -21,3 +21,10 @@ void clearCache() {
   resetEnv();
   println("Image Cache Cleared");
 }
+
+void clearActiveSamples() {
+  for (AudioSample s : endSus) {
+    s.stop();
+  }
+  endSus = new ArrayList<AudioSample>();
+}

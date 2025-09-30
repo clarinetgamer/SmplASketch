@@ -1,5 +1,10 @@
-boolean clearWav = true;
+boolean clearWav = true; //<>//
 boolean clearEnv = true;
+boolean susMode = false;
+boolean sliderMode = false;
+int[] sliderVals = new int[3];
+boolean spaceHit = false;
+ArrayList<AudioSample> endSus = new ArrayList<AudioSample>();
 
 void checkForConnection() { //add to interface with device/camera
   if (key == 'i') {
@@ -54,6 +59,8 @@ void resetWav() {
 void resetEnv() {
   envMult =1;
   clearEnv = true;
+  susMode = false;
+  sliderMode = false;
   filereset.save("env_image.jpg");
 }
 
@@ -69,6 +76,10 @@ void smpl() {
     playWav(smpl);
     if (clearEnv) {
       playDemoEnv(smpl);
+    } else if (susMode) {
+      endSus.add(smpl);
+    } else if (sliderMode) {
+      playSliderEnv(smpl);
     } else {
       playEnv(smpl);
     }
@@ -95,6 +106,16 @@ void photowaveformSmpl() {
     playDemoEnv(smplR);
     playDemoEnv(smplG);
     playDemoEnv(smplB);
+  } else if (susMode) {
+    endSus.add(body);
+    endSus.add(smplR);
+    endSus.add(smplG);
+    endSus.add(smplB);
+  } else if (sliderMode) {
+    playSliderEnv(body);
+    playSliderEnv(smplR);
+    playSliderEnv(smplG);
+    playSliderEnv(smplB);
   } else {
     playEnv(body);
     playEnv(smplR);

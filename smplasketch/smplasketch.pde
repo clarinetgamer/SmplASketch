@@ -65,5 +65,7 @@ void keyPressed() { //test true is for keyboard control test false is obscure as
     clearCache();
     println("Program Exit");
     exit();
-  } 
+  } else if (key == (char)32) {
+    clearActiveSamples();
+  }
 }
