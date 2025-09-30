@@ -49,14 +49,14 @@ Week 4:
 - Design Backlight housing CAD ✓ 
 - Order PCB ✓
 - Add Envelope Menu UI ✓
-- Add Envelope Menu Capability
-- Add Waveform Menu UI
-- Add Waveform Menu Capability
+- Add Envelope Menu Capability ✓
 - Documentation
 - Weekly Youtube Upload
 Week 5:
 - First Design/Print/Cut of Housing
 - Design separate housing for camera module
+- Add Waveform Menu UI
+- Add Waveform Menu Capability
 - Documentation
 - Weekly Youtube Upload
 Week 6:
