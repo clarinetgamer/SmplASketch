@@ -1,7 +1,21 @@
+// GUI AutoGenSlop For Non Main Windows
+
+boolean helpOpen = false;
+boolean envOpen = false;
+boolean wavOpen = false;
+boolean imgOpen = false;
+
+// 
 // Help Menu
+//
+
 synchronized public void help_draw(PApplet appc, GWinData data) {
   appc.background(230);
 }
+
+public void closingHelper(GWindow window) { //_CODE_:envWindow:608261:
+  helpOpen=false;
+} //_CODE_:envWindow:608261:
 
 GWindow helpMenu;
 GImageButton helpMenuImg;
@@ -11,11 +25,15 @@ void createHelpGUI() {
   helpMenu.noLoop();
   helpMenu.setActionOnClose(G4P.CLOSE_WINDOW);
   helpMenu.addDrawHandler(this, "help_draw");
+  helpMenu.addOnCloseHandler(this, "closingHelper");
   helpMenuImg = new GImageButton(helpMenu, 0, 0, new String[] { "HelpMenu.png", "HelpMenu.png", "HelpMenu.png" } );
   helpMenu.loop();
+  helpOpen=true;
 }
 
+// 
 // Envelope Editor
+//
 
 synchronized public void win_draw1(PApplet appc, GWinData data) { //_CODE_:envWindow:707014:
   appc.background(143, 3, 3);
@@ -23,6 +41,7 @@ synchronized public void win_draw1(PApplet appc, GWinData data) { //_CODE_:envWi
 
 public void closingEnv(GWindow window) { //_CODE_:envWindow:608261:
   closingEnv();
+  envOpen=false;
 } //_CODE_:envWindow:608261:
 
 public void checkbox1_clicked1(GCheckbox source, GEvent event) { //_CODE_:checkbox1:403739:
@@ -54,11 +73,9 @@ public void option1_clicked2(GOption source, GEvent event) { //_CODE_:option1:40
 } //_CODE_:option1:402650:
 
 public void imgButton1_click2(GImageButton source, GEvent event) { //_CODE_:hideAllEnv:656167:
-  println("imgButton1 - GImageButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:hideAllEnv:656167:
 
 public void imgButton2_click1(GImageButton source, GEvent event) { //_CODE_:hideSlidersEnv:513038:
-  println("imgButton2 - GImageButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:hideSlidersEnv:513038:
 
 GWindow envWindow;
@@ -161,4 +178,9 @@ void createEnvGUI() {
   hideSlidersEnv = new GImageButton(envWindow, 0, 0, 289, 241, new String[] { "EnvHideSliders.png", "EnvHideSliders.png", "EnvHideSliders.png" } );
   hideSlidersEnv.addEventHandler(this, "imgButton2_click1");
   envWindow.loop();
+  envOpen = true;
 }
+
+// 
+// Waveform Editor
+//

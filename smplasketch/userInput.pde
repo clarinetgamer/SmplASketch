@@ -5,7 +5,9 @@ void openWavMenu() {
 
 // Envelope Editor
 void openEnvMenu() {
-  createEnvGUI();
+  if(envOpen == false) {
+    createEnvGUI();
+  }
 }
 
 void closingEnv(){
@@ -81,7 +83,9 @@ void openImgMenu() {
 
 //Help Menu
 void openHelpMenu() {
-  createHelpGUI();
+  if(helpOpen == false) {
+      createHelpGUI();
+  }
 }
 
 //Main Window
