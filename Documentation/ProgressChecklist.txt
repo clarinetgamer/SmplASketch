@@ -50,8 +50,8 @@ Week 4:
 - Order PCB ✓
 - Add Envelope Menu UI ✓
 - Add Envelope Menu Capability ✓
-- Documentation
-- Weekly Youtube Upload
+- Documentation ✓
+- Weekly Youtube Upload ✓
 Week 5:
 - First Design/Print/Cut of Housing
 - Design separate housing for camera module
