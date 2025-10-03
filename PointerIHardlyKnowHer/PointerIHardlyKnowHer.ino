@@ -93,40 +93,57 @@ void clear(){
     Keyboard.release('2');
     Keyboard.release(KEY_LEFT_ALT);
   } else if (env == true) {
-    Keyboard.press('¤'); //reset env
+    Keyboard.press('KEY_LEFT_ALT'); //reset env
+    Keyboard.press(KEY_LEFT_SHIFT);
+    Keyboard.press('v');
     delay(100);
     env = false;
-    Keyboard.release('¤');
+    Keyboard.release('KEY_LEFT_ALT');
+    Keyboard.press(KEY_LEFT_SHIFT);
+    Keyboard.press('v');
   }
   
 }
 
 void upInc(){
   if (wav == true) {
-    Keyboard.press('Š');//inc wav
+    Keyboard.press(KEY_LEFT_ALT);//inc wav
+    Keyboard.press(KEY_LEFT_SHIFT);
+    Keyboard.press('8');
     delay(100);
     wav = false;
-    Keyboard.release('Š');
+    Keyboard.press(KEY_LEFT_ALT);
+    Keyboard.press(KEY_LEFT_SHIFT);
+    Keyboard.press('8');
   } else if (env == true) {
-    Keyboard.press('‡');//inc env
-    delay(100);
+    Keyboard.press('KEY_LEFT_ALT');//inc env
+    Keyboard.press(KEY_LEFT_SHIFT);
+    Keyboard.press('7');
     env = false;
-    Keyboard.release('‡');
+    Keyboard.release(KEY_LEFT_ALT);
+    Keyboard.release(KEY_LEFT_SHIFT);
+    Keyboard.release('7');
   }
   
 }
 
 void downInc(){
   if (wav == true) {
-    Keyboard.press('‰');//dec wav
+    Keyboard.press('KEY_LEFT_ALT');//dec wav
+    Keyboard.press(KEY_LEFT_SHIFT);
+    Keyboard.press('R');
     delay(100);
     wav = false;
-    Keyboard.release('‰');
+    Keyboard.press('KEY_LEFT_ALT');
+    Keyboard.press(KEY_LEFT_SHIFT);
+    Keyboard.press('R');
   } else if (env == true) {
-    Keyboard.press('†');//dec env
+    Keyboard.press('KEY_LEFT_ALT');//dec env
+    Keyboard.press('t');
     delay(100);
     env = false;
-    Keyboard.release('†');
+    Keyboard.press('KEY_LEFT_ALT');
+    Keyboard.press('t');
   }
   
 }

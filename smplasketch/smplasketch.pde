@@ -49,7 +49,7 @@ void keyPressed() { //test true is for keyboard control test false is obscure as
   } else if ((test == true && key == '-')||(test == false && key == '‰')) {
     decWavMult();
     println("decWav");
-  } else if ((test == true && key == '=')||(test == false && key == 'Š')) {
+  } else if ((test == true && key == '=')||(test == false && key == '°')) {
     incWavMult();
     println("incWav");
   } else if ((test == true && key == 's')||(test == false && key == 'Œ')) {
@@ -58,7 +58,7 @@ void keyPressed() { //test true is for keyboard control test false is obscure as
   } else if ((test == true && key == 'r')||(test == false && key == '™')) {
     resetWav();
     println("resetWav");
-  } else if ((test == true && key == 't')||(test == false && key == '¤')) {
+  } else if ((test == true && key == 't')||(test == false && key == '◊')) {
     resetEnv();
     println("resetEnv");
   } else if (key == (char)27) {//Escape key always exits program
