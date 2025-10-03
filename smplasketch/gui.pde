@@ -100,6 +100,10 @@ public void stepwav_clicked1(GOption source, GEvent event) { //_CODE_:stepwav:75
   println("option9 - GOption >> GEvent." + event + " @ " + millis());
 } //_CODE_:stepwav:750740:
 
+public void nowav_clicked1(GOption source, GEvent event) { //_CODE_:nowav:484575:
+  println("nowav - GOption >> GEvent." + event + " @ " + millis());
+} //_CODE_:nowav:484575:
+
 public void wavcontrol_clicked1(GOption source, GEvent event) { //_CODE_:wavcontrol:638305:
   println("wavcontrol - GOption >> GEvent." + event + " @ " + millis());
 } //_CODE_:wavcontrol:638305:
@@ -246,13 +250,19 @@ public void createGUI(){
   stepwav.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   stepwav.setOpaque(false);
   stepwav.addEventHandler(this, "stepwav_clicked1");
+  nowav = new GOption(wavWindow, 540, 235, 120, 20);
+  nowav.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  nowav.setText("option text");
+  nowav.setOpaque(false);
+  nowav.addEventHandler(this, "nowav_clicked1");
   wavgroup.addControl(sinwave);
-  sinwave.setSelected(true);
   wavgroup.addControl(squarewav);
   wavgroup.addControl(trianglewav);
   wavgroup.addControl(sawwav);
   wavgroup.addControl(rampwav);
   wavgroup.addControl(stepwav);
+  wavgroup.addControl(nowav);
+  nowav.setSelected(true);
   Wavdevicegroup = new GToggleGroup();
   wavcontrol = new GOption(wavWindow, 20, 100, 120, 20);
   wavcontrol.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
@@ -308,6 +318,7 @@ GOption trianglewav;
 GOption sawwav; 
 GOption rampwav; 
 GOption stepwav; 
+GOption nowav; 
 GToggleGroup Wavdevicegroup; 
 GOption wavcontrol; 
 GOption defaultwavs; 
