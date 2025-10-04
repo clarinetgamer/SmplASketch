@@ -16,7 +16,9 @@ int findAvgY(ArrayList<Integer> list) { // find average of y pixels from drawing
 float[] processImage(PImage img, PImage modImg, Boolean isWav) { //takes the image from the folder changes all red pixels to green and returns float array of drawn wave
   modImg.loadPixels(); //load display pixels
   img.loadPixels(); //load images pizels
-
+  img.filter(POSTERIZE, 2);
+  //img.filter(THRESHOLD, 0.575);
+  img.save("newimg.jpg");
   float[] wav = new float[camwidth];
 
   for (int x = 0; x < camwidth; x++) {
@@ -30,7 +32,7 @@ float[] processImage(PImage img, PImage modImg, Boolean isWav) { //takes the ima
       float b = blue(img.pixels[loc]);
 
       // Change red pixels to green to show that it was read
-      if (r > 200 && b < 250 && g < 250) {
+      if (r > 150 && b < 250 && g < 250) {
         r=0;
         b=0;
         g=255;
