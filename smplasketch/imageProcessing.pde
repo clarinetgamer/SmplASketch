@@ -13,16 +13,24 @@ int findAvgY(ArrayList<Integer> list) { // find average of y pixels from drawing
   return avg;
 }
 
+PImage crop(PImage img){
+PImage cropped = img.get(100,300, 640, 480);
+cropped.save("cropped.jpg");
+return cropped;
+
+}
+
 float[] processImage(PImage img, PImage modImg, Boolean isWav) { //takes the image from the folder changes all red pixels to green and returns float array of drawn wave
   modImg.loadPixels(); //load display pixels
   img.loadPixels(); //load images pizels
-  img.filter(POSTERIZE, 2);
-  //img.filter(THRESHOLD, 0.575);
+  img = crop(img);
+  //img.filter(POSTERIZE, 2);
+  img.filter(THRESHOLD, 0.705);
   img.save("newimg.jpg");
   float[] wav = new float[camwidth];
 
   for (int x = 0; x < camwidth; x++) {
-    ArrayList<Integer> readRedPix = new ArrayList<Integer>(); // create list to hold y values for a single x point
+    ArrayList<Integer> readBlackPix = new ArrayList<Integer>(); // create list to hold y values for a single x point
     for (int y = 0; y < camheight; y++) {
       int loc = x + y*camwidth; //calculate pixel location
 
@@ -32,23 +40,23 @@ float[] processImage(PImage img, PImage modImg, Boolean isWav) { //takes the ima
       float b = blue(img.pixels[loc]);
 
       // Change red pixels to green to show that it was read
-      if (r > 150 && b < 250 && g < 250) {
+      if (r < 10 && b < 10 && g < 10) {
         r=0;
         b=0;
         g=255;
-        readRedPix.add(y); //add the y value to the list
+        readBlackPix.add(y); //add the y value to the list
       }
 
       // Change displayed pixel to represent coordinates counted
       modImg.pixels[loc] =  color(r, g, b);
     }
-    if (readRedPix.isEmpty()) {
+    if (readBlackPix.isEmpty()) {
       wav[x]=0;
     } else {
-      int avg = findAvgY(readRedPix);
+      int avg = findAvgY(readBlackPix);
       float avgFl;
       if (isWav) {
-        avgFl = map(avg, 0, camheight, -1, 1);//very confused why it's flipped but that's how the numbers work out
+        avgFl = map(avg, camheight, 0, -1, 1);//very confused why it's flipped but that's how the numbers work out
       } else {
         avgFl = map(avg, 0, camheight, 0, 1000);//very confused why it's flipped but that's how the numbers work out
       }

@@ -80,7 +80,7 @@ void snap(){
     Keyboard.release('f');
     Keyboard.release(KEY_LEFT_ALT);
   }
-  delay(500);
+  delay(1000);
   digitalWrite(led, LOW);
 }
 

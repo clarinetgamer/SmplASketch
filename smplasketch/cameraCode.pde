@@ -14,7 +14,7 @@ void searchForCamera() {
     for (int i = 0; i < cameras.length; i++) {
       println(cameras[i]);
     }
-    cam = new Capture(this, camwidth, camheight, "pipeline:avfvideosrc device-index=0", 30);
+    cam = new Capture(this, 1000, 900, "pipeline:avfvideosrc device-index=0", 30);
     cam.start();
   }
 }
