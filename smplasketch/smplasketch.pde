@@ -4,7 +4,7 @@ import g4p_controls.*;
 
 Sound s;
 
-boolean test = false;
+boolean test = true;
 
 //Camera Dimensions Setup
 int[] sizeArr = {640, 480}; //fix width to match pi cam(mac cam is 640 480)
@@ -31,6 +31,8 @@ void draw() {
   background(143, 3, 3);
   checkMode();
   checkForConnection();
+  wavDeviceControlOff();
+  defaultSqr();
 }
 
 void keyPressed() { //test true is for keyboard control test false is obscure ascii to talk to teensy

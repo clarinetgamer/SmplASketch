@@ -1,19 +1,66 @@
 //Waveform Editor
 void openWavMenu() {
-  println("openWavMenu");
+  if (wavOpen == false) {
+    //creatwavgui
+  }
+}
+
+float[] defaultWav;
+
+void defaultSin() {
+  defaultWav = resetSin;
+}
+
+void defaultSqr() {
+  float[] sqrwav = new float[640];
+
+  for (int i = 0; i < 640; i++) {
+    if (i < 320) {
+      sqrwav[i] = 1;
+    } else {
+      sqrwav[i] = -1;
+    }
+  }
+  defaultWav=sqrwav;
+}
+
+void defaultTri() {
+}
+
+void defaultSaw() {
+}
+
+void defaultRamp() {
+}
+
+void defaultStep() {
+}
+
+void wavDeviceControlOn() {
+  wavControl = true;
+}
+
+void wavDeviceControlOff() {
+  wavControl = false;
+}
+
+void tonalControl() {
+}
+
+void atonalControl() {
 }
 
 // Envelope Editor
 void openEnvMenu() {
-  if(envOpen == false) {
+  if (envOpen == false) {
     createEnvGUI();
   }
 }
 
-void closingEnv(){
-    susMode = false;
-    sliderMode = false;
-    clearEnv = true;
+void closingEnv() {
+  susMode = false;
+  sliderMode = false;
+  clearEnv = true;
 }
 
 void deviceControlEnv(GEvent event) {
@@ -51,7 +98,7 @@ void sliderModeEnv(GEvent event) {
     custom_slider1.setLimits(5, 0, 10);
     custom_slider2.setLimits(5, 0, 10);
     custom_slider3.setLimits(5, 0, 10);
-    sliderVals = new int[]{5,5,5};
+    sliderVals = new int[]{5, 5, 5};
     susMode = false;
     clearEnv = false;
     sliderMode = true;
@@ -83,8 +130,8 @@ void openImgMenu() {
 
 //Help Menu
 void openHelpMenu() {
-  if(helpOpen == false) {
-      createHelpGUI();
+  if (helpOpen == false) {
+    createHelpGUI();
   }
 }
 

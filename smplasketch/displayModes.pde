@@ -33,9 +33,11 @@ void imgMode() { //Draw Screen, draw wavs(need to add), draw outline
 
 void checkMode() { //Would do else ifs but this logic makes the knob smoother
   if (0.0 == mode || prevMode == 0.0) {
-    if (clearWav) {
+    if (clearWav && wavControl) {
       wavMode(resetSin);
-    } else {
+    } else if(!wavControl) {
+    wavMode(defaultWav);
+    }else {
       wavMode(processWavImage());
     }
     prevMode = 0.0;

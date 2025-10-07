@@ -1,4 +1,5 @@
 boolean clearWav = true; //<>//
+boolean wavControl = true;
 boolean clearEnv = true;
 boolean susMode = false;
 boolean sliderMode = false;
@@ -67,8 +68,10 @@ void resetEnv() {
 void smpl() {
   if (mode != 2.0) {
     float[] wav;
-    if (clearWav) {
+    if (clearWav && wavControl) {
       wav = resetSin;
+    } else if (!wavControl) {
+      wav = defaultWav;
     } else {
       wav = processWavImage();
     }

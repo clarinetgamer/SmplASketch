@@ -11,11 +11,21 @@ void searchForCamera() {
     exit();
   } else {
     println("Available cameras:");
+    int setcamIndex = -1;
     for (int i = 0; i < cameras.length; i++) {
       println(cameras[i]);
+      if (cameras[i].contains("C270")){
+        setcamIndex = i;
+      }
     }
-    cam = new Capture(this, 1000, 900, "pipeline:avfvideosrc device-index=0", 30);
+    if(setcamIndex != -1 || test){
+    cam = new Capture(this, 1000, 900, "pipeline:avfvideosrc device-index="+setcamIndex, 30);
     cam.start();
+    } else {
+      //display no camera connected dialouge
+     wait(5000);
+     exit();
+    }
   }
 }
 
