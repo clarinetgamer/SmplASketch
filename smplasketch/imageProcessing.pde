@@ -15,7 +15,7 @@ int findAvgY(ArrayList<Integer> list) { // find average of y pixels from drawing
 
 PImage crop(PImage img){
 PImage cropped = img.get(100,300, 640, 480);
-cropped.save("cropped.jpg");
+//cropped.save("cropped.jpg");
 return cropped;
 
 }
@@ -26,7 +26,7 @@ float[] processImage(PImage img, PImage modImg, Boolean isWav) { //takes the ima
   img = crop(img);
   //img.filter(POSTERIZE, 2);
   img.filter(THRESHOLD, 0.705);
-  img.save("newimg.jpg");
+  //img.save("newimg.jpg");
   float[] wav = new float[camwidth];
 
   for (int x = 0; x < camwidth; x++) {
