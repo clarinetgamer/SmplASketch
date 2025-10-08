@@ -31,8 +31,6 @@ void draw() {
   background(143, 3, 3);
   checkMode();
   checkForConnection();
-  wavDeviceControlOff();
-  defaultSqr();
 }
 
 void keyPressed() { //test true is for keyboard control test false is obscure ascii to talk to teensy

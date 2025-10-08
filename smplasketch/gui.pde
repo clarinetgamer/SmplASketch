@@ -65,39 +65,54 @@ synchronized public void waveditordraw(PApplet appc, GWinData data) { //_CODE_:w
 } //_CODE_:wavWindow:973281:
 
 public void wavdevice1_clicked1(GOption source, GEvent event) { //_CODE_:wavdevice1:252560:
-  println("option1 - GOption >> GEvent." + event + " @ " + millis());
+if (event == GEvent.SELECTED) {
+    tonalControl();
+  }
 } //_CODE_:wavdevice1:252560:
 
 public void pitchmode_clicked1(GOption source, GEvent event) { //_CODE_:pitchmode:772210:
-  println("option2 - GOption >> GEvent." + event + " @ " + millis());
-} //_CODE_:pitchmode:772210:
+if (event == GEvent.SELECTED) {
+    atonalControl();
+  }} //_CODE_:pitchmode:772210:
 
 public void pitch_change1(GCustomSlider source, GEvent event) { //_CODE_:pitch:634832:
   println("custom_slider1 - GCustomSlider >> GEvent." + event + " @ " + millis());
 } //_CODE_:pitch:634832:
 
 public void sinwave_clicked1(GOption source, GEvent event) { //_CODE_:sinwave:493274:
-  println("option4 - GOption >> GEvent." + event + " @ " + millis());
+  if (event == GEvent.SELECTED) {
+    defaultSin();
+  }
 } //_CODE_:sinwave:493274:
 
 public void squarewav_clicked1(GOption source, GEvent event) { //_CODE_:squarewav:868981:
-  println("option5 - GOption >> GEvent." + event + " @ " + millis());
+  if (event == GEvent.SELECTED) {
+    defaultSqr();
+  }
 } //_CODE_:squarewav:868981:
 
 public void trianglewav_clicked1(GOption source, GEvent event) { //_CODE_:trianglewav:982005:
-  println("option6 - GOption >> GEvent." + event + " @ " + millis());
+  if (event == GEvent.SELECTED) {
+    defaultTri();
+  }
 } //_CODE_:trianglewav:982005:
 
 public void sawwav_clicked1(GOption source, GEvent event) { //_CODE_:sawwav:860623:
-  println("option7 - GOption >> GEvent." + event + " @ " + millis());
+  if (event == GEvent.SELECTED) {
+    defaultSaw();
+  }
 } //_CODE_:sawwav:860623:
 
 public void rampwav_clicked1(GOption source, GEvent event) { //_CODE_:rampwav:647942:
-  println("option8 - GOption >> GEvent." + event + " @ " + millis());
+  if (event == GEvent.SELECTED) {
+    defaultRamp();
+  }
 } //_CODE_:rampwav:647942:
 
 public void stepwav_clicked1(GOption source, GEvent event) { //_CODE_:stepwav:750740:
-  println("option9 - GOption >> GEvent." + event + " @ " + millis());
+  if (event == GEvent.SELECTED) {
+    defaultStep();
+  }
 } //_CODE_:stepwav:750740:
 
 public void nowav_clicked1(GOption source, GEvent event) { //_CODE_:nowav:484575:
@@ -105,20 +120,32 @@ public void nowav_clicked1(GOption source, GEvent event) { //_CODE_:nowav:484575
 } //_CODE_:nowav:484575:
 
 public void wavcontrol_clicked1(GOption source, GEvent event) { //_CODE_:wavcontrol:638305:
-  println("wavcontrol - GOption >> GEvent." + event + " @ " + millis());
+  if (event == GEvent.SELECTED) {
+    wavDeviceControlOn();
+  }
 } //_CODE_:wavcontrol:638305:
 
 public void defaultwavs_clicked1(GOption source, GEvent event) { //_CODE_:defaultwavs:227314:
-  println("defaultwavs - GOption >> GEvent." + event + " @ " + millis());
+  if (event == GEvent.SELECTED) {
+    wavDeviceControlOff();
+  }
 } //_CODE_:defaultwavs:227314:
-
-public void greydefaultwav_click2(GImageButton source, GEvent event) { //_CODE_:greydefaultwav:201965:
-  println("greydefaultwav - GImageButton >> GEvent." + event + " @ " + millis());
-} //_CODE_:greydefaultwav:201965:
 
 public void reddefaultwav_click1(GImageButton source, GEvent event) { //_CODE_:reddefaultwav:743207:
   println("reddefaultwav - GImageButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:reddefaultwav:743207:
+
+public void greystuff_click2(GImageButton source, GEvent event) { //_CODE_:greystuff:598096:
+  println("imgButton1 - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:greystuff:598096:
+
+public void wavlock_click2(GImageButton source, GEvent event) { //_CODE_:wavlock:363349:
+  println("wavlock - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:wavlock:363349:
+
+public void sliderwavhider_click2(GImageButton source, GEvent event) { //_CODE_:sliderwavhider:617266:
+  println("sliderwavhider - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:sliderwavhider:617266:
 
 synchronized public void win_draw3(PApplet appc, GWinData data) { //_CODE_:imgWindow:651119:
   appc.background(230);
@@ -204,15 +231,15 @@ public void createGUI(){
   wavWindow.setActionOnClose(G4P.CLOSE_WINDOW);
   wavWindow.addDrawHandler(this, "waveditordraw");
   waveditoroptions = new GToggleGroup();
-  wavdevice1 = new GOption(wavWindow, 240, 15, 120, 20);
+  wavdevice1 = new GOption(wavWindow, 215, 15, 140, 20);
   wavdevice1.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
-  wavdevice1.setText("Tonal Control");
+  wavdevice1.setText("Tonal Device Control");
   wavdevice1.setLocalColorScheme(GCScheme.SCHEME_8);
   wavdevice1.setOpaque(false);
   wavdevice1.addEventHandler(this, "wavdevice1_clicked1");
-  pitchmode = new GOption(wavWindow, 40, 15, 140, 20);
+  pitchmode = new GOption(wavWindow, 30, 15, 170, 20);
   pitchmode.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
-  pitchmode.setText("Frequency Control");
+  pitchmode.setText("Atonal Frequency Control");
   pitchmode.setLocalColorScheme(GCScheme.SCHEME_9);
   pitchmode.setOpaque(false);
   pitchmode.addEventHandler(this, "pitchmode_clicked1");
@@ -220,9 +247,9 @@ public void createGUI(){
   wavdevice1.setSelected(true);
   waveditoroptions.addControl(pitchmode);
   pitch = new GCustomSlider(wavWindow, 30, 44, 328, 40, "red_yellow18px");
-  pitch.setLimits(0.5, 0.0, 1.0);
-  pitch.setNumberFormat(G4P.DECIMAL, 2);
-  pitch.setLocalColorScheme(GCScheme.BLUE_SCHEME);
+  pitch.setLimits(440, 100, 780);
+  pitch.setNumberFormat(G4P.INTEGER, 0);
+  pitch.setLocalColorScheme(GCScheme.SCHEME_8);
   pitch.setOpaque(false);
   pitch.addEventHandler(this, "pitch_change1");
   wavgroup = new GToggleGroup();
@@ -270,7 +297,7 @@ public void createGUI(){
   wavcontrol.setLocalColorScheme(GCScheme.SCHEME_8);
   wavcontrol.setOpaque(false);
   wavcontrol.addEventHandler(this, "wavcontrol_clicked1");
-  defaultwavs = new GOption(wavWindow, 20, 135, 180, 20);
+  defaultwavs = new GOption(wavWindow, 20, 127, 180, 20);
   defaultwavs.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   defaultwavs.setText("Use Defualt Waveforms");
   defaultwavs.setLocalColorScheme(GCScheme.SCHEME_14);
@@ -279,10 +306,14 @@ public void createGUI(){
   Wavdevicegroup.addControl(wavcontrol);
   wavcontrol.setSelected(true);
   Wavdevicegroup.addControl(defaultwavs);
-  greydefaultwav = new GImageButton(wavWindow, 43, 170, new String[] { "greyed stuff.png", "greyed stuff.png", "greyed stuff.png" } );
-  greydefaultwav.addEventHandler(this, "greydefaultwav_click2");
   reddefaultwav = new GImageButton(wavWindow, 43, 170, new String[] { "redstuff.png", "redstuff.png", "redstuff.png" } );
   reddefaultwav.addEventHandler(this, "reddefaultwav_click1");
+  greystuff = new GImageButton(wavWindow, 43, 170, new String[] { "greyed stuff.png", "greyed stuff.png", "greyed stuff.png" } );
+  greystuff.addEventHandler(this, "greystuff_click2");
+  wavlock = new GImageButton(wavWindow, 0, 0, 390, 300, new String[] { "WavLockOverlay.png", "WavLockOverlay.png", "WavLockOverlay.png" } );
+  wavlock.addEventHandler(this, "wavlock_click2");
+  sliderwavhider = new GImageButton(wavWindow, 0, 0, 390, 88, new String[] { "SliderWav.png", "SliderWav.png", "SliderWav.png" } );
+  sliderwavhider.addEventHandler(this, "sliderwavhider_click2");
   imgWindow = GWindow.getWindow(this, "PhotoSynthesis", 1100, 0, 400, 400, JAVA2D);
   imgWindow.noLoop();
   imgWindow.setActionOnClose(G4P.CLOSE_WINDOW);
@@ -322,6 +353,8 @@ GOption nowav;
 GToggleGroup Wavdevicegroup; 
 GOption wavcontrol; 
 GOption defaultwavs; 
-GImageButton greydefaultwav; 
 GImageButton reddefaultwav; 
+GImageButton greystuff; 
+GImageButton wavlock; 
+GImageButton sliderwavhider; 
 GWindow imgWindow;

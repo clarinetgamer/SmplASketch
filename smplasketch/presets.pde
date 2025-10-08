@@ -4,7 +4,7 @@ float[] genSinWav() { //create sin wav arr
   float[] sinewave = new float[640];
 
   for (int i = 0; i < 640; i++) {
-    sinewave[i] = sin(TWO_PI*i/640);
+    sinewave[i] = -sin(TWO_PI*i/640);
   }
   return sinewave;
 }

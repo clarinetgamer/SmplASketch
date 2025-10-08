@@ -5,7 +5,7 @@ void openWavMenu() {
   }
 }
 
-float[] defaultWav;
+float[] defaultWav = resetSin;
 
 void defaultSin() {
   defaultWav = resetSin;
@@ -16,38 +16,92 @@ void defaultSqr() {
 
   for (int i = 0; i < 640; i++) {
     if (i < 320) {
-      sqrwav[i] = 1;
-    } else {
       sqrwav[i] = -1;
+    } else {
+      sqrwav[i] = 1;
     }
   }
   defaultWav=sqrwav;
 }
 
 void defaultTri() {
+  float[] triwav = new float[640];
+  int counter = 0;
+  for (int i = 0; i < 640; i++) {
+    if (i == 0) {
+      counter = 0;
+    } else if (i < 160) {
+      counter +=1;
+    } else if (i < 480){
+      counter -=1;
+      triwav[i] = counter;
+    } else {
+      counter +=1;
+    } 
+    triwav[i] = map(counter, -159, 159, 1,-1);
+  }
+  defaultWav=triwav;
 }
 
 void defaultSaw() {
+  float[] sawwav = new float[640];
+  int counter = 320;
+  for (int i = 0; i < 640; i++) {
+      counter -=1;
+      sawwav[i] = map(counter, -319, 319, 1,-1);
+    }
+  defaultWav = sawwav;
 }
 
 void defaultRamp() {
+  float[] rampwav = new float[640];
+  int counter = -320;
+  for (int i = 0; i < 640; i++) {
+      counter +=1;
+    rampwav[i] = map(counter, -319, 319, 1,-1);
+  }
+  defaultWav=rampwav;
 }
 
 void defaultStep() {
+  float[] stepwav = new float[640];
+  int counter = 0;
+  int step = 0;
+  for (int i = 0; i < 640; i++) {
+    if (step != 16){
+    step++;
+    } else {
+    counter++;
+    step=0;
+    }
+    stepwav[i] = map(counter, 0, 39, 1,-1);
+  }
+  defaultWav=stepwav;
 }
 
 void wavDeviceControlOn() {
   wavControl = true;
+  nowav.setSelected(true);
+  greystuff.setVisible(true);
+  wavlock.setVisible(true);
 }
 
 void wavDeviceControlOff() {
   wavControl = false;
+  sinwave.setSelected(true);
+  greystuff.setVisible(false);
+  wavlock.setVisible(false);
+  
 }
 
 void tonalControl() {
+  sliderwavhider.setVisible(true);
+  pitch.setLimits(5, 0, 10); // fix limits
 }
 
 void atonalControl() {
+  sliderwavhider.setVisible(false);
+  pitch.setLimits(5, 0, 10); // fix limits
 }
 
 // Envelope Editor
