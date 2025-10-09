@@ -1,14 +1,26 @@
-int buttons[7] = { 28, 30, 31, 32, 33, 35, 37 };
+//int buttons[7] = { 28, 30, 31, 32, 33, 35, 37 }; breadboard
+int buttons[7] = { 31, 30, 32, 31, 35, 37, 33 }; //pcb
 bool buttonState[7] = { HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH };
 bool lastButtonState[7] = { HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH };
-int led = 36;
+//int led = 36;//breadboard
+int led = 40;//pcb
 
 
 
 bool wav = false;
 bool env = false;
 
-/*
+/* pcb
+Pin 31 is Snap 0 
+Pin 30 is Reset 1 
+Pin 32 is Smpl 3 
+Pin 34 is DownInc 2 
+Pin 36 is Wav 5
+Pin 35 is Env 6
+Pin 33 is UpInc 4
+*/
+
+/* breadboard
 Pin 28 is Snap 0 
 Pin 30 is Reset 1 
 Pin 32 is Smpl 3 

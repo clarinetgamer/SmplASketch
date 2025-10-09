@@ -19,7 +19,7 @@ void searchForCamera() {
       }
     }
     if(setcamIndex != -1 || test){
-    cam = new Capture(this, 1000, 900, "pipeline:avfvideosrc device-index="+setcamIndex, 30);
+    cam = new Capture(this, 850, 900, "pipeline:avfvideosrc device-index="+setcamIndex, 30);
     cam.start();
     } else {
       //display no camera connected dialouge

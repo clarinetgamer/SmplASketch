@@ -25,6 +25,7 @@ void setup() {
   //Setup volume control
   s = new Sound(this);
   s.volume(0.2);
+  //
 }
 
 void draw() {

@@ -147,10 +147,6 @@ public void sliderwavhider_click2(GImageButton source, GEvent event) { //_CODE_:
   println("sliderwavhider - GImageButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:sliderwavhider:617266:
 
-synchronized public void win_draw3(PApplet appc, GWinData data) { //_CODE_:imgWindow:651119:
-  appc.background(230);
-} //_CODE_:imgWindow:651119:
-
 
 
 // Create all the GUI controls. 
@@ -314,12 +310,7 @@ public void createGUI(){
   wavlock.addEventHandler(this, "wavlock_click2");
   sliderwavhider = new GImageButton(wavWindow, 0, 0, 390, 88, new String[] { "SliderWav.png", "SliderWav.png", "SliderWav.png" } );
   sliderwavhider.addEventHandler(this, "sliderwavhider_click2");
-  imgWindow = GWindow.getWindow(this, "PhotoSynthesis", 1100, 0, 400, 400, JAVA2D);
-  imgWindow.noLoop();
-  imgWindow.setActionOnClose(G4P.CLOSE_WINDOW);
-  imgWindow.addDrawHandler(this, "win_draw3");
   wavWindow.loop();
-  imgWindow.loop();
 }
 
 // Variable declarations 
@@ -357,4 +348,3 @@ GImageButton reddefaultwav;
 GImageButton greystuff; 
 GImageButton wavlock; 
 GImageButton sliderwavhider; 
-GWindow imgWindow;
