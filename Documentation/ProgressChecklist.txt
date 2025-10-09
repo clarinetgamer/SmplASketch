@@ -58,14 +58,25 @@ Week 5:
 - Print and build first slide test ✓ 
 - Print and build slide housing ✓ 
 - Fix ASCII Issue ✓
-- Measure optimal camera placement
-- Design separate housing for camera module
-- Add Waveform Menu UI
-- Add Waveform Menu Capability
-- Documentation
-- Weekly Youtube Upload
+- Measure optimal camera placement ✓
+- Design separate housing for camera module ✓
+- Add Waveform Menu UI ✓
+- Add Waveform Menu Capability ✓
+- Fabricate internal system V1 ✓
+- Rewrite image processing code for real enviroment ✓
+- Documentation ✓
+- Weekly Youtube Upload ✓
 Week 6:
-- Add some additional feature to the processing sketch that are cool
-- Continue to Fabricate things
+- Fabricate internal structure V2 ✓
+- Test PCB for functionality ✓
+- Write PCB testing code ✓
+- Order buttons ✓
+- Solder Teensy to PCB ✓
+- Solder LED female wires ✓
+- Solder buttons
+- Pitch Detection
+- Finish Waveform menu 
+- Watch Laser cutting tutorials
+- Midterm Report
 - Documentation
 - Weekly Youtube Upload
