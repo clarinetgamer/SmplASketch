@@ -1,4 +1,4 @@
-import processing.video.*;
+import processing.video.*; //<>//
 
 Capture cam;
 
@@ -14,17 +14,21 @@ void searchForCamera() {
     int setcamIndex = -1;
     for (int i = 0; i < cameras.length; i++) {
       println(cameras[i]);
-      if (cameras[i].contains("C270")){
+      if (cameras[i].contains("C270")) {
         setcamIndex = i;
       }
     }
-    if(setcamIndex != -1 || test){
-    cam = new Capture(this, 850, 900, "pipeline:avfvideosrc device-index="+setcamIndex, 30);
-    cam.start();
+    if (setcamIndex != -1 || test) {
+      if (test) {
+        cam = new Capture(this, 850, 900, "pipeline:avfvideosrc device-index=0", 30);
+      } else {
+        cam = new Capture(this, 850, 900, "pipeline:avfvideosrc device-index="+setcamIndex, 30);
+      }
+      cam.start();
     } else {
       //display no camera connected dialouge
-     wait(5000);
-     exit();
+      wait(5000);
+      exit();
     }
   }
 }
