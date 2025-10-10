@@ -18,7 +18,7 @@ void searchForCamera() {
         setcamIndex = i;
       }
     }
-    if (setcamIndex != -1 || test) {
+    if (setcamIndex != -1 || test) {//allows the program to run eve when device is not connected while testing
       if (test) {
         cam = new Capture(this, 850, 900, "pipeline:avfvideosrc device-index=0", 30);
       } else {

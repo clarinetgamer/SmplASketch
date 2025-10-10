@@ -11,6 +11,39 @@ void closingWav() {
 
 float[] defaultWav = resetSin;
 
+void wavDeviceControlOn() {
+  wavControl = true;
+  nowav.setSelected(true);
+  greystuff.setVisible(true);
+  wavlock.setVisible(true);
+}
+
+void wavDeviceControlOff() {
+  wavControl = false;
+  sinwave.setSelected(true);
+  greystuff.setVisible(false);
+  wavlock.setVisible(false);
+}
+
+void tonalControl() {
+  sliderwavhider.setVisible(true);
+  pitch.setLimits(1, 0, 2); // fix limits
+  wavMult=1;
+}
+
+void atonalControl() {
+  sliderwavhider.setVisible(false);
+  pitch.setLimits(1, 0, 2); // fix limits
+  wavMult=1;
+}
+
+void freqSlider(GCustomSlider source, GEvent event) {
+  if (event == GEvent.RELEASED) {
+    wavMult = source.getValueF();
+  }
+}
+
+//Wav Generation Functions
 void defaultSin() {
   defaultWav = resetSin;
 }
@@ -81,38 +114,6 @@ void defaultStep() {
     stepwav[i] = map(counter, 0, 39, 1, -1);
   }
   defaultWav=stepwav;
-}
-
-void wavDeviceControlOn() {
-  wavControl = true;
-  nowav.setSelected(true);
-  greystuff.setVisible(true);
-  wavlock.setVisible(true);
-}
-
-void wavDeviceControlOff() {
-  wavControl = false;
-  sinwave.setSelected(true);
-  greystuff.setVisible(false);
-  wavlock.setVisible(false);
-}
-
-void tonalControl() {
-  sliderwavhider.setVisible(true);
-  pitch.setLimits(1, 0, 2); // fix limits
-  wavMult=1;
-}
-
-void atonalControl() {
-  sliderwavhider.setVisible(false);
-  pitch.setLimits(1, 0, 2); // fix limits
-  wavMult=1;
-}
-
-void freqSlider(GCustomSlider source, GEvent event) {
-  if (event == GEvent.RELEASED) {
-    wavMult = source.getValueF();
-  }
 }
 
 // Envelope Editor
@@ -191,11 +192,6 @@ void sliderUpdate(GCustomSlider source, GEvent event, int index) {
   if (event == GEvent.RELEASED) {
     sliderVals[index] = source.getValueI();
   }
-}
-
-//PhotSynthesis Editor
-void openImgMenu() {
-  println("openImgMenu");
 }
 
 //Help Menu
