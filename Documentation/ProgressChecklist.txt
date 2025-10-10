@@ -73,10 +73,41 @@ Week 6:
 - Order buttons ✓
 - Solder Teensy to PCB ✓
 - Solder LED female wires ✓
+- Finish Waveform menu ✓ 
+- Tensey connection ✓
+- Help menu update
 - Solder buttons
-- Pitch Detection
-- Finish Waveform menu 
-- Watch Laser cutting tutorials
+- Finish V1 of app 
 - Midterm Report
 - Documentation
 - Weekly Youtube Upload
+----------------------------------------------------------------------------
+                MIDTERM PRESENTATION(Finished V1 App/Device)
+----------------------------------------------------------------------------
+Week 7:
+- Watch Laser cutting tutorials
+- Design Laser Cut Housing
+- Design Key Caps
+- Write LFO Base code
+- Start New UI Code from scratch
+- Documentation
+- Weekly Youtube Upload
+Week 8:
+- Documentation
+- Weekly Youtube Upload
+Week 9:
+- Documentation
+- Weekly Youtube Upload
+Week 10:
+- Documentation
+- Weekly Youtube Upload
+Week 11:
+- Documentation
+- Weekly Youtube Upload
+Week 12:
+- Final Report
+- Documentation
+- Weekly Youtube Upload
+----------------------------------------------------------------------------
+          FINAL PROJECT(Finished V2 App/Fully Fabricated Device)
+----------------------------------------------------------------------------
