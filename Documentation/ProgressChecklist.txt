@@ -75,14 +75,14 @@ Week 6:
 - Solder LED female wires ✓
 - Finish Waveform menu ✓ 
 - Tensey connection ✓
-- Help menu update
+- Help menu update ✓
+- Finish V1 of app ✓
 - Solder buttons
-- Finish V1 of app 
 - Midterm Report
 - Documentation
 - Weekly Youtube Upload
 ----------------------------------------------------------------------------
-                MIDTERM PRESENTATION(Finished V1 App/Device)
+                MIDTERM PRESENTATION(Finished V1 App/Tester Device)
 ----------------------------------------------------------------------------
 Week 7:
 - Watch Laser cutting tutorials
