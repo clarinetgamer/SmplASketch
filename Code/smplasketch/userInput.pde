@@ -1,8 +1,12 @@
 //Waveform Editor
 void openWavMenu() {
   if (wavOpen == false) {
-    //creatwavgui
+      createWavGUI();
   }
+}
+
+void closingWav() {
+  wavOpen = false;
 }
 
 float[] defaultWav = resetSin;
@@ -96,12 +100,20 @@ void wavDeviceControlOff() {
 
 void tonalControl() {
   sliderwavhider.setVisible(true);
-  pitch.setLimits(5, 0, 10); // fix limits
+  pitch.setLimits(1, 0, 2); // fix limits
+  wavMult=1;
 }
 
 void atonalControl() {
   sliderwavhider.setVisible(false);
-  pitch.setLimits(5, 0, 10); // fix limits
+  pitch.setLimits(1, 0, 2); // fix limits
+  wavMult=1;
+}
+
+void freqSlider(GCustomSlider source, GEvent event) {
+  if (event == GEvent.RELEASED) {
+    wavMult = source.getValueF();
+  }
 }
 
 // Envelope Editor
@@ -115,6 +127,7 @@ void closingEnv() {
   susMode = false;
   sliderMode = false;
   clearEnv = true;
+  envOpen=false;
 }
 
 void deviceControlEnv(GEvent event) {

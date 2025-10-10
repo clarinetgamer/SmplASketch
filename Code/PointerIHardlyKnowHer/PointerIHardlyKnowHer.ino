@@ -36,6 +36,13 @@ void setup() {
     pinMode(buttons[i], INPUT_PULLUP);
   }
   pinMode(led, OUTPUT);
+  delay(1000);
+  Keyboard.press(KEY_LEFT_ALT);
+  Keyboard.press(KEY_LEFT_SHIFT);
+  Keyboard.press('=');
+  Keyboard.release(KEY_LEFT_ALT);
+  Keyboard.release(KEY_LEFT_SHIFT);
+  Keyboard.release('=');
 }
 
 void loop() {

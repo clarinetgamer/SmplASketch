@@ -8,10 +8,10 @@ boolean spaceHit = false;
 ArrayList<AudioSample> endSus = new ArrayList<AudioSample>();
 
 void checkForConnection() { //add to interface with device/camera
-  if (key == 'i') {
+  if (key == '±') {
     drawConnectionIcon(true);
   } else if (key == 'o') {
-    drawConnectionIcon(false);
+    //drawConnectionIcon(false);
   }
 }
 
