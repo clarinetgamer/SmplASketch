@@ -77,19 +77,18 @@ Week 6:
 - Tensey connection ✓
 - Help menu update ✓
 - Finish V1 of app ✓
-- Solder buttons
-- Midterm Report
-- Documentation
-- Weekly Youtube Upload
+- Midterm Report ✓
+- Documentation ✓
+- Weekly Youtube Upload ✓
 ----------------------------------------------------------------------------
                 MIDTERM PRESENTATION(Finished V1 App/Tester Device)
 ----------------------------------------------------------------------------
 Week 7:
 - Watch Laser cutting tutorials
 - Design Laser Cut Housing
-- Design Key Caps
-- Write LFO Base code
-- Start New UI Code from scratch
+- Write New UI Code from scratch
+- Figure out USB Hub
+- Solder buttons
 - Documentation
 - Weekly Youtube Upload
 Week 8:
