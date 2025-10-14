@@ -4,7 +4,7 @@ import g4p_controls.*;
 
 Sound s;
 
-boolean test = false;
+boolean test = true;
 
 //Camera Dimensions Setup
 int[] sizeArr = {640, 480}; //fix width to match pi cam(mac cam is 640 480)
