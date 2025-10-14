@@ -1,4 +1,4 @@
-PImage imageMode; //<>// //<>// //<>//
+PImage imageMode; 
 
 void initImgFromFile(String imgName) {
   imageMode = loadImage(imgName);
@@ -54,7 +54,7 @@ void wait(int time) {
   }
 }
 
-//come back to this later
+//come back to this later it kinda works but ultimately unimplemented with this version/ui
 //float adjacent440(AudioSample sample) {
 //  playWav(sample);
 //  PitchDetector roughMatinee = new PitchDetector(this, 0.8);

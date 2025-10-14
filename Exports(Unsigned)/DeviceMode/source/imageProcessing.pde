@@ -1,4 +1,4 @@
-PImage wavImg;
+PImage wavImg; //<>//
 PImage envImg;
 PImage modWavImg;
 PImage modEnvImg;
@@ -13,20 +13,18 @@ int findAvgY(ArrayList<Integer> list) { // find average of y pixels from drawing
   return avg;
 }
 
-PImage crop(PImage img){
-PImage cropped = img.get(160, 250, 640, 480);
-cropped.save("cropped.jpg");
-return cropped;
-
+PImage crop(PImage img) { //crops image from camera to get just the slide
+  PImage cropped = img.get(160, 325, 640, 480);
+  //cropped.save("cropped.jpg");
+  return cropped;
 }
 
 float[] processImage(PImage img, PImage modImg, Boolean isWav) { //takes the image from the folder changes all red pixels to green and returns float array of drawn wave
   modImg.loadPixels(); //load display pixels
   img.loadPixels(); //load images pizels
   img = crop(img);
-  //img.filter(POSTERIZE, 2);
-  img.filter(THRESHOLD, 0.705);
-  img.save("newimg.jpg");
+  img.filter(THRESHOLD, 0.795);//filters line to black
+  //img.save("newimg.jpg");
   float[] wav = new float[camwidth];
 
   for (int x = 0; x < camwidth; x++) {

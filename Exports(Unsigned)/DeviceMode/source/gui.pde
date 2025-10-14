@@ -30,7 +30,6 @@ public void envButton_click1(GImageButton source, GEvent event) { //_CODE_:envBu
 } //_CODE_:envButton:585026:
 
 public void imgButton_click1(GImageButton source, GEvent event) { //_CODE_:imgButton:805293:
-  openImgMenu();
 } //_CODE_:imgButton:805293:
 
 public void ModeText_click1(GImageButton source, GEvent event) { //_CODE_:ModeText:750609:

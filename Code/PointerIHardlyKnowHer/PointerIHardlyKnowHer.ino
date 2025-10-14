@@ -1,9 +1,9 @@
-//int buttons[7] = { 28, 30, 31, 32, 33, 35, 37 }; breadboard
-int buttons[7] = { 31, 30, 32, 31, 35, 37, 33 }; //pcb
+int buttons[7] = { 28, 30, 31, 32, 33, 35, 37 }; //breadboard
+//int buttons[7] = { 31, 30, 32, 31, 35, 37, 33 }; //pcb
 bool buttonState[7] = { HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH };
 bool lastButtonState[7] = { HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH };
-//int led = 36;//breadboard
-int led = 40;//pcb
+int led = 36;//breadboard
+//int led = 40;//pcb
 
 
 

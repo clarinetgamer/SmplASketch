@@ -7,7 +7,7 @@ int[] sliderVals = new int[3];
 boolean spaceHit = false;
 ArrayList<AudioSample> endSus = new ArrayList<AudioSample>();
 
-void checkForConnection() { //add to interface with device/camera
+void checkForConnection() { 
   if (key == '±') {
     drawConnectionIcon(true);
   } else if (key == 'o') {
@@ -91,7 +91,7 @@ void smpl() {
   }
 }
 
-void photowaveformSmpl() {
+void photowaveformSmpl() { //this is very rudimentary and will do more later
   ArrayList<float[]> processed = processMultiImage(imageMode);
   float[] wavR = processed.get(0);
   float[] wavG = processed.get(1);
