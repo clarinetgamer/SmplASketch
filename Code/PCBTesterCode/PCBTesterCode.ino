@@ -1,5 +1,5 @@
 int led = 40;     //pcb
-int button = 31;  //pcb
+int button = 30;  //pcb
 int buttonState = HIGH;
 int lastButtonState = HIGH;
 bool on = false;

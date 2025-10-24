@@ -23,8 +23,8 @@ float[] processImage(PImage img, PImage modImg, Boolean isWav) { //takes the ima
   modImg.loadPixels(); //load display pixels
   img.loadPixels(); //load images pizels
   img = crop(img);
-  img.filter(THRESHOLD, 0.795);//filters line to black
-  //img.save("newimg.jpg");
+  img.filter(THRESHOLD, 0.791);//filters line to black
+  img.save("newimg.jpg");
   float[] wav = new float[camwidth];
 
   for (int x = 0; x < camwidth; x++) {

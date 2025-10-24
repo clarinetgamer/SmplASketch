@@ -1,9 +1,9 @@
-int buttons[7] = { 28, 30, 31, 32, 33, 35, 37 }; //breadboard
-//int buttons[7] = { 31, 30, 32, 31, 35, 37, 33 }; //pcb
+//int buttons[7] = { 28, 30, 31, 32, 33, 35, 37 }; //breadboard
+int buttons[7] = { 31, 30, 34, 32, 33, 36, 35 }; //pcb
 bool buttonState[7] = { HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH };
 bool lastButtonState[7] = { HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH };
-int led = 36;//breadboard
-//int led = 40;//pcb
+//int led = 36;//breadboard
+int led = 40;//pcb
 
 
 
@@ -36,13 +36,13 @@ void setup() {
     pinMode(buttons[i], INPUT_PULLUP);
   }
   pinMode(led, OUTPUT);
-  delay(1000);
-  Keyboard.press(KEY_LEFT_ALT);
-  Keyboard.press(KEY_LEFT_SHIFT);
-  Keyboard.press('=');
-  Keyboard.release(KEY_LEFT_ALT);
-  Keyboard.release(KEY_LEFT_SHIFT);
-  Keyboard.release('=');
+  // delay(1000);
+  // Keyboard.press(KEY_LEFT_ALT);
+  // Keyboard.press(KEY_LEFT_SHIFT);
+  // Keyboard.press('=');
+  // Keyboard.release(KEY_LEFT_ALT);
+  // Keyboard.release(KEY_LEFT_SHIFT);
+  // Keyboard.release('=');
 }
 
 void loop() {
