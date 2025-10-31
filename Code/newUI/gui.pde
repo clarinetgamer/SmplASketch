@@ -66,6 +66,102 @@ public void rampButt_clicked1(GOption source, GEvent event) { //_CODE_:rampButt:
   println("rampButt - GOption >> GEvent." + event + " @ " + millis());
 } //_CODE_:rampButt:866973:
 
+public void DevControWav_clicked1(GOption source, GEvent event) { //_CODE_:DevControWav:234113:
+  println("DevControWav - GOption >> GEvent." + event + " @ " + millis());
+} //_CODE_:DevControWav:234113:
+
+public void defaultWav_clicked1(GOption source, GEvent event) { //_CODE_:defaultWav:337021:
+  println("defaultWav - GOption >> GEvent." + event + " @ " + millis());
+} //_CODE_:defaultWav:337021:
+
+public void freq_slider1_change1(GCustomSlider source, GEvent event) { //_CODE_:freq_slider1:305465:
+  println("freq_slider1 - GCustomSlider >> GEvent." + event + " @ " + millis());
+} //_CODE_:freq_slider1:305465:
+
+public void bigtone_slider1_change1(GCustomSlider source, GEvent event) { //_CODE_:bigtone_slider1:797863:
+  println("custom_slider1 - GCustomSlider >> GEvent." + event + " @ " + millis());
+} //_CODE_:bigtone_slider1:797863:
+
+public void lfored_click2(GImageButton source, GEvent event) { //_CODE_:lfored:748321:
+  println("imgButton1 - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:lfored:748321:
+
+public void lfosin_clicked1(GOption source, GEvent event) { //_CODE_:lfosin:814746:
+  println("lfosin - GOption >> GEvent." + event + " @ " + millis());
+} //_CODE_:lfosin:814746:
+
+public void lfosqr_clicked1(GOption source, GEvent event) { //_CODE_:lfosqr:682065:
+  println("lfosqr - GOption >> GEvent." + event + " @ " + millis());
+} //_CODE_:lfosqr:682065:
+
+public void lfotri_clicked1(GOption source, GEvent event) { //_CODE_:lfotri:477914:
+  println("lfotri - GOption >> GEvent." + event + " @ " + millis());
+} //_CODE_:lfotri:477914:
+
+public void lfosaw_clicked1(GOption source, GEvent event) { //_CODE_:lfosaw:915018:
+  println("lfosaw - GOption >> GEvent." + event + " @ " + millis());
+} //_CODE_:lfosaw:915018:
+
+public void lforamp_clicked1(GOption source, GEvent event) { //_CODE_:lforamp:354875:
+  println("lforamp - GOption >> GEvent." + event + " @ " + millis());
+} //_CODE_:lforamp:354875:
+
+public void lfostep_clicked1(GOption source, GEvent event) { //_CODE_:lfostep:806592:
+  println("lfostep - GOption >> GEvent." + event + " @ " + millis());
+} //_CODE_:lfostep:806592:
+
+public void lfosaveslot_clicked1(GOption source, GEvent event) { //_CODE_:lfosaveslot:840679:
+  println("lfosaveslot - GOption >> GEvent." + event + " @ " + millis());
+} //_CODE_:lfosaveslot:840679:
+
+public void defaultLfo_clicked1(GOption source, GEvent event) { //_CODE_:defaultLFO:562707:
+  println("defaultLFO - GOption >> GEvent." + event + " @ " + millis());
+} //_CODE_:defaultLFO:562707:
+
+public void freqmod_clicked1(GOption source, GEvent event) { //_CODE_:freqmod:458289:
+  println("freqmod - GOption >> GEvent." + event + " @ " + millis());
+} //_CODE_:freqmod:458289:
+
+public void ampmod_clicked1(GOption source, GEvent event) { //_CODE_:ampmod:734614:
+  println("ampmod - GOption >> GEvent." + event + " @ " + millis());
+} //_CODE_:ampmod:734614:
+
+public void lfoLen_slider1_change1(GCustomSlider source, GEvent event) { //_CODE_:lfoLen_slider1:956883:
+  println("lfoLen_slider1 - GCustomSlider >> GEvent." + event + " @ " + millis());
+} //_CODE_:lfoLen_slider1:956883:
+
+public void lowFreq_slider2_change1(GCustomSlider source, GEvent event) { //_CODE_:lowFreq_slider2:922769:
+  println("lowFreq_slider2 - GCustomSlider >> GEvent." + event + " @ " + millis());
+} //_CODE_:lowFreq_slider2:922769:
+
+public void highFreq_slider1_change1(GCustomSlider source, GEvent event) { //_CODE_:highFreq_slider1:611418:
+  println("highFreq_slider1 - GCustomSlider >> GEvent." + event + " @ " + millis());
+} //_CODE_:highFreq_slider1:611418:
+
+public void calibration_clicked1(GCheckbox source, GEvent event) { //_CODE_:calibration:261462:
+  println("calibration - GCheckbox >> GEvent." + event + " @ " + millis());
+} //_CODE_:calibration:261462:
+
+public void showCam_clicked1(GOption source, GEvent event) { //_CODE_:showCam:597026:
+  println("showcam - GOption >> GEvent." + event + " @ " + millis());
+} //_CODE_:showCam:597026:
+
+public void capturecali_clicked1(GOption source, GEvent event) { //_CODE_:capturecali:200276:
+  println("extraction - GOption >> GEvent." + event + " @ " + millis());
+} //_CODE_:capturecali:200276:
+
+public void showExtract_clicked1(GCheckbox source, GEvent event) { //_CODE_:showExtract:883300:
+  println("showWav - GCheckbox >> GEvent." + event + " @ " + millis());
+} //_CODE_:showExtract:883300:
+
+public void threshold_slider1_change1(GCustomSlider source, GEvent event) { //_CODE_:threshold_slider1:865497:
+  println("custom_slider1 - GCustomSlider >> GEvent." + event + " @ " + millis());
+} //_CODE_:threshold_slider1:865497:
+
+public void zoom_slider2_change1(GCustomSlider source, GEvent event) { //_CODE_:zoom_slider2:491766:
+  println("custom_slider2 - GCustomSlider >> GEvent." + event + " @ " + millis());
+} //_CODE_:zoom_slider2:491766:
+
 
 
 // Create all the GUI controls. 
@@ -167,6 +263,135 @@ public void createGUI(){
   togGroupwav.addControl(sawButt);
   togGroupwav.addControl(stepButt);
   togGroupwav.addControl(rampButt);
+  togGroupWavDevControl = new GToggleGroup();
+  DevControWav = new GOption(this, 35, 690, 136, 20);
+  DevControWav.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  DevControWav.setText(" ");
+  DevControWav.setLocalColorScheme(GCScheme.SCHEME_8);
+  DevControWav.setOpaque(false);
+  DevControWav.addEventHandler(this, "DevControWav_clicked1");
+  defaultWav = new GOption(this, 175, 690, 131, 20);
+  defaultWav.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  defaultWav.setText(" ");
+  defaultWav.setLocalColorScheme(GCScheme.SCHEME_8);
+  defaultWav.setOpaque(false);
+  defaultWav.addEventHandler(this, "defaultWav_clicked1");
+  togGroupWavDevControl.addControl(DevControWav);
+  DevControWav.setSelected(true);
+  togGroupWavDevControl.addControl(defaultWav);
+  freq_slider1 = new GCustomSlider(this, 14, 623, 302, 40, "grey_blue");
+  freq_slider1.setLimits(0.5, 0.0, 1.0);
+  freq_slider1.setNumberFormat(G4P.DECIMAL, 2);
+  freq_slider1.setOpaque(false);
+  freq_slider1.addEventHandler(this, "freq_slider1_change1");
+  bigtone_slider1 = new GCustomSlider(this, 14, 570, 304, 40, "grey_blue");
+  bigtone_slider1.setLimits(0.5, 0.0, 1.0);
+  bigtone_slider1.setNumberFormat(G4P.DECIMAL, 2);
+  bigtone_slider1.setOpaque(false);
+  bigtone_slider1.addEventHandler(this, "bigtone_slider1_change1");
+  lfored = new GImageButton(this, 892, 715, 269, 101, new String[] { "redstuff.png", "redstuff.png", "redstuff.png" } );
+  lfored.addEventHandler(this, "lfored_click2");
+  lfoGroup1 = new GToggleGroup();
+  lfosin = new GOption(this, 873, 716, 92, 45);
+  lfosin.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  lfosin.setOpaque(false);
+  lfosin.addEventHandler(this, "lfosin_clicked1");
+  lfosqr = new GOption(this, 873, 769, 92, 45);
+  lfosqr.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  lfosqr.setOpaque(false);
+  lfosqr.addEventHandler(this, "lfosqr_clicked1");
+  lfotri = new GOption(this, 974, 716, 89, 46);
+  lfotri.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  lfotri.setOpaque(false);
+  lfotri.addEventHandler(this, "lfotri_clicked1");
+  lfosaw = new GOption(this, 974, 770, 89, 44);
+  lfosaw.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  lfosaw.setOpaque(false);
+  lfosaw.addEventHandler(this, "lfosaw_clicked1");
+  lforamp = new GOption(this, 1071, 716, 89, 44);
+  lforamp.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  lforamp.setOpaque(false);
+  lforamp.addEventHandler(this, "lforamp_clicked1");
+  lfostep = new GOption(this, 1071, 770, 90, 45);
+  lfostep.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  lfostep.setOpaque(false);
+  lfostep.addEventHandler(this, "lfostep_clicked1");
+  lfoGroup1.addControl(lfosin);
+  lfosin.setSelected(true);
+  lfoGroup1.addControl(lfosqr);
+  lfoGroup1.addControl(lfotri);
+  lfoGroup1.addControl(lfosaw);
+  lfoGroup1.addControl(lforamp);
+  lfoGroup1.addControl(lfostep);
+  lfoControlgGroup1 = new GToggleGroup();
+  lfosaveslot = new GOption(this, 888, 687, 127, 20);
+  lfosaveslot.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  lfosaveslot.setOpaque(false);
+  lfosaveslot.addEventHandler(this, "lfosaveslot_clicked1");
+  defaultLFO = new GOption(this, 1028, 687, 124, 20);
+  defaultLFO.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  defaultLFO.setOpaque(false);
+  defaultLFO.addEventHandler(this, "defaultLfo_clicked1");
+  lfoControlgGroup1.addControl(lfosaveslot);
+  lfosaveslot.setSelected(true);
+  lfoControlgGroup1.addControl(defaultLFO);
+  lfomodGroup1 = new GToggleGroup();
+  freqmod = new GOption(this, 888, 656, 120, 20);
+  freqmod.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  freqmod.setOpaque(false);
+  freqmod.addEventHandler(this, "freqmod_clicked1");
+  ampmod = new GOption(this, 1028, 656, 120, 20);
+  ampmod.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  ampmod.setOpaque(false);
+  ampmod.addEventHandler(this, "ampmod_clicked1");
+  lfomodGroup1.addControl(freqmod);
+  freqmod.setSelected(true);
+  lfomodGroup1.addControl(ampmod);
+  lfoLen_slider1 = new GCustomSlider(this, 690, 660, 160, 40, "grey_blue");
+  lfoLen_slider1.setLimits(0.5, 0.0, 1.0);
+  lfoLen_slider1.setNumberFormat(G4P.DECIMAL, 2);
+  lfoLen_slider1.setOpaque(false);
+  lfoLen_slider1.addEventHandler(this, "lfoLen_slider1_change1");
+  lowFreq_slider2 = new GCustomSlider(this, 691, 715, 160, 40, "grey_blue");
+  lowFreq_slider2.setLimits(0.5, 0.0, 1.0);
+  lowFreq_slider2.setNumberFormat(G4P.DECIMAL, 2);
+  lowFreq_slider2.setOpaque(false);
+  lowFreq_slider2.addEventHandler(this, "lowFreq_slider2_change1");
+  highFreq_slider1 = new GCustomSlider(this, 690, 770, 160, 40, "grey_blue");
+  highFreq_slider1.setLimits(0.5, 0.0, 1.0);
+  highFreq_slider1.setNumberFormat(G4P.DECIMAL, 2);
+  highFreq_slider1.setOpaque(false);
+  highFreq_slider1.addEventHandler(this, "highFreq_slider1_change1");
+  calibration = new GCheckbox(this, 1405, 380, 88, 20);
+  calibration.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  calibration.setOpaque(false);
+  calibration.addEventHandler(this, "calibration_clicked1");
+  calibGroup1 = new GToggleGroup();
+  showCam = new GOption(this, 1194, 407, 90, 20);
+  showCam.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  showCam.setOpaque(false);
+  showCam.addEventHandler(this, "showCam_clicked1");
+  capturecali = new GOption(this, 1194, 432, 125, 20);
+  capturecali.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  capturecali.setOpaque(false);
+  capturecali.addEventHandler(this, "capturecali_clicked1");
+  calibGroup1.addControl(showCam);
+  showCam.setSelected(true);
+  calibGroup1.addControl(capturecali);
+  showExtract = new GCheckbox(this, 1195, 460, 90, 20);
+  showExtract.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  showExtract.setOpaque(false);
+  showExtract.addEventHandler(this, "showExtract_clicked1");
+  threshold_slider1 = new GCustomSlider(this, 1330, 397, 155, 40, "grey_blue");
+  threshold_slider1.setLimits(0.5, 0.0, 1.0);
+  threshold_slider1.setNumberFormat(G4P.DECIMAL, 2);
+  threshold_slider1.setOpaque(false);
+  threshold_slider1.addEventHandler(this, "threshold_slider1_change1");
+  zoom_slider2 = new GCustomSlider(this, 1330, 438, 157, 40, "grey_blue");
+  zoom_slider2.setLimits(0.5, 0.0, 1.0);
+  zoom_slider2.setNumberFormat(G4P.DECIMAL, 2);
+  zoom_slider2.setOpaque(false);
+  zoom_slider2.addEventHandler(this, "zoom_slider2_change1");
 }
 
 // Variable declarations 
@@ -185,3 +410,32 @@ GOption sqrButt;
 GOption sawButt; 
 GOption stepButt; 
 GOption rampButt; 
+GToggleGroup togGroupWavDevControl; 
+GOption DevControWav; 
+GOption defaultWav; 
+GCustomSlider freq_slider1; 
+GCustomSlider bigtone_slider1; 
+GImageButton lfored; 
+GToggleGroup lfoGroup1; 
+GOption lfosin; 
+GOption lfosqr; 
+GOption lfotri; 
+GOption lfosaw; 
+GOption lforamp; 
+GOption lfostep; 
+GToggleGroup lfoControlgGroup1; 
+GOption lfosaveslot; 
+GOption defaultLFO; 
+GToggleGroup lfomodGroup1; 
+GOption freqmod; 
+GOption ampmod; 
+GCustomSlider lfoLen_slider1; 
+GCustomSlider lowFreq_slider2; 
+GCustomSlider highFreq_slider1; 
+GCheckbox calibration; 
+GToggleGroup calibGroup1; 
+GOption showCam; 
+GOption capturecali; 
+GCheckbox showExtract; 
+GCustomSlider threshold_slider1; 
+GCustomSlider zoom_slider2; 
