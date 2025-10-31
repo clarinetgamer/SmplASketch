@@ -162,6 +162,38 @@ public void zoom_slider2_change1(GCustomSlider source, GEvent event) { //_CODE_:
   println("custom_slider2 - GCustomSlider >> GEvent." + event + " @ " + millis());
 } //_CODE_:zoom_slider2:491766:
 
+public void stepBack_click2(GImageButton source, GEvent event) { //_CODE_:stepBack:610095:
+  println("stepBack - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:stepBack:610095:
+
+public void playButt_click2(GImageButton source, GEvent event) { //_CODE_:playButt:408433:
+  println("playButt - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:playButt:408433:
+
+public void stepFor_click2(GImageButton source, GEvent event) { //_CODE_:stepFor:697723:
+  println("stepFor - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:stepFor:697723:
+
+public void imgButton1_click2(GImageButton source, GEvent event) { //_CODE_:smpl:725917:
+  println("smpl - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:smpl:725917:
+
+public void helpButton1_click2(GImageButton source, GEvent event) { //_CODE_:helpButton1:602608:
+  println("helpButton1 - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:helpButton1:602608:
+
+public void clearWavButton1_click2(GImageButton source, GEvent event) { //_CODE_:clearWavButton1:442596:
+  println("clearWavButton1 - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:clearWavButton1:442596:
+
+public void clearLFOButton1_click2(GImageButton source, GEvent event) { //_CODE_:clearLFOButton1:216332:
+  println("clearLFOButton1 - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:clearLFOButton1:216332:
+
+public void expandButton1_click2(GImageButton source, GEvent event) { //_CODE_:expandButton1:452585:
+  println("expandButton1 - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:expandButton1:452585:
+
 
 
 // Create all the GUI controls. 
@@ -382,7 +414,7 @@ public void createGUI(){
   showExtract.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   showExtract.setOpaque(false);
   showExtract.addEventHandler(this, "showExtract_clicked1");
-  threshold_slider1 = new GCustomSlider(this, 1330, 397, 155, 40, "grey_blue");
+  threshold_slider1 = new GCustomSlider(this, 1331, 396, 155, 40, "grey_blue");
   threshold_slider1.setLimits(0.5, 0.0, 1.0);
   threshold_slider1.setNumberFormat(G4P.DECIMAL, 2);
   threshold_slider1.setOpaque(false);
@@ -392,6 +424,22 @@ public void createGUI(){
   zoom_slider2.setNumberFormat(G4P.DECIMAL, 2);
   zoom_slider2.setOpaque(false);
   zoom_slider2.addEventHandler(this, "zoom_slider2_change1");
+  stepBack = new GImageButton(this, 620, 13, 34, 35, new String[] { "EmptyIMGButton.png", "EmptyIMGButton.png", "EmptyIMGButton.png" } );
+  stepBack.addEventHandler(this, "stepBack_click2");
+  playButt = new GImageButton(this, 663, 11, 37, 38, new String[] { "EmptyIMGButton.png", "EmptyIMGButton.png", "EmptyIMGButton.png" } );
+  playButt.addEventHandler(this, "playButt_click2");
+  stepFor = new GImageButton(this, 750, 12, 36, 36, new String[] { "EmptyIMGButton.png", "EmptyIMGButton.png", "EmptyIMGButton.png" } );
+  stepFor.addEventHandler(this, "stepFor_click2");
+  smpl = new GImageButton(this, 795, 13, 108, 37, new String[] { "EmptyIMGButton.png", "EmptyIMGButton.png", "EmptyIMGButton.png" } );
+  smpl.addEventHandler(this, "imgButton1_click2");
+  helpButton1 = new GImageButton(this, 1471, 16, 22, 24, new String[] { "EmptyIMGButton.png", "EmptyIMGButton.png", "EmptyIMGButton.png" } );
+  helpButton1.addEventHandler(this, "helpButton1_click2");
+  clearWavButton1 = new GImageButton(this, 1205, 344, 140, 22, new String[] { "EmptyIMGButton.png", "EmptyIMGButton.png", "EmptyIMGButton.png" } );
+  clearWavButton1.addEventHandler(this, "clearWavButton1_click2");
+  clearLFOButton1 = new GImageButton(this, 1352, 342, 144, 25, new String[] { "EmptyIMGButton.png", "EmptyIMGButton.png", "EmptyIMGButton.png" } );
+  clearLFOButton1.addEventHandler(this, "clearLFOButton1_click2");
+  expandButton1 = new GImageButton(this, 1154, 57, 26, 24, new String[] { "EmptyIMGButton.png", "EmptyIMGButton.png", "EmptyIMGButton.png" } );
+  expandButton1.addEventHandler(this, "expandButton1_click2");
 }
 
 // Variable declarations 
@@ -439,3 +487,11 @@ GOption capturecali;
 GCheckbox showExtract; 
 GCustomSlider threshold_slider1; 
 GCustomSlider zoom_slider2; 
+GImageButton stepBack; 
+GImageButton playButt; 
+GImageButton stepFor; 
+GImageButton smpl; 
+GImageButton helpButton1; 
+GImageButton clearWavButton1; 
+GImageButton clearLFOButton1; 
+GImageButton expandButton1; 
