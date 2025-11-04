@@ -2,12 +2,11 @@ boolean clearWav = true;
 boolean wavControl = true;
 boolean clearEnv = true;
 boolean susMode = false;
-boolean sliderMode = false;
-int[] sliderVals = new int[3];
+float[] sliderVals = new float[3];
 boolean spaceHit = false;
 ArrayList<AudioSample> endSus = new ArrayList<AudioSample>();
 
-void checkForConnection() { 
+void checkForConnection() {
   if (key == '±') {
     drawConnectionIcon(true);
   } else if (key == 'o') {
@@ -61,7 +60,6 @@ void resetEnv() {
   envMult =1;
   clearEnv = true;
   susMode = false;
-  sliderMode = false;
   filereset.save("env_image.jpg");
 }
 
@@ -77,15 +75,7 @@ void smpl() {
     }
     AudioSample smpl = createSample(wav);
     playWav(smpl);
-    if (clearEnv) {
-      playDemoEnv(smpl);
-    } else if (susMode) {
-      endSus.add(smpl);
-    } else if (sliderMode) {
-      playSliderEnv(smpl);
-    } else {
-      playEnv(smpl);
-    }
+    playSliderEnv(smpl);
   } else {
     photowaveformSmpl();
   }
@@ -104,25 +94,9 @@ void photowaveformSmpl() { //this is very rudimentary and will do more later
   playWav(smplR, 1.0*wavMult);
   playWav(smplG, 1.5*wavMult);
   playWav(smplB, 2.0*wavMult);
-  if (clearEnv) {
-    playDemoEnv(body);
-    playDemoEnv(smplR);
-    playDemoEnv(smplG);
-    playDemoEnv(smplB);
-  } else if (susMode) {
-    endSus.add(body);
-    endSus.add(smplR);
-    endSus.add(smplG);
-    endSus.add(smplB);
-  } else if (sliderMode) {
-    playSliderEnv(body);
-    playSliderEnv(smplR);
-    playSliderEnv(smplG);
-    playSliderEnv(smplB);
-  } else {
-    playEnv(body);
-    playEnv(smplR);
-    playEnv(smplG);
-    playEnv(smplB);
-  }
+
+  playSliderEnv(body);
+  playSliderEnv(smplR);
+  playSliderEnv(smplG);
+  playSliderEnv(smplB);
 }

@@ -163,43 +163,22 @@ void defaultStep() {
 //  }
 //}
 
-//void sliderModeEnv(GEvent event) {
-//  if (event == GEvent.SELECTED) {
-//    //hideSlidersEnv.setVisible(false);
-//    attack_slider.setLimits(5, 0, 10);
-//    sustain_slider.setLimits(5, 0, 10);
-//    release_slider.setLimits(5, 0, 10);
-//    sliderVals = new int[]{5, 5, 5};
-//    //susMode = false;
-//    clearEnv = false;
-//    sliderMode = true;
-//  }
-//}
-
-//void envModeReset(GEvent event) {
-//  if (event == GEvent.SELECTED) {
-//    //hideSlidersEnv.setVisible(true);
-//    attack_slider.setLimits(5, 0, 10);
-//    sustain_slider.setLimits(5, 0, 10);
-//    release_slider.setLimits(5, 0, 10);
-//    //susMode = false;
-//    //sliderMode = false;
-//    clearEnv = true;
-//  }
-//}
+void envMenuStart() {
+    attack_slider.setLimits(5, 0, 10);
+    sustain_slider.setLimits(5.005, 0.01, 10);
+    release_slider.setLimits(5, 0, 10);
+    sliderVals = new float[]{5, 5, 5};
+    clearEnv = true;
+}
 
 void sliderUpdate(GCustomSlider source, GEvent event, int index) {
   if (event == GEvent.RELEASED) {
-    sliderVals[index] = source.getValueI();
+    sliderVals[index] = source.getValueF();
+  }
+  for (float f : sliderVals) {
+    println(f);
   }
 }
-
-////Help Menu
-//void openHelpMenu() {
-//  if (helpOpen == false) {
-//    createHelpGUI();
-//  }
-//}
 
 //Main Window
 void setModeKnob(GKnob source) {

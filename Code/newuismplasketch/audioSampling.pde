@@ -49,7 +49,7 @@ void playDemoEnv(AudioSample sample) { //takes in a demo object and using the va
 
 void playSliderEnv(AudioSample sample) { //takes in a demo object and using the variables plays a demo envelope
   Env env = new Env(this);
-  int[] time = sliderVals;
+  float[] time = sliderVals;
   float attackTime = map(time[0], 0, 10, 0., 1.);
   float sustainTime = map(time[1], 0, 10, 0., 1.);
   float releaseTime = map(time[2], 0, 10, 0., 1.);

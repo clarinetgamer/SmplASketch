@@ -5,6 +5,7 @@ import g4p_controls.*;
 Sound s;
 
 boolean test = true;
+boolean calibMode = false;
 
 //Camera Dimensions Setup
 int[] sizeArr = {661, 480}; //fix width to match pi cam(mac cam is 640 480)
@@ -12,7 +13,8 @@ int camwidth = sizeArr[0];
 int camheight = sizeArr[1];
 
 public void setup() {
-  size(1512, 850, P2D);
+  size(1512, 850, JAVA2D);
+  smooth(10);
   createGUI();
   //Img processing setup
   modWavImg = createImage(camwidth, camheight, RGB); // Create image to write other data to
@@ -24,12 +26,17 @@ public void setup() {
   //Setup volume control
   s = new Sound(this);
   s.volume(0.2);
-  //
+  //Setup Envelope Code
+  envMenuStart();
 }
 
 public void draw() {
   drawDarkMode();
-  checkMode();
+  if(calibMode){
+    calibMode();
+  } else {
+    checkMode();
+  }
   checkForConnection();
 }
 

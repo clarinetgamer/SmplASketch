@@ -19,11 +19,18 @@ PImage crop(PImage img) { //crops image from camera to get just the slide
   return cropped;
 }
 
+PImage threshed(PImage img) { //crops image from camera to get just the slide
+  img.filter(THRESHOLD, 0.791);//filters line to black
+  //cropped.save("cropped.jpg");
+  return img;
+}
+
+
 float[] processImage(PImage img, PImage modImg, Boolean isWav) { //takes the image from the folder changes all red pixels to green and returns float array of drawn wave
   modImg.loadPixels(); //load display pixels
   img.loadPixels(); //load images pizels
   img = crop(img);
-  img.filter(THRESHOLD, 0.791);//filters line to black
+  img = threshed(img);
   img.save("newimg.jpg");
   float[] wav = new float[camwidth];
 

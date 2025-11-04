@@ -3,6 +3,8 @@ float[] resetEnv = genBasicEnv();
 float mode = 0.0; //0.0 is Wav Mode 1.0 is Env Mode 2.0 is IMG mode
 float prevMode = 0.0;
 
+boolean camVsCapCalib = true;
+
 void wavMode(float[] wav) { //Draw Screen, draw wav, draw outline
   drawScreen();
   drawWav(wav);
@@ -32,28 +34,31 @@ void checkMode() { //Would do else ifs but this logic makes the knob smoother
   if (0.0 == mode || prevMode == 0.0) {
     if (clearWav && wavControl) {
       wavMode(resetSin);
-    } else if(!wavControl) {
-    wavMode(defaultWav);
-    }else {
+    } else if (!wavControl) {
+      wavMode(defaultWav);
+    } else {
       wavMode(processWavImage());
     }
     prevMode = 0.0;
   }
   if (1.0 == mode || prevMode == 1.0) {
-    if (clearEnv) {
-      envMode(resetEnv);
-    } else if (susMode) {
-      envMode(new float[]{0.1, 0.9, 0});
-    } else if (sliderMode) {
-      float[] mappedSliders = new float[]{map(sliderVals[0], 0, 10, 0., 1.), map(sliderVals[1], 0, 10, 0., 1.), map(sliderVals[2], 0, 10, 0., 1.)};
-      envMode(mappedSliders);
-    } else {
-      envMode(getTimeVals());
-    }
+    float[] mappedSliders = new float[]{map(sliderVals[0], 0, 10, 0., 1.), map(sliderVals[1], 0, 10, 0., 1.), map(sliderVals[2], 0, 10, 0., 1.)};
+    envMode(mappedSliders);
     prevMode = 1.0;
   }
   if (2.0 == mode || prevMode ==2.0) {
     imgMode();
     prevMode = 2.0;
   }
+}
+
+void calibMode() {
+  takePicture("calib");
+  PImage camCap;
+  if (camVsCapCalib) {
+    camCap = crop(loadImage("calib.jpg"));
+  } else {
+    camCap = threshed(crop(loadImage("calib.jpg")));
+  }
+  image(camCap, 430, 128);
 }
