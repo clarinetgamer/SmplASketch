@@ -6,21 +6,13 @@ float[] sliderVals = new float[3];
 boolean spaceHit = false;
 ArrayList<AudioSample> endSus = new ArrayList<AudioSample>();
 
-void checkForConnection() {
-  if (key == '±') {
-    drawConnectionIcon(true);
-  } else if (key == 'o') {
-    //drawConnectionIcon(false);
-  }
-}
-
 void wavSnap() {
   takePicture("wav_image");
   wavImg = loadImage("wav_image.jpg");
   clearWav = false;
 }
 
-void envSnap() {
+void envSnap() {//change to lfo
   takePicture("env_image");
   envImg = loadImage("env_image.jpg");
   clearEnv = false;
@@ -56,7 +48,7 @@ void resetWav() {
   filereset.save("wav_image.jpg");
 }
 
-void resetEnv() {
+void resetLFO() { //Adjust for lfo mode
   envMult =1;
   clearEnv = true;
   susMode = false;

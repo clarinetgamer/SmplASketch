@@ -18,8 +18,15 @@ float[] genBasicEnv() { //create reset env
 
 void clearCache() {
   resetWav();
-  resetEnv();
+  resetLFO();
   println("Image Cache Cleared");
+}
+
+void resetCalib() {
+  zoom_slider2.setLimits(1.0, 0.8, 1.2);
+  threshold_slider1.setLimits(0.791, 0.591, 0.991);
+  threshold = 0.791;
+  shift = 1.0;
 }
 
 void clearActiveSamples() {

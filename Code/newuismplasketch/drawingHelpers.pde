@@ -1,3 +1,5 @@
+int thickStroke = 2;
+
 //Data Mapping
 float[] mappedFlArr(float[] flArr) { //Map wav values to fit the ui screen
   float[] temp = new float[flArr.length];
@@ -5,6 +7,13 @@ float[] mappedFlArr(float[] flArr) { //Map wav values to fit the ui screen
     temp[i] = map(flArr[i], -1, 1, 148, 428);
   }
   return temp;
+}
+
+void colorControl(GCustomSlider source, GEvent event, int index) {
+  if (event == GEvent.RELEASED){
+    int colorDraw = source.getValueI();
+    //Finish adding color control code
+  }
 }
 
 float[] mapEnv(float[] env) { //Map envelope values to fit the ui screen
@@ -24,7 +33,7 @@ void drawScreen() { //draw blank screen
 
 void drawWav(float[] wavArr) { //takes wav arr draws it
   stroke(225, 0, 0);
-  strokeWeight(2);
+  strokeWeight(thickStroke);
   float[] wav = mappedFlArr(wavArr);
   for (int i = 0; i < wav.length-1; i ++) {
     line(i+430, wav[i], i+431, wav[i+1]);
@@ -33,7 +42,7 @@ void drawWav(float[] wavArr) { //takes wav arr draws it
 
 void drawExtract(float[] wavArr) { //takes wav arr draws it
   stroke(225, 0, 0);
-  strokeWeight(2);
+  strokeWeight(thickStroke);
   float[] wav = mappedFlArr(wavArr);
   for (int i = 0; i < wav.length-1; i ++) {
     line(i+430, wav[i], i+431, wav[i+1]);
@@ -42,7 +51,7 @@ void drawExtract(float[] wavArr) { //takes wav arr draws it
 
 void drawWav(float[] wavArr, int r, int g, int b) { //takes wav arr draws it
   stroke(r, g, b);
-  strokeWeight(2);
+  strokeWeight(thickStroke);
   float[] wav = mappedFlArr(wavArr);
   for (int i = 0; i < wav.length-1; i ++) {
     line(i+430, wav[i], i+431, wav[i+1]);
@@ -51,13 +60,9 @@ void drawWav(float[] wavArr, int r, int g, int b) { //takes wav arr draws it
 
 void drawEnv(float[] envArr) { //takes env arr draws it
   stroke(225, 0, 0);
-  strokeWeight(2);
+  strokeWeight(thickStroke);
   float[] env = mapEnv(envArr);
   line(430, 448, 430+env[0], 300);
   line(430+env[0], 300, 430+env[0]+env[1], 300);
   line(430+env[0]+env[1], 300, 430+camwidth, 448);
-}
-
-void drawConnectionIcon(boolean bool) { //true for on false for off
-  //redCon.setVisible(!bool);
 }

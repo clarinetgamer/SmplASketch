@@ -38,7 +38,6 @@ public void draw() {
   } else {
     checkMode();
   }
-  checkForConnection();
 }
 
 void drawDarkMode() {
@@ -88,7 +87,7 @@ void keyPressed() { //test true is for keyboard control test false is obscure as
     resetWav();
     println("resetWav");
   } else if ((test == true && key == 't')||(test == false && key == '◊')) {
-    resetEnv();
+    resetLFO();
     println("resetEnv");
   } else if (key == (char)27) {//Escape key always exits program
     clearCache();

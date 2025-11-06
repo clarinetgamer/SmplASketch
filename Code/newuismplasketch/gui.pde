@@ -144,6 +144,7 @@ public void calibration_clicked1(GCheckbox source, GEvent event) { //_CODE_:cali
   }
   if (event == GEvent.DESELECTED) {
     calibMode = false;
+    filereset.save("calib.jpg");
   }
 } //_CODE_:calibration:261462:
 
@@ -181,11 +182,56 @@ public void envClear_click3(GImageButton source, GEvent event) { //_CODE_:envCle
   }
 } //_CODE_:envClear:356676:
 
-public void filebrowse_click1(GButton source, GEvent event) { //_CODE_:button1:966531:
-if(event == GEvent.CLICKED) {
-  selectPhotosynthesisFile();
-}
-} //_CODE_:button1:966531:
+public void browseButton_click1(GImageButton source, GEvent event) { //_CODE_:browseButton:763920:
+  if (event == GEvent.CLICKED) {
+    selectPhotosynthesisFile();
+  }
+} //_CODE_:browseButton:763920:
+
+public void smplButton1_click2(GImageButton source, GEvent event) { //_CODE_:smplButton:548598:
+if (event == GEvent.CLICKED) {
+    smpl();
+  }
+} //_CODE_:smplButton:548598:
+
+public void wavClear_click2(GImageButton source, GEvent event) { //_CODE_:wavClear:280934:
+if (event == GEvent.CLICKED) {
+    resetWav();
+  }
+} //_CODE_:wavClear:280934:
+
+public void resetCalib_click2(GImageButton source, GEvent event) { //_CODE_:resetCalib:215921:
+  if (event == GEvent.CLICKED) {
+    resetCalib();
+  }
+} //_CODE_:resetCalib:215921:
+
+public void clearLFO_click2(GImageButton source, GEvent event) { //_CODE_:clearLFO:939396:
+if (event == GEvent.CLICKED) {
+    resetLFO();
+  }
+} //_CODE_:clearLFO:939396:
+
+public void ScreenColor_change1(GCustomSlider source, GEvent event) { //_CODE_:screenColor:548097:
+  println("screenColor - GCustomSlider >> GEvent." + event + " @ " + millis());
+} //_CODE_:screenColor:548097:
+
+public void lfoColor_change1(GCustomSlider source, GEvent event) { //_CODE_:lfoColor:598006:
+  println("custom_slider1 - GCustomSlider >> GEvent." + event + " @ " + millis());
+} //_CODE_:lfoColor:598006:
+
+public void envColor_change1(GCustomSlider source, GEvent event) { //_CODE_:envColor:742676:
+  println("envColor - GCustomSlider >> GEvent." + event + " @ " + millis());
+} //_CODE_:envColor:742676:
+
+public void wavColor_change1(GCustomSlider source, GEvent event) { //_CODE_:wavColor:859202:
+  println("wavColor - GCustomSlider >> GEvent." + event + " @ " + millis());
+} //_CODE_:wavColor:859202:
+
+public void thickness_change1(GCustomSlider source, GEvent event) { //_CODE_:thickness:554351:
+if (event == GEvent.RELEASED || event == GEvent.PRESSED || event == GEvent.VALUE_STEADY) {
+    thickStroke = source.getValueI();
+  }} //_CODE_:thickness:554351:
 
 
 
@@ -417,17 +463,59 @@ public void createGUI(){
   zoom_slider2.setNumberFormat(G4P.DECIMAL, 2);
   zoom_slider2.setOpaque(false);
   zoom_slider2.addEventHandler(this, "zoom_slider2_change1");
-  envClear = new GImageButton(this, 1283, 315, new String[] { "ClearEnvButt.png", "ClearEnvButt.png", "ClearEnvButt.png" } );
+  envClear = new GImageButton(this, 1198, 315, new String[] { "ClearEnvButt.png", "ClearEnvButt.png", "ClearEnvButt.png" } );
   envClear.addEventHandler(this, "envClear_click3");
-  FileName = new GLabel(this, 1334, 521, 156, 20);
+  FileName = new GLabel(this, 1258, 522, 240, 20);
   FileName.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
-  FileName.setText("File Name");
-  FileName.setLocalColorScheme(GCScheme.RED_SCHEME);
-  FileName.setOpaque(true);
-  button1 = new GButton(this, 1202, 521, 109, 20);
-  button1.setText("Browse Files...");
-  button1.setLocalColorScheme(GCScheme.RED_SCHEME);
-  button1.addEventHandler(this, "filebrowse_click1");
+  FileName.setText("No File Selected");
+  FileName.setLocalColorScheme(GCScheme.SCHEME_8);
+  FileName.setOpaque(false);
+  browseButton = new GImageButton(this, 1190, 520, 64, 22, new String[] { "Browse.png", "Browse.png", "Browse.png" } );
+  browseButton.addEventHandler(this, "browseButton_click1");
+  smplButton = new GImageButton(this, 792, 8, new String[] { "Smplbutton.png", "Smplbutton.png", "Smplbutton.png" } );
+  smplButton.addEventHandler(this, "smplButton1_click2");
+  wavClear = new GImageButton(this, 1198, 342, new String[] { "clearwav.png", "clearwav.png", "clearwav.png" } );
+  wavClear.addEventHandler(this, "wavClear_click2");
+  resetCalib = new GImageButton(this, 1349, 315, new String[] { "Reset Calib.png", "Reset Calib.png", "Reset Calib.png" } );
+  resetCalib.addEventHandler(this, "resetCalib_click2");
+  clearLFO = new GImageButton(this, 1349, 342, new String[] { "clearLFO.png", "clearLFO.png", "clearLFO.png" } );
+  clearLFO.addEventHandler(this, "clearLFO_click2");
+  screenColor = new GCustomSlider(this, 1190, 232, 115, 15, "red_yellow18px");
+  screenColor.setLimits(1, 0, 3);
+  screenColor.setNbrTicks(4);
+  screenColor.setStickToTicks(true);
+  screenColor.setNumberFormat(G4P.INTEGER, 0);
+  screenColor.setOpaque(false);
+  screenColor.addEventHandler(this, "ScreenColor_change1");
+  lfoColor = new GCustomSlider(this, 1207, 190, 272, 18, "red_yellow18px");
+  lfoColor.setLimits(0, 0, 9);
+  lfoColor.setNbrTicks(10);
+  lfoColor.setStickToTicks(true);
+  lfoColor.setShowTicks(true);
+  lfoColor.setNumberFormat(G4P.INTEGER, 0);
+  lfoColor.setOpaque(false);
+  lfoColor.addEventHandler(this, "lfoColor_change1");
+  envColor = new GCustomSlider(this, 1207, 149, 272, 18, "red_yellow18px");
+  envColor.setLimits(0, 0, 9);
+  envColor.setNbrTicks(10);
+  envColor.setStickToTicks(true);
+  envColor.setShowTicks(true);
+  envColor.setNumberFormat(G4P.INTEGER, 0);
+  envColor.setOpaque(false);
+  envColor.addEventHandler(this, "envColor_change1");
+  wavColor = new GCustomSlider(this, 1207, 99, 272, 18, "red_yellow18px");
+  wavColor.setLimits(0, 0, 9);
+  wavColor.setNbrTicks(10);
+  wavColor.setStickToTicks(true);
+  wavColor.setShowTicks(true);
+  wavColor.setNumberFormat(G4P.INTEGER, 0);
+  wavColor.setOpaque(false);
+  wavColor.addEventHandler(this, "wavColor_change1");
+  thickness = new GCustomSlider(this, 1386, 244, 100, 12, "grey_blue");
+  thickness.setLimits(2, 1, 10);
+  thickness.setNumberFormat(G4P.INTEGER, 0);
+  thickness.setOpaque(false);
+  thickness.addEventHandler(this, "thickness_change1");
 }
 
 // Variable declarations 
@@ -477,4 +565,13 @@ GCustomSlider threshold_slider1;
 GCustomSlider zoom_slider2; 
 GImageButton envClear; 
 GLabel FileName; 
-GButton button1; 
+GImageButton browseButton; 
+GImageButton smplButton; 
+GImageButton wavClear; 
+GImageButton resetCalib; 
+GImageButton clearLFO; 
+GCustomSlider screenColor; 
+GCustomSlider lfoColor; 
+GCustomSlider envColor; 
+GCustomSlider wavColor; 
+GCustomSlider thickness; 
