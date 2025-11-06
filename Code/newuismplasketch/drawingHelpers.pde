@@ -31,6 +31,15 @@ void drawWav(float[] wavArr) { //takes wav arr draws it
   }
 }
 
+void drawExtract(float[] wavArr) { //takes wav arr draws it
+  stroke(225, 0, 0);
+  strokeWeight(2);
+  float[] wav = mappedFlArr(wavArr);
+  for (int i = 0; i < wav.length-1; i ++) {
+    line(i+430, wav[i], i+431, wav[i+1]);
+  }
+}
+
 void drawWav(float[] wavArr, int r, int g, int b) { //takes wav arr draws it
   stroke(r, g, b);
   strokeWeight(2);

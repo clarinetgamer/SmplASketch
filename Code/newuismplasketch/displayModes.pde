@@ -52,13 +52,20 @@ void checkMode() { //Would do else ifs but this logic makes the knob smoother
   }
 }
 
+PImage camCap;
+boolean extraction = false;
+
 void calibMode() {
   takePicture("calib");
-  PImage camCap;
+  PImage camCapMod;
+  camCap = loadImage("calib.jpg");
   if (camVsCapCalib) {
-    camCap = crop(loadImage("calib.jpg"));
+    camCapMod = crop(camCap);
   } else {
-    camCap = threshed(crop(loadImage("calib.jpg")));
+    camCapMod = threshed(crop(camCap));
   }
-  image(camCap, 430, 128);
+  image(camCapMod, 430, 128);
+  if (extraction) {
+    drawExtract(processCalibImage());
+  }
 }

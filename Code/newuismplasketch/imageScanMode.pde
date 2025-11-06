@@ -1,4 +1,4 @@
-PImage imageMode; 
+PImage imageMode;
 
 void initImgFromFile(String imgName) {
   imageMode = loadImage(imgName);
@@ -52,6 +52,36 @@ void wait(int time) {
   int start = millis();
   while (millis() <= start+time) {
   }
+}
+
+void selectPhotosynthesisFile() {
+  selectInput("Select an image to process:", "fileSelected");
+}
+
+void fileSelected(File selection) {
+  if (selection == null) {
+    println("Window was closed or the user hit cancel.");
+  } else {
+    FileName.setText(getShortFileName(selection.getAbsolutePath()));
+    imageMode = loadImage(selection.getAbsolutePath());
+    imageMode.resize(camwidth, camheight);
+  }
+}
+
+String getShortFileName(String selection) {
+  char[] chars = selection.toCharArray();
+  int lastSlash = 0;
+  for (int i = 0; i < selection.length(); i ++) {
+    if (chars[i] == '/') lastSlash = i;
+  }
+  String modSelection = selection;
+  if (lastSlash != 0) {
+    modSelection = "";
+    for (int i = lastSlash+1; i < selection.length(); i ++) {
+      modSelection += chars[i];
+    }
+  }
+  return modSelection;
 }
 
 //come back to this later it kinda works but ultimately unimplemented with this version/ui

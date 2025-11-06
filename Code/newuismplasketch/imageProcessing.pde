@@ -2,6 +2,23 @@ PImage wavImg;
 PImage envImg;
 PImage modWavImg;
 PImage modEnvImg;
+PImage modCalibImg;
+
+float threshold = 0.791;
+float shift = 1.0;
+
+void thresholdMod(GCustomSlider source, GEvent event) {
+  if (event == GEvent.RELEASED || event == GEvent.PRESSED || event == GEvent.VALUE_STEADY) {
+    threshold = source.getValueF();
+  }
+}
+
+void shiftMod(GCustomSlider source, GEvent event) {
+  if (event == GEvent.RELEASED || event == GEvent.PRESSED || event == GEvent.VALUE_STEADY) {
+    shift = source.getValueF();
+  }
+}
+
 
 int findAvgY(ArrayList<Integer> list) { // find average of y pixels from drawing
   int avg = 0;
@@ -14,13 +31,13 @@ int findAvgY(ArrayList<Integer> list) { // find average of y pixels from drawing
 }
 
 PImage crop(PImage img) { //crops image from camera to get just the slide
-  PImage cropped = img.get(160, 325, camwidth, camheight);
+  PImage cropped = img.get((int)(160*shift), (int)(325*shift), camwidth, camheight);
   //cropped.save("cropped.jpg");
   return cropped;
 }
 
 PImage threshed(PImage img) { //crops image from camera to get just the slide
-  img.filter(THRESHOLD, 0.791);//filters line to black
+  img.filter(THRESHOLD, threshold);//filters line to black
   //cropped.save("cropped.jpg");
   return img;
 }
@@ -74,6 +91,10 @@ float[] processImage(PImage img, PImage modImg, Boolean isWav) { //takes the ima
 
 float[] processWavImage() { // feeds in wavImg names to image processing
   return processImage(wavImg, modWavImg, true);
+}
+
+float[] processCalibImage() { // feeds in wavImg names to image processing
+  return processImage(camCap, modCalibImg, true);
 }
 
 boolean isOnStraight(float f1, float f2, float f3) { //returns a value is surrounded by two like values

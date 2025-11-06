@@ -139,35 +139,40 @@ public void highFreq_slider1_change1(GCustomSlider source, GEvent event) { //_CO
 } //_CODE_:highFreq_slider1:611418:
 
 public void calibration_clicked1(GCheckbox source, GEvent event) { //_CODE_:calibration:261462:
-if(event == GEvent.SELECTED) {
-  calibMode = true;
-}
-if(event == GEvent.DESELECTED) {
-  calibMode = false;
-}
+  if (event == GEvent.SELECTED) {
+    calibMode = true;
+  }
+  if (event == GEvent.DESELECTED) {
+    calibMode = false;
+  }
 } //_CODE_:calibration:261462:
 
 public void showCam_clicked1(GOption source, GEvent event) { //_CODE_:showCam:597026:
-if(event == GEvent.SELECTED) {
-  camVsCapCalib = true;
-}
+  if (event == GEvent.SELECTED) {
+    camVsCapCalib = true;
+  }
 } //_CODE_:showCam:597026:
 
 public void capturecali_clicked1(GOption source, GEvent event) { //_CODE_:capturecali:200276:
-if(event == GEvent.SELECTED) {
-  camVsCapCalib = false;
-}} //_CODE_:capturecali:200276:
+  if (event == GEvent.SELECTED) {
+    camVsCapCalib = false;
+  }
+} //_CODE_:capturecali:200276:
 
 public void showExtract_clicked1(GCheckbox source, GEvent event) { //_CODE_:showExtract:883300:
-  println("showWav - GCheckbox >> GEvent." + event + " @ " + millis());
+  if (event == GEvent.SELECTED) {
+    extraction = true;
+  } else if (event == GEvent.DESELECTED) {
+    extraction = false;
+  }
 } //_CODE_:showExtract:883300:
 
 public void threshold_slider1_change1(GCustomSlider source, GEvent event) { //_CODE_:threshold_slider1:865497:
-  println("custom_slider1 - GCustomSlider >> GEvent." + event + " @ " + millis());
+  thresholdMod(source, event);
 } //_CODE_:threshold_slider1:865497:
 
 public void zoom_slider2_change1(GCustomSlider source, GEvent event) { //_CODE_:zoom_slider2:491766:
-  println("custom_slider2 - GCustomSlider >> GEvent." + event + " @ " + millis());
+  shiftMod(source, event);
 } //_CODE_:zoom_slider2:491766:
 
 public void envClear_click3(GImageButton source, GEvent event) { //_CODE_:envClear:356676:
@@ -175,6 +180,12 @@ public void envClear_click3(GImageButton source, GEvent event) { //_CODE_:envCle
     envMenuStart();
   }
 } //_CODE_:envClear:356676:
+
+public void filebrowse_click1(GButton source, GEvent event) { //_CODE_:button1:966531:
+if(event == GEvent.CLICKED) {
+  selectPhotosynthesisFile();
+}
+} //_CODE_:button1:966531:
 
 
 
@@ -397,17 +408,26 @@ public void createGUI(){
   showExtract.setOpaque(false);
   showExtract.addEventHandler(this, "showExtract_clicked1");
   threshold_slider1 = new GCustomSlider(this, 1331, 396, 155, 40, "grey_blue");
-  threshold_slider1.setLimits(0.5, 0.0, 1.0);
+  threshold_slider1.setLimits(0.791, 0.591, 0.991);
   threshold_slider1.setNumberFormat(G4P.DECIMAL, 2);
   threshold_slider1.setOpaque(false);
   threshold_slider1.addEventHandler(this, "threshold_slider1_change1");
   zoom_slider2 = new GCustomSlider(this, 1330, 438, 157, 40, "grey_blue");
-  zoom_slider2.setLimits(0.5, 0.0, 1.0);
+  zoom_slider2.setLimits(1.0, 0.8, 1.2);
   zoom_slider2.setNumberFormat(G4P.DECIMAL, 2);
   zoom_slider2.setOpaque(false);
   zoom_slider2.addEventHandler(this, "zoom_slider2_change1");
   envClear = new GImageButton(this, 1283, 315, new String[] { "ClearEnvButt.png", "ClearEnvButt.png", "ClearEnvButt.png" } );
   envClear.addEventHandler(this, "envClear_click3");
+  FileName = new GLabel(this, 1334, 521, 156, 20);
+  FileName.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  FileName.setText("File Name");
+  FileName.setLocalColorScheme(GCScheme.RED_SCHEME);
+  FileName.setOpaque(true);
+  button1 = new GButton(this, 1202, 521, 109, 20);
+  button1.setText("Browse Files...");
+  button1.setLocalColorScheme(GCScheme.RED_SCHEME);
+  button1.addEventHandler(this, "filebrowse_click1");
 }
 
 // Variable declarations 
@@ -456,3 +476,5 @@ GCheckbox showExtract;
 GCustomSlider threshold_slider1; 
 GCustomSlider zoom_slider2; 
 GImageButton envClear; 
+GLabel FileName; 
+GButton button1; 
