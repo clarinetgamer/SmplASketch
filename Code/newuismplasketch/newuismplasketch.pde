@@ -50,15 +50,15 @@ void drawDarkMode() {
   rect(420, 120, 670, 325);
 }
 
-void drawLightMode() {
-  background(240);
-  noStroke();
-  fill(220);
-  rect(0, 0, 1512, 57);
-  rect(0, 830, 1512, 57);
-  fill(255);
-  rect(420, 120, 670, 325);
-}
+//void drawLightMode() {
+//  background(240);
+//  noStroke();
+//  fill(220);
+//  rect(0, 0, 1512, 57);
+//  rect(0, 830, 1512, 57);
+//  fill(255);
+//  rect(420, 120, 670, 325);
+//}
 
 
 void keyPressed() { //test true is for keyboard control test false is obscure ascii to talk to teensy
