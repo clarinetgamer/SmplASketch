@@ -56,7 +56,7 @@ void resetLFO() { //Adjust for lfo mode
 }
 
 void smpl() {
-  if (mode != 2.0) {
+  if (mode != 4.0) {
     float[] wav;
     if (clearWav && wavControl) {
       wav = resetSin;

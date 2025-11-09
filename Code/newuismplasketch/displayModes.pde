@@ -53,8 +53,16 @@ void checkMode() { //Would do else ifs but this logic makes the knob smoother
     prevMode = 1.0;
   }
   if (2.0 == mode || prevMode ==2.0) {
-    imgMode();
+    //lfomode
     prevMode = 2.0;
+  }
+  if (3.0 == mode || prevMode ==3.0) {
+    //lfocombinemode
+    prevMode = 3.0;
+  }
+  if (4.0 == mode || prevMode ==4.0) {
+    imgMode();
+    prevMode = 4.0;
   }
 }
 
