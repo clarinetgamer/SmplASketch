@@ -18,6 +18,9 @@ void setColor(int index, int r, int g, int b) {
   drawColor[index][2] = b;
 }
 
+
+
+
 void colorControl(GCustomSlider source, GEvent event, int index) {
   if (event == GEvent.RELEASED) {
     int colorDraw = source.getValueI();
@@ -46,7 +49,7 @@ void colorControl(GCustomSlider source, GEvent event, int index) {
 }
 
 void screenColorControl(GCustomSlider source, GEvent event) {
-if (event == GEvent.RELEASED) {
+  if (event == GEvent.RELEASED) {
     int colorDraw = source.getValueI();
     if (colorDraw == 0) {
       screenColorNum = 255; //white
@@ -109,4 +112,16 @@ void drawEnv(float[] envArr) { //takes env arr draws it
   line(430, 448, 430+env[0], 300);
   line(430+env[0], 300, 430+env[0]+env[1], 300);
   line(430+env[0]+env[1], 300, 430+camwidth, 448);
+}
+
+void setAdditionSchemes(){
+  dropListRed.setLocalColor(2, color(0,0,0));
+  dropListBlue.setLocalColor(2, color(0,0,0));
+  dropListGreen.setLocalColor(2, color(0,0,0));
+  dropListYellow.setLocalColor(2, color(0,0,0));
+  dropListPurple.setLocalColor(2, color(0,0,0));
+  dropListOrange.setLocalColor(2, color(0,0,0));
+  fileName.setLocalColorScheme(GCScheme.RED_SCHEME);
+  fileName.setLocalColor(2, color(255,0,0)); 
+
 }

@@ -51,8 +51,8 @@ void defaultSin() {
 void defaultSqr() {
   float[] sqrwav = new float[camwidth];
 
-  for (int i = 0; i < 640; i++) {
-    if (i < 320) {
+  for (int i = 0; i < camwidth; i++) {
+    if (i < camwidth/2) {
       sqrwav[i] = -1;
     } else {
       sqrwav[i] = 1;
@@ -64,38 +64,38 @@ void defaultSqr() {
 void defaultTri() {
   float[] triwav = new float[camwidth];
   int counter = 0;
-  for (int i = 0; i < 640; i++) {
+  for (int i = 0; i < camwidth; i++) {
     if (i == 0) {
       counter = 0;
-    } else if (i < 160) {
+    } else if (i < camwidth/4) {
       counter +=1;
-    } else if (i < 480) {
+    } else if (i < (camwidth*3)/4) {
       counter -=1;
       triwav[i] = counter;
     } else {
       counter +=1;
     }
-    triwav[i] = map(counter, -159, 159, 1, -1);
+    triwav[i] = map(counter, -((camwidth/4)-1), ((camwidth/4)-1), 1, -1);
   }
   defaultWav=triwav;
 }
 
 void defaultSaw() {
   float[] sawwav = new float[camwidth];
-  int counter = 320;
-  for (int i = 0; i < 640; i++) {
+  int counter = camwidth/2;
+  for (int i = 0; i < camwidth; i++) {
     counter -=1;
-    sawwav[i] = map(counter, -319, 319, 1, -1);
+    sawwav[i] = map(counter, -((camwidth/2)-1), ((camwidth/2)-1), 1, -1);
   }
   defaultWav = sawwav;
 }
 
 void defaultRamp() {
   float[] rampwav = new float[camwidth];
-  int counter = -320;
-  for (int i = 0; i < 640; i++) {
+  int counter = -(camwidth/2);
+  for (int i = 0; i < camwidth; i++) {
     counter +=1;
-    rampwav[i] = map(counter, -319, 319, 1, -1);
+    rampwav[i] = map(counter, -((camwidth/2)-1), ((camwidth/2)-1), 1, -1);
   }
   defaultWav=rampwav;
 }
@@ -104,14 +104,14 @@ void defaultStep() {
   float[] stepwav = new float[camwidth];
   int counter = 0;
   int step = 0;
-  for (int i = 0; i < 640; i++) {
-    if (step != 16) {
+  for (int i = 0; i < camwidth; i++) {
+    if (step != camwidth/40) {
       step++;
     } else {
       counter++;
       step=0;
     }
-    stepwav[i] = map(counter, 0, 39, 1, -1);
+    stepwav[i] = map(counter, 0, (camwidth/16)-1, 1, -1);
   }
   defaultWav=stepwav;
 }

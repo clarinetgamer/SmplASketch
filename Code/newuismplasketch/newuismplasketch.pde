@@ -16,11 +16,13 @@ public void setup() {
   size(1512, 850, JAVA2D);
   smooth(10);
   createGUI();
+  bigtone_slider1.setShowTicks(false);//partofcreateGUI
+  setAdditionSchemes();
   //Img processing setup
   modWavImg = createImage(camwidth, camheight, RGB); // Create image to write other data to
   modCalibImg = createImage(camwidth, camheight, RGB); // Create image to write other data to
   modEnvImg = createImage(camwidth, camheight, RGB); // Create env image to write other data to
-  initImgFromFile("test.png");
+  initImgFromFile("blank.jpg");
   searchForCamera();
   //clear cache
   clearCache();
@@ -38,6 +40,7 @@ public void draw() {
   } else {
     checkMode();
   }
+  setOnDotsVis();
 }
 
 void drawDarkMode() {

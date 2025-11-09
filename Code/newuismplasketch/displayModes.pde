@@ -20,11 +20,17 @@ void imgMode() { //Draw Screen, draw wavs(need to add), draw outline
   int counter = 0;
   for (float[] f : arrList) {
     if (counter == 0) {
-      drawWav(f, 255, 0, 0);
+      if(photsynthesisDots[0] == true) drawWav(f, 255, 0, 0);
     } else if (counter == 1) {
-      drawWav(f, 0, 255, 0);
+      if(photsynthesisDots[2] == true) drawWav(f, 0, 255, 0);
     } else if (counter == 2) {
-      drawWav(f, 0, 0, 255);
+      if(photsynthesisDots[1] == true) drawWav(f, 0, 0, 255);
+    } else if (counter == 3) {
+      if(photsynthesisDots[3] == true) drawWav(f, 255, 255, 0);
+    } else if (counter == 4) {
+      if(photsynthesisDots[4] == true) drawWav(f, 128, 0, 128);
+    } else if (counter == 5) {
+      if(photsynthesisDots[5] == true) drawWav(f, 255, 165, 0);
     }
     counter++;
   }

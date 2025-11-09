@@ -75,20 +75,40 @@ void smpl() {
 
 void photowaveformSmpl() { //this is very rudimentary and will do more later
   ArrayList<float[]> processed = processMultiImage(imageMode);
-  float[] wavR = processed.get(0);
-  float[] wavG = processed.get(1);
-  float[] wavB = processed.get(2);
-  AudioSample smplR = createSample(wavR);
-  AudioSample smplG = createSample(wavG);
-  AudioSample smplB = createSample(wavB);
-  AudioSample body = createSample(resetSin);
-  playWav(body, 0.75*wavMult);
-  playWav(smplR, 1.0*wavMult);
-  playWav(smplG, 1.5*wavMult);
-  playWav(smplB, 2.0*wavMult);
-
-  playSliderEnv(body);
-  playSliderEnv(smplR);
-  playSliderEnv(smplG);
-  playSliderEnv(smplB);
+  if (photsynthesisDots[0] == true) {
+    float[] wavR = processed.get(0);
+    AudioSample smplR = createSample(wavR);
+    playWav(smplR, 1.0*wavMult);
+    playSliderEnv(smplR);
+  }
+  if (photsynthesisDots[2] == true) {
+    float[] wavG = processed.get(1);
+    AudioSample smplG = createSample(wavG);
+    playWav(smplG, 1.5*wavMult);
+    playSliderEnv(smplG);
+  }
+  if (photsynthesisDots[1] == true) {
+    float[] wavB = processed.get(2);
+    AudioSample smplB = createSample(wavB);
+    playWav(smplB, 2.0*wavMult);
+    playSliderEnv(smplB);
+  }
+  if (photsynthesisDots[3] == true) {
+    float[] wavY = processed.get(3);
+    AudioSample smplY = createSample(wavY);
+    playWav(smplY, 2.5*wavMult);
+    playSliderEnv(smplY);
+  }
+  if (photsynthesisDots[4] == true) {
+    float[] wavP = processed.get(4);
+    AudioSample smplP = createSample(wavP);
+    playWav(smplP, 3.0*wavMult);
+    playSliderEnv(smplP);
+  }
+  if (photsynthesisDots[5] == true) {
+    float[] wavO = processed.get(5);
+    AudioSample smplO = createSample(wavO);
+    playWav(smplO, 3.5*wavMult);
+    playSliderEnv(smplO);
+  }
 }

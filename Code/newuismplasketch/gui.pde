@@ -5,9 +5,9 @@
  * designer and care should be taken when editing this file.
  * Only add/edit code inside the event handlers i.e. only
  * use lines between the matching comment tags. e.g.
- 
+
  void myBtnEvents(GButton button) { //_CODE_:button1:12356:
- // It is safe to enter your event code here
+     // It is safe to enter your event code here  
  } //_CODE_:button1:12356:
  
  * Do not rename this tab!
@@ -43,43 +43,63 @@ public void redWavOverlay_click2(GImageButton source, GEvent event) { //_CODE_:r
 } //_CODE_:redWavOverlay:451286:
 
 public void sinButt_clicked1(GOption source, GEvent event) { //_CODE_:sinButt:511167:
-  println("sinButt - GOption >> GEvent." + event + " @ " + millis());
+  if (event == GEvent.SELECTED) {
+    defaultSin();
+  }
 } //_CODE_:sinButt:511167:
 
 public void triButt_clicked1(GOption source, GEvent event) { //_CODE_:triButt:532566:
-  println("triButt - GOption >> GEvent." + event + " @ " + millis());
+  if (event == GEvent.SELECTED) {
+    defaultTri();
+  }
 } //_CODE_:triButt:532566:
 
 public void sqrButt_clicked1(GOption source, GEvent event) { //_CODE_:sqrButt:650107:
-  println("sqrButt - GOption >> GEvent." + event + " @ " + millis());
+  if (event == GEvent.SELECTED) {
+    defaultSqr();
+  }
 } //_CODE_:sqrButt:650107:
 
 public void sawButt_clicked1(GOption source, GEvent event) { //_CODE_:sawButt:584368:
-  println("sawButt - GOption >> GEvent." + event + " @ " + millis());
+  if (event == GEvent.SELECTED) {
+    defaultSaw();
+  }
 } //_CODE_:sawButt:584368:
 
 public void stepButt_clicked1(GOption source, GEvent event) { //_CODE_:stepButt:289370:
-  println("stepButt - GOption >> GEvent." + event + " @ " + millis());
+  if (event == GEvent.SELECTED) {
+    defaultStep();
+  }
 } //_CODE_:stepButt:289370:
 
 public void rampButt_clicked1(GOption source, GEvent event) { //_CODE_:rampButt:866973:
-  println("rampButt - GOption >> GEvent." + event + " @ " + millis());
+  if (event == GEvent.SELECTED) {
+    defaultRamp();
+  }
 } //_CODE_:rampButt:866973:
 
 public void DevControWav_clicked1(GOption source, GEvent event) { //_CODE_:DevControWav:234113:
-  println("DevControWav - GOption >> GEvent." + event + " @ " + millis());
+  if (event == GEvent.SELECTED) {
+    wavControl = true;
+  }
 } //_CODE_:DevControWav:234113:
 
 public void DefaultWav_clicked1(GOption source, GEvent event) { //_CODE_:DefaultWav:337021:
-  println("defaultWav - GOption >> GEvent." + event + " @ " + millis());
+  if (event == GEvent.SELECTED) {
+    wavControl = false;
+  }
 } //_CODE_:DefaultWav:337021:
 
 public void freq_slider1_change1(GCustomSlider source, GEvent event) { //_CODE_:freq_slider1:305465:
-  println("freq_slider1 - GCustomSlider >> GEvent." + event + " @ " + millis());
+  if(event == GEvent.RELEASED) {
+fineAdjust = source.getValueF();
+}
 } //_CODE_:freq_slider1:305465:
 
 public void bigtone_slider1_change1(GCustomSlider source, GEvent event) { //_CODE_:bigtone_slider1:797863:
-  println("custom_slider1 - GCustomSlider >> GEvent." + event + " @ " + millis());
+if(event == GEvent.RELEASED) {
+srIndex = source.getValueI();
+}
 } //_CODE_:bigtone_slider1:797863:
 
 public void lfored_click2(GImageButton source, GEvent event) { //_CODE_:lfored:748321:
@@ -234,15 +254,165 @@ public void thickness_change1(GCustomSlider source, GEvent event) { //_CODE_:thi
   }
 } //_CODE_:thickness:554351:
 
+public void browseExport_click2(GImageButton source, GEvent event) { //_CODE_:browseExport:709904:
+  if (event == GEvent.CLICKED) {
+    selectSaveLoc();
+  }
+} //_CODE_:browseExport:709904:
+
+public void fileName_change1(GTextField source, GEvent event) { //_CODE_:fileName:663355:
+  println("fileName - GTextField >> GEvent." + event + " @ " + millis());
+} //_CODE_:fileName:663355:
+
+public void saveButt_click2(GImageButton source, GEvent event) { //_CODE_:saveButt:878919:
+  println("saveButt - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:saveButt:878919:
+
+public void backButt_click1(GImageButton source, GEvent event) { //_CODE_:backButt:551776:
+  println("backButt - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:backButt:551776:
+
+public void playButt_click1(GImageButton source, GEvent event) { //_CODE_:playButt:310979:
+  println("playButt - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:playButt:310979:
+
+public void stopButt_click2(GImageButton source, GEvent event) { //_CODE_:stopButt:855839:
+  println("stopButt - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:stopButt:855839:
+
+public void forButt_click2(GImageButton source, GEvent event) { //_CODE_:forbutt:485441:
+  println("forbutt - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:forbutt:485441:
+
+public void helpButt_click2(GImageButton source, GEvent event) { //_CODE_:helpButt:585685:
+  if (event == GEvent.CLICKED) {
+    helpButton();
+  }
+} //_CODE_:helpButt:585685:
+
+public void preset_click2(GImageButton source, GEvent event) { //_CODE_:preset:485718:
+  println("preset - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:preset:485718:
+
+public void exportMP3_click2(GImageButton source, GEvent event) { //_CODE_:exportMP3:709719:
+  println("exportMP3 - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:exportMP3:709719:
+
+public void photsynthesisImage_click2(GImageButton source, GEvent event) { //_CODE_:photsynthesisImage:477057:
+  println("imgButton1 - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:photsynthesisImage:477057:
+
+public void redTogButton1_click1(GImageToggleButton source, GEvent event) { //_CODE_:redTogButton1:324535:
+ toggleUpdate(event, 0);
+} //_CODE_:redTogButton1:324535:
+
+public void blueTogButton1_click1(GImageToggleButton source, GEvent event) { //_CODE_:blueTogButton1:267547:
+toggleUpdate(event, 1);
+} //_CODE_:blueTogButton1:267547:
+
+public void greenTogButton1_click1(GImageToggleButton source, GEvent event) { //_CODE_:greenTogButton1:260559:
+toggleUpdate(event, 2);
+} //_CODE_:greenTogButton1:260559:
+
+public void yellowTogButton1_click1(GImageToggleButton source, GEvent event) { //_CODE_:yellowTogButton1:283661:
+toggleUpdate(event, 3);
+} //_CODE_:yellowTogButton1:283661:
+
+public void purpleTogButton1_click1(GImageToggleButton source, GEvent event) { //_CODE_:purpleTogButton1:610276:
+toggleUpdate(event, 4);
+} //_CODE_:purpleTogButton1:610276:
+
+public void orangeTogButton1_click1(GImageToggleButton source, GEvent event) { //_CODE_:orangeTogButton1:547732:
+toggleUpdate(event, 5);
+} //_CODE_:orangeTogButton1:547732:
+
+public void reddot_click2(GImageButton source, GEvent event) { //_CODE_:reddot:657772:
+  println("reddot - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:reddot:657772:
+
+public void greendot_click2(GImageButton source, GEvent event) { //_CODE_:greendot:438665:
+  println("greendot - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:greendot:438665:
+
+public void bluedot_click2(GImageButton source, GEvent event) { //_CODE_:bluedot:934792:
+  println("bluedot - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:bluedot:934792:
+
+public void yellowdot_click2(GImageButton source, GEvent event) { //_CODE_:yellowdot:430374:
+  println("yellowdot - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:yellowdot:430374:
+
+public void purpledot_click2(GImageButton source, GEvent event) { //_CODE_:purpledot:404593:
+  println("purpledot - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:purpledot:404593:
+
+public void orangedot_click2(GImageButton source, GEvent event) { //_CODE_:orangedot:893370:
+  println("orangedot - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:orangedot:893370:
+
+public void redon_click2(GImageButton source, GEvent event) { //_CODE_:redon:700357:
+  println("redon - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:redon:700357:
+
+public void blueon_click2(GImageButton source, GEvent event) { //_CODE_:blueon:760373:
+  println("blueon - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:blueon:760373:
+
+public void greenon_click2(GImageButton source, GEvent event) { //_CODE_:greenon:764788:
+  println("greenon - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:greenon:764788:
+
+public void yellowon_click2(GImageButton source, GEvent event) { //_CODE_:yellowon:429709:
+  println("yellowon - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:yellowon:429709:
+
+public void prupleon_click2(GImageButton source, GEvent event) { //_CODE_:purpleon:798097:
+  println("purplon - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:purpleon:798097:
+
+public void orangeon_click2(GImageButton source, GEvent event) { //_CODE_:orangeon:464327:
+  println("orangeon - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:orangeon:464327:
+
+public void dropListRed_click1(GDropList source, GEvent event) { //_CODE_:dropListRed:883689:
+  println("dropListRed - GDropList >> GEvent." + event + " @ " + millis());
+} //_CODE_:dropListRed:883689:
+
+public void dropListGreen_click1(GDropList source, GEvent event) { //_CODE_:dropListGreen:214383:
+  println("dropListGreen - GDropList >> GEvent." + event + " @ " + millis());
+} //_CODE_:dropListGreen:214383:
+
+public void dropListBlue_click1(GDropList source, GEvent event) { //_CODE_:dropListBlue:850991:
+  println("dropListBlue - GDropList >> GEvent." + event + " @ " + millis());
+} //_CODE_:dropListBlue:850991:
+
+public void dropListYellow_click1(GDropList source, GEvent event) { //_CODE_:dropListYellow:637715:
+  println("dropListYellow - GDropList >> GEvent." + event + " @ " + millis());
+} //_CODE_:dropListYellow:637715:
+
+public void dropListPurple_click1(GDropList source, GEvent event) { //_CODE_:dropListPurple:621649:
+  println("dropListPurple - GDropList >> GEvent." + event + " @ " + millis());
+} //_CODE_:dropListPurple:621649:
+
+public void dropListOrange_click1(GDropList source, GEvent event) { //_CODE_:dropListOrange:901739:
+  println("dropListOrange - GDropList >> GEvent." + event + " @ " + millis());
+} //_CODE_:dropListOrange:901739:
+
+public void imgButton1_click2(GImageButton source, GEvent event) { //_CODE_:imgButton1:996575:
+  println("imgButton1 - GImageButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:imgButton1:996575:
 
 
-// Create all the GUI controls.
+
+// Create all the GUI controls. 
 // autogenerated do not edit
-public void createGUI() {
+public void createGUI(){
   G4P.messagesEnabled(false);
   G4P.setGlobalColorScheme(GCScheme.YELLOW_SCHEME);
   G4P.setMouseOverEnabled(false);
-  G4P.setDisplayFont("SignPainter", G4P.BOLD, 20);
+  G4P.setDisplayFont("SignPainter", G4P.PLAIN, 14);
+  G4P.setInputFont("SignPainter", G4P.BOLD, 30);
+  G4P.setSliderFont("Arial", G4P.PLAIN, 6);
   surface.setTitle("SmplASketch");
   backgroundDarkMode = new GImageButton(this, -1, 0, new String[] { "backgroundDarkMode.png", "backgroundDarkMode.png", "backgroundDarkMode.png" } );
   backgroundDarkMode.setLocalColorScheme(GCScheme.BLUE_SCHEME);
@@ -352,13 +522,15 @@ public void createGUI() {
   DevControWav.setSelected(true);
   togGroupWavDevControl.addControl(DefaultWav);
   freq_slider1 = new GCustomSlider(this, 14, 623, 302, 40, "grey_blue");
-  freq_slider1.setLimits(0.5, 0.0, 1.0);
+  freq_slider1.setLimits(0.0, -0.2, 0.2);
   freq_slider1.setNumberFormat(G4P.DECIMAL, 2);
   freq_slider1.setOpaque(false);
   freq_slider1.addEventHandler(this, "freq_slider1_change1");
   bigtone_slider1 = new GCustomSlider(this, 14, 570, 304, 40, "grey_blue");
-  bigtone_slider1.setLimits(0.5, 0.0, 1.0);
-  bigtone_slider1.setNumberFormat(G4P.DECIMAL, 2);
+  bigtone_slider1.setLimits(6, 0, 12);
+  bigtone_slider1.setNbrTicks(13);
+  bigtone_slider1.setStickToTicks(true);
+  bigtone_slider1.setNumberFormat(G4P.INTEGER, 0);
   bigtone_slider1.setOpaque(false);
   bigtone_slider1.addEventHandler(this, "bigtone_slider1_change1");
   lfored = new GImageButton(this, 892, 715, 269, 101, new String[] { "redstuff.png", "redstuff.png", "redstuff.png" } );
@@ -466,9 +638,9 @@ public void createGUI() {
   zoom_slider2.addEventHandler(this, "zoom_slider2_change1");
   envClear = new GImageButton(this, 1198, 315, new String[] { "ClearEnvButt.png", "ClearEnvButt.png", "ClearEnvButt.png" } );
   envClear.addEventHandler(this, "envClear_click3");
-  FileName = new GLabel(this, 1258, 522, 240, 20);
+  FileName = new GLabel(this, 1258, 522, 240, 18);
   FileName.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
-  FileName.setText("No File Selected");
+  FileName.setText("Select File To Analyze");
   FileName.setLocalColorScheme(GCScheme.SCHEME_8);
   FileName.setOpaque(false);
   browseButton = new GImageButton(this, 1190, 520, 64, 22, new String[] { "Browse.png", "Browse.png", "Browse.png" } );
@@ -517,62 +689,190 @@ public void createGUI() {
   thickness.setNumberFormat(G4P.INTEGER, 0);
   thickness.setOpaque(false);
   thickness.addEventHandler(this, "thickness_change1");
+  browseExport = new GImageButton(this, 1190, 287, 64, 22, new String[] { "Browse.png", "Browse.png", "Browse.png" } );
+  browseExport.addEventHandler(this, "browseExport_click2");
+  exportLocLabel = new GLabel(this, 1258, 289, 241, 20);
+  exportLocLabel.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  exportLocLabel.setText("Select Export Location");
+  exportLocLabel.setLocalColorScheme(GCScheme.SCHEME_8);
+  exportLocLabel.setOpaque(false);
+  fileName = new GTextField(this, 30, 15, 200, 30, G4P.SCROLLBARS_NONE);
+  fileName.setPromptText("       SmplName");
+  fileName.setLocalColorScheme(GCScheme.RED_SCHEME);
+  fileName.setOpaque(true);
+  fileName.addEventHandler(this, "fileName_change1");
+  saveButt = new GImageButton(this, 260, 11, new String[] { "savebutt.png", "savebutt.png", "savebutt.png" } );
+  saveButt.addEventHandler(this, "saveButt_click2");
+  backButt = new GImageButton(this, 618, 11, new String[] { "backButt.png", "backButt.png", "backButt.png" } );
+  backButt.addEventHandler(this, "backButt_click1");
+  playButt = new GImageButton(this, 663, 11, new String[] { "PlayButt.png", "PlayButt.png", "PlayButt.png" } );
+  playButt.addEventHandler(this, "playButt_click1");
+  stopButt = new GImageButton(this, 705, 11, new String[] { "StopButt.png", "StopButt.png", "StopButt.png" } );
+  stopButt.addEventHandler(this, "stopButt_click2");
+  forbutt = new GImageButton(this, 748, 11, new String[] { "ForwardButt.png", "ForwardButt.png", "ForwardButt.png" } );
+  forbutt.addEventHandler(this, "forButt_click2");
+  helpButt = new GImageButton(this, 1470, 17, new String[] { "helpButt.png", "helpButt.png", "helpButt.png" } );
+  helpButt.addEventHandler(this, "helpButt_click2");
+  preset = new GImageButton(this, 307, 11, new String[] { "openPreset.png", "openPreset.png", "openPreset.png" } );
+  preset.addEventHandler(this, "preset_click2");
+  exportMP3 = new GImageButton(this, 352, 11, new String[] { "Export.png", "Export.png", "Export.png" } );
+  exportMP3.addEventHandler(this, "exportMP3_click2");
+  photsynthesisImage = new GImageButton(this, 1241, 662, 218, 159, new String[] { "blank.jpg", "blank.jpg", "blank.jpg" } );
+  photsynthesisImage.addEventHandler(this, "photsynthesisImage_click2");
+  redTogButton1 = new GImageToggleButton(this, 1200, 583);
+  redTogButton1.addEventHandler(this, "redTogButton1_click1");
+  blueTogButton1 = new GImageToggleButton(this, 1300, 583);
+  blueTogButton1.addEventHandler(this, "blueTogButton1_click1");
+  greenTogButton1 = new GImageToggleButton(this, 1250, 583);
+  greenTogButton1.addEventHandler(this, "greenTogButton1_click1");
+  yellowTogButton1 = new GImageToggleButton(this, 1350, 583);
+  yellowTogButton1.addEventHandler(this, "yellowTogButton1_click1");
+  purpleTogButton1 = new GImageToggleButton(this, 1400, 583);
+  purpleTogButton1.addEventHandler(this, "purpleTogButton1_click1");
+  orangeTogButton1 = new GImageToggleButton(this, 1450, 583);
+  orangeTogButton1.addEventHandler(this, "orangeTogButton1_click1");
+  reddot = new GImageButton(this, 1209, 555, new String[] { "red.png", "red.png", "red.png" } );
+  reddot.addEventHandler(this, "reddot_click2");
+  greendot = new GImageButton(this, 1258, 555, new String[] { "green.png", "green.png", "green.png" } );
+  greendot.addEventHandler(this, "greendot_click2");
+  bluedot = new GImageButton(this, 1308, 555, new String[] { "blue.png", "blue.png", "blue.png" } );
+  bluedot.addEventHandler(this, "bluedot_click2");
+  yellowdot = new GImageButton(this, 1358, 555, new String[] { "yellow.png", "yellow.png", "yellow.png" } );
+  yellowdot.addEventHandler(this, "yellowdot_click2");
+  purpledot = new GImageButton(this, 1408, 555, new String[] { "pruple.png", "pruple.png", "pruple.png" } );
+  purpledot.addEventHandler(this, "purpledot_click2");
+  orangedot = new GImageButton(this, 1459, 555, new String[] { "orange.png", "orange.png", "orange.png" } );
+  orangedot.addEventHandler(this, "orangedot_click2");
+  redon = new GImageButton(this, 1209, 555, new String[] { "redPhoto.png", "redPhoto.png", "redPhoto.png" } );
+  redon.addEventHandler(this, "redon_click2");
+  blueon = new GImageButton(this, 1308, 555, new String[] { "bluePhoto.png", "bluePhoto.png", "bluePhoto.png" } );
+  blueon.addEventHandler(this, "blueon_click2");
+  greenon = new GImageButton(this, 1258, 555, new String[] { "greenPhoto.png", "greenPhoto.png", "greenPhoto.png" } );
+  greenon.addEventHandler(this, "greenon_click2");
+  yellowon = new GImageButton(this, 1358, 555, new String[] { "yellowPhoto.png", "yellowPhoto.png", "yellowPhoto.png" } );
+  yellowon.addEventHandler(this, "yellowon_click2");
+  purpleon = new GImageButton(this, 1408, 555, new String[] { "purplePhoto.png", "purplePhoto.png", "purplePhoto.png" } );
+  purpleon.addEventHandler(this, "prupleon_click2");
+  orangeon = new GImageButton(this, 1459, 555, new String[] { "orangePhoto.png", "orangePhoto.png", "orangePhoto.png" } );
+  orangeon.addEventHandler(this, "orangeon_click2");
+  dropListRed = new GDropList(this, 1205, 636, 31, 119, 6, 8);
+  dropListRed.setItems(loadStrings("list_883689"), 0);
+  dropListRed.setLocalColorScheme(GCScheme.RED_SCHEME);
+  dropListRed.addEventHandler(this, "dropListRed_click1");
+  dropListGreen = new GDropList(this, 1255, 636, 31, 119, 6, 8);
+  dropListGreen.setItems(loadStrings("list_214383"), 1);
+  dropListGreen.setLocalColorScheme(GCScheme.GREEN_SCHEME);
+  dropListGreen.addEventHandler(this, "dropListGreen_click1");
+  dropListBlue = new GDropList(this, 1305, 636, 31, 119, 6, 8);
+  dropListBlue.setItems(loadStrings("list_850991"), 2);
+  dropListBlue.setLocalColorScheme(GCScheme.BLUE_SCHEME);
+  dropListBlue.addEventHandler(this, "dropListBlue_click1");
+  dropListYellow = new GDropList(this, 1355, 636, 31, 119, 6, 8);
+  dropListYellow.setItems(loadStrings("list_637715"), 3);
+  dropListYellow.addEventHandler(this, "dropListYellow_click1");
+  dropListPurple = new GDropList(this, 1405, 636, 31, 119, 6, 8);
+  dropListPurple.setItems(loadStrings("list_621649"), 4);
+  dropListPurple.setLocalColorScheme(GCScheme.PURPLE_SCHEME);
+  dropListPurple.addEventHandler(this, "dropListPurple_click1");
+  dropListOrange = new GDropList(this, 1455, 636, 31, 119, 6, 8);
+  dropListOrange.setItems(loadStrings("list_901739"), 5);
+  dropListOrange.setLocalColorScheme(GCScheme.ORANGE_SCHEME);
+  dropListOrange.addEventHandler(this, "dropListOrange_click1");
+  imgButton1 = new GImageButton(this, 1227, 636, new String[] { "SlideCovers.png", "SlideCovers.png", "SlideCovers.png" } );
+  imgButton1.addEventHandler(this, "imgButton1_click2");
 }
 
-// Variable declarations
+// Variable declarations 
 // autogenerated do not edit
-GImageButton backgroundDarkMode;
-GKnob volknob;
-GKnob modeknob;
-GCustomSlider attack_slider;
-GCustomSlider sustain_slider;
-GCustomSlider release_slider;
-GImageButton redWavOverlay;
-GToggleGroup togGroupwav;
-GOption sinButt;
-GOption triButt;
-GOption sqrButt;
-GOption sawButt;
-GOption stepButt;
-GOption rampButt;
-GToggleGroup togGroupWavDevControl;
-GOption DevControWav;
-GOption DefaultWav;
-GCustomSlider freq_slider1;
-GCustomSlider bigtone_slider1;
-GImageButton lfored;
-GToggleGroup lfoGroup1;
-GOption lfosin;
-GOption lfosqr;
-GOption lfotri;
-GOption lfosaw;
-GOption lforamp;
-GOption lfostep;
-GToggleGroup lfoControlgGroup1;
-GOption lfosaveslot;
-GOption defaultLFO;
-GToggleGroup lfomodGroup1;
-GOption freqmod;
-GOption ampmod;
-GCustomSlider lfoLen_slider1;
-GCustomSlider lowFreq_slider2;
-GCustomSlider highFreq_slider1;
-GCheckbox calibration;
-GToggleGroup calibGroup1;
-GOption showCam;
-GOption capturecali;
-GCheckbox showExtract;
-GCustomSlider threshold_slider1;
-GCustomSlider zoom_slider2;
-GImageButton envClear;
-GLabel FileName;
-GImageButton browseButton;
-GImageButton smplButton;
-GImageButton wavClear;
-GImageButton resetCalib;
-GImageButton clearLFO;
-GCustomSlider screenColor;
-GCustomSlider lfoColor;
-GCustomSlider envColor;
-GCustomSlider wavColor;
-GCustomSlider thickness;
+GImageButton backgroundDarkMode; 
+GKnob volknob; 
+GKnob modeknob; 
+GCustomSlider attack_slider; 
+GCustomSlider sustain_slider; 
+GCustomSlider release_slider; 
+GImageButton redWavOverlay; 
+GToggleGroup togGroupwav; 
+GOption sinButt; 
+GOption triButt; 
+GOption sqrButt; 
+GOption sawButt; 
+GOption stepButt; 
+GOption rampButt; 
+GToggleGroup togGroupWavDevControl; 
+GOption DevControWav; 
+GOption DefaultWav; 
+GCustomSlider freq_slider1; 
+GCustomSlider bigtone_slider1; 
+GImageButton lfored; 
+GToggleGroup lfoGroup1; 
+GOption lfosin; 
+GOption lfosqr; 
+GOption lfotri; 
+GOption lfosaw; 
+GOption lforamp; 
+GOption lfostep; 
+GToggleGroup lfoControlgGroup1; 
+GOption lfosaveslot; 
+GOption defaultLFO; 
+GToggleGroup lfomodGroup1; 
+GOption freqmod; 
+GOption ampmod; 
+GCustomSlider lfoLen_slider1; 
+GCustomSlider lowFreq_slider2; 
+GCustomSlider highFreq_slider1; 
+GCheckbox calibration; 
+GToggleGroup calibGroup1; 
+GOption showCam; 
+GOption capturecali; 
+GCheckbox showExtract; 
+GCustomSlider threshold_slider1; 
+GCustomSlider zoom_slider2; 
+GImageButton envClear; 
+GLabel FileName; 
+GImageButton browseButton; 
+GImageButton smplButton; 
+GImageButton wavClear; 
+GImageButton resetCalib; 
+GImageButton clearLFO; 
+GCustomSlider screenColor; 
+GCustomSlider lfoColor; 
+GCustomSlider envColor; 
+GCustomSlider wavColor; 
+GCustomSlider thickness; 
+GImageButton browseExport; 
+GLabel exportLocLabel; 
+GTextField fileName; 
+GImageButton saveButt; 
+GImageButton backButt; 
+GImageButton playButt; 
+GImageButton stopButt; 
+GImageButton forbutt; 
+GImageButton helpButt; 
+GImageButton preset; 
+GImageButton exportMP3; 
+GImageButton photsynthesisImage; 
+GImageToggleButton redTogButton1; 
+GImageToggleButton blueTogButton1; 
+GImageToggleButton greenTogButton1; 
+GImageToggleButton yellowTogButton1; 
+GImageToggleButton purpleTogButton1; 
+GImageToggleButton orangeTogButton1; 
+GImageButton reddot; 
+GImageButton greendot; 
+GImageButton bluedot; 
+GImageButton yellowdot; 
+GImageButton purpledot; 
+GImageButton orangedot; 
+GImageButton redon; 
+GImageButton blueon; 
+GImageButton greenon; 
+GImageButton yellowon; 
+GImageButton purpleon; 
+GImageButton orangeon; 
+GDropList dropListRed; 
+GDropList dropListGreen; 
+GDropList dropListBlue; 
+GDropList dropListYellow; 
+GDropList dropListPurple; 
+GDropList dropListOrange; 
+GImageButton imgButton1; 
