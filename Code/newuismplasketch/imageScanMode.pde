@@ -8,6 +8,14 @@ void setOnDotsVis() {
   purpleon.setVisible(photsynthesisDots[4]);
   orangeon.setVisible(photsynthesisDots[5]);
 }
+void getDropdownData(GDropList source, GEvent event, int index){
+  if(event == GEvent.SELECTED){
+  freqArrPhotoMode[index] = source.getSelectedIndex();
+  }
+}
+
+int[] freqArrPhotoMode = {0, 1, 2, 3, 4, 5};
+
 
 boolean[] photsynthesisDots = {false, false, false, false, false, false};
 

@@ -78,37 +78,37 @@ void photowaveformSmpl() { //this is very rudimentary and will do more later
   if (photsynthesisDots[0] == true) {
     float[] wavR = processed.get(0);
     AudioSample smplR = createSample(wavR);
-    playWav(smplR, 1.0*wavMult);
+    playWav(smplR, ((samplerate[srIndex]+fineAdjust)/4)*(1+freqArrPhotoMode[0]));
     playSliderEnv(smplR);
   }
   if (photsynthesisDots[2] == true) {
     float[] wavG = processed.get(1);
     AudioSample smplG = createSample(wavG);
-    playWav(smplG, 1.5*wavMult);
+    playWav(smplG, ((samplerate[srIndex]+fineAdjust)/4)*(1+freqArrPhotoMode[1]));
     playSliderEnv(smplG);
   }
   if (photsynthesisDots[1] == true) {
     float[] wavB = processed.get(2);
     AudioSample smplB = createSample(wavB);
-    playWav(smplB, 2.0*wavMult);
+    playWav(smplB, ((samplerate[srIndex]+fineAdjust)/4)*(1+freqArrPhotoMode[2]));
     playSliderEnv(smplB);
   }
   if (photsynthesisDots[3] == true) {
     float[] wavY = processed.get(3);
     AudioSample smplY = createSample(wavY);
-    playWav(smplY, 2.5*wavMult);
+    playWav(smplY, ((samplerate[srIndex]+fineAdjust)/4)*(1+freqArrPhotoMode[3]));
     playSliderEnv(smplY);
   }
   if (photsynthesisDots[4] == true) {
     float[] wavP = processed.get(4);
     AudioSample smplP = createSample(wavP);
-    playWav(smplP, 3.0*wavMult);
+    playWav(smplP, ((samplerate[srIndex]+fineAdjust)/4)*(1+freqArrPhotoMode[4]));
     playSliderEnv(smplP);
   }
   if (photsynthesisDots[5] == true) {
     float[] wavO = processed.get(5);
     AudioSample smplO = createSample(wavO);
-    playWav(smplO, 3.5*wavMult);
+    playWav(smplO, ((samplerate[srIndex]+fineAdjust)/4)*(1+freqArrPhotoMode[5]));
     playSliderEnv(smplO);
   }
 }

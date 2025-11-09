@@ -375,32 +375,28 @@ public void orangeon_click2(GImageButton source, GEvent event) { //_CODE_:orange
 } //_CODE_:orangeon:464327:
 
 public void dropListRed_click1(GDropList source, GEvent event) { //_CODE_:dropListRed:883689:
-  println("dropListRed - GDropList >> GEvent." + event + " @ " + millis());
+getDropdownData(source, event, 0);
 } //_CODE_:dropListRed:883689:
 
 public void dropListGreen_click1(GDropList source, GEvent event) { //_CODE_:dropListGreen:214383:
-  println("dropListGreen - GDropList >> GEvent." + event + " @ " + millis());
+getDropdownData(source, event, 1);
 } //_CODE_:dropListGreen:214383:
 
 public void dropListBlue_click1(GDropList source, GEvent event) { //_CODE_:dropListBlue:850991:
-  println("dropListBlue - GDropList >> GEvent." + event + " @ " + millis());
+getDropdownData(source, event, 2);
 } //_CODE_:dropListBlue:850991:
 
 public void dropListYellow_click1(GDropList source, GEvent event) { //_CODE_:dropListYellow:637715:
-  println("dropListYellow - GDropList >> GEvent." + event + " @ " + millis());
+getDropdownData(source, event, 3);
 } //_CODE_:dropListYellow:637715:
 
 public void dropListPurple_click1(GDropList source, GEvent event) { //_CODE_:dropListPurple:621649:
-  println("dropListPurple - GDropList >> GEvent." + event + " @ " + millis());
+getDropdownData(source, event, 4);
 } //_CODE_:dropListPurple:621649:
 
 public void dropListOrange_click1(GDropList source, GEvent event) { //_CODE_:dropListOrange:901739:
-  println("dropListOrange - GDropList >> GEvent." + event + " @ " + millis());
+getDropdownData(source, event, 5);
 } //_CODE_:dropListOrange:901739:
-
-public void imgButton1_click2(GImageButton source, GEvent event) { //_CODE_:imgButton1:996575:
-  println("imgButton1 - GImageButton >> GEvent." + event + " @ " + millis());
-} //_CODE_:imgButton1:996575:
 
 
 
@@ -778,8 +774,6 @@ public void createGUI(){
   dropListOrange.setItems(loadStrings("list_901739"), 5);
   dropListOrange.setLocalColorScheme(GCScheme.ORANGE_SCHEME);
   dropListOrange.addEventHandler(this, "dropListOrange_click1");
-  imgButton1 = new GImageButton(this, 1227, 636, new String[] { "SlideCovers.png", "SlideCovers.png", "SlideCovers.png" } );
-  imgButton1.addEventHandler(this, "imgButton1_click2");
 }
 
 // Variable declarations 
@@ -875,4 +869,3 @@ GDropList dropListBlue;
 GDropList dropListYellow; 
 GDropList dropListPurple; 
 GDropList dropListOrange; 
-GImageButton imgButton1; 
