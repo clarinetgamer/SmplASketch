@@ -18,8 +18,15 @@ void setColor(int index, int r, int g, int b) {
   drawColor[index][2] = b;
 }
 
-
-
+//Save 4 l8r
+//int linecounter=0;
+//void drawGreenLine() {
+//  stroke(0, 255, 0);
+//  line(432+linecounter, 128, 432+linecounter, 448);
+//  wait(10);
+//  linecounter++;
+//  if (linecounter >680) linecounter=0;
+//}
 
 void colorControl(GCustomSlider source, GEvent event, int index) {
   if (event == GEvent.RELEASED) {
