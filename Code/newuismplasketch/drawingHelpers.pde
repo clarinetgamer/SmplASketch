@@ -130,5 +130,5 @@ void setAdditionSchemes(){
   dropListOrange.setLocalColor(2, color(0,0,0));
   fileName.setLocalColorScheme(GCScheme.RED_SCHEME);
   fileName.setLocalColor(2, color(255,0,0)); 
-
+  pitch.setLocalColor(2, color(0,0,0)); 
 }

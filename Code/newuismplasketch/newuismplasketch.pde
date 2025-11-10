@@ -17,6 +17,7 @@ public void setup() {
   smooth(10);
   createGUI();
   bigtone_slider1.setShowTicks(false);//partofcreateGUI
+  octave_slider1.setShowTicks(false);//partofcreateGUI
   setAdditionSchemes();
   //Img processing setup
   modWavImg = createImage(camwidth, camheight, RGB); // Create image to write other data to
@@ -41,6 +42,7 @@ public void draw() {
     checkMode();
   }
   setOnDotsVis();
+  
 }
 
 void drawDarkMode() {
@@ -51,6 +53,8 @@ void drawDarkMode() {
   rect(0, 830, 1512, 57);
   fill(200);
   rect(420, 120, 670, 325);
+  fill(255,255, 150);
+  rect(246, 467, 57, 57);
 }
 
 //void drawLightMode() {

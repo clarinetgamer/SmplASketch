@@ -45,23 +45,27 @@ void checkMode() { //Would do else ifs but this logic makes the knob smoother
     } else {
       wavMode(processWavImage());
     }
+    modeDisplay.setText("Waveform");
     prevMode = 0.0;
   }
   if (1.0 == mode || prevMode == 1.0) {
     float[] mappedSliders = new float[]{map(sliderVals[0], 0, 10, 0., 1.), map(sliderVals[1], 0, 10, 0., 1.), map(sliderVals[2], 0, 10, 0., 1.)};
     envMode(mappedSliders);
+    modeDisplay.setText("Envelope");
     prevMode = 1.0;
   }
   if (2.0 == mode || prevMode ==2.0) {
     //lfomode
+    modeDisplay.setText("LFO");
     prevMode = 2.0;
   }
   if (3.0 == mode || prevMode ==3.0) {
-    //lfocombinemode
+    modeDisplay.setText("Combinatory/Playback");
     prevMode = 3.0;
   }
   if (4.0 == mode || prevMode ==4.0) {
     imgMode();
+    modeDisplay.setText("Photosynthesis");
     prevMode = 4.0;
   }
 }
@@ -71,6 +75,7 @@ boolean extraction = false;
 
 void calibMode() {
   takePicture("calib");
+  modeDisplay.setText("Calibration");
   PImage camCapMod;
   camCap = loadImage("calib.jpg");
   if (camVsCapCalib) {
