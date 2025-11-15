@@ -1,5 +1,26 @@
+boolean clearWav = true;
+boolean wavControl = true;
+boolean lfoControl = true;
+boolean clearLFO = true;
+boolean clearEnv = true;
+boolean susMode = false;
+float[] sliderVals = new float[4];
+boolean spaceHit = false;
+boolean photoPitch = true;
+boolean lfoOn = false;
+boolean noShow = false;
 PImage filereset = createImage(camwidth, camheight, RGB);
 
+//UI Setup
+void uiSetup() {
+  smooth(10);
+  createGUI();
+  bigtone_slider1.setShowTicks(false);
+  octave_slider1.setShowTicks(false);
+  setAdditionSchemes();
+}
+
+//Wav/LFO Generation Functions
 float[] genSinWav() { //create sin wav arr
   float[] sinewave = new float[camwidth];
 
@@ -9,14 +30,6 @@ float[] genSinWav() { //create sin wav arr
   return sinewave;
 }
 
-float[] genBasicEnv() { //create reset env
-  float attackTime = 0.1;
-  float sustainTime = 0.5;
-  float releaseTime = 0.4;
-  return new float[]{attackTime, sustainTime, releaseTime};
-}
-
-//Wav Generation Functions
 void defaultSin(boolean wavOrLFO) {
   if (wavOrLFO) {
     defaultWav=resetSin;
@@ -111,25 +124,4 @@ void defaultStep(boolean wavOrLFO) {
   } else {
     defaultLFO=stepwav;
   }
-}
-
-
-void clearCache() {
-  resetWav();
-  resetLFO();
-  println("Image Cache Cleared");
-}
-
-void resetCalib() {
-  zoom_slider2.setLimits(1.0, 0.8, 1.2);
-  threshold_slider1.setLimits(0.791, 0.591, 0.991);
-  threshold = 0.791;
-  shift = 1.0;
-}
-
-void clearActiveSamples() {
-  for (AudioSample s : endSus) {
-    s.stop();
-  }
-  endSus = new ArrayList<AudioSample>();
 }

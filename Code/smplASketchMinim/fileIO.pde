@@ -1,6 +1,11 @@
 String saveLoc = "";
 
-void selectSaveLoc() {
+void initImgFromFile(String imgName) {//Warp image to cam dimensions
+  imageMode = loadImage(imgName);
+  imageMode.resize(camwidth, camheight);
+}
+
+void selectSaveLoc() { //Select export location for mp3/editor files
   selectFolder("Select a folder to process:", "folderSelected");
 }
 
@@ -13,8 +18,7 @@ void folderSelected(File selection) {
   }
 }
 
-
-void selectPhotosynthesisFile() {
+void selectPhotosynthesisFile() {//Select image location for PS
   selectInput("Select an image to process:", "fileSelected");
 }
 
@@ -29,7 +33,7 @@ void fileSelected(File selection) {
   }
 }
 
-String getShortFileName(String selection) {
+String getShortFileName(String selection) { //get a shortened file name to display in ui
   char[] chars = selection.toCharArray();
   int lastSlash = 0;
   for (int i = 0; i < selection.length(); i ++) {
@@ -54,6 +58,6 @@ String getShortFileName(String selection) {
   return modSelection;
 }
 
-void helpButton() {
+void helpButton() {//link for help button
   link("https://github.com/clarinetgamer/SmplASketch");
 }

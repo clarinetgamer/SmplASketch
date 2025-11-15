@@ -1,36 +1,8 @@
 PImage imageMode;
-
-void setOnDotsVis() {
-  redon.setVisible(photsynthesisDots[0]);
-  blueon.setVisible(photsynthesisDots[1]);
-  greenon.setVisible(photsynthesisDots[2]);
-  yellowon.setVisible(photsynthesisDots[3]);
-  purpleon.setVisible(photsynthesisDots[4]);
-  orangeon.setVisible(photsynthesisDots[5]);
-}
-void getDropdownData(GDropList source, GEvent event, int index){
-  if(event == GEvent.SELECTED){
-  freqArrPhotoMode[index] = source.getSelectedIndex();
-  }
-}
-
 int[] freqArrPhotoMode = {0, 1, 2, 3, 4, 5};
-
-
 boolean[] photsynthesisDots = {false, false, false, false, false, false};
 
-void toggleUpdate(GEvent event, int index) {
-  if (event == GEvent.CLICKED) {
-    photsynthesisDots[index] = !photsynthesisDots[index];
-  }
-}
-
-void initImgFromFile(String imgName) {
-  imageMode = loadImage(imgName);
-  imageMode.resize(camwidth, camheight);
-}
-
-ArrayList<float[]> processMultiImage(PImage img) {
+ArrayList<float[]> processMultiImage(PImage img) {//Image processing function for multi color extraction
   img.loadPixels(); //load images pizels
   int imgWidth = img.width;
   int imgHeight = img.height;
@@ -89,10 +61,4 @@ ArrayList<float[]> processMultiImage(PImage img) {
   returnThis.add(orangeWav);
 
   return returnThis;
-}
-
-void wait(int time) {
-  int start = millis();
-  while (millis() <= start+time) {
-  }
 }

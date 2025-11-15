@@ -1,5 +1,28 @@
 float[] defaultWav = resetSin;
 float[] defaultLFO = resetSin;
+boolean noSliderTouched = true;
+
+//Main Window
+void setModeKnob(GKnob source) {
+  mode = source.getValueF();
+}
+
+void setVolKnob(GKnob source) {
+  volume = Math.round(source.getValueI()) * 0.1;//Round volume
+}
+
+//Wav Device Control
+void  wavDeviceOn(GEvent event){
+  if (event == GEvent.SELECTED) {
+    wavControl = true;
+  }
+}
+
+void  wavDeviceOff(GEvent event){
+  if (event == GEvent.SELECTED) {
+    wavControl = false;
+  }
+} 
 
 // Wav Selection
 void sinWavSelect(GEvent event) {
@@ -35,19 +58,28 @@ void rampWavSelect(GEvent event) {
   }
 }
 
-//Wav Device Control
-void  wavDeviceOn(GEvent event){
-  if (event == GEvent.SELECTED) {
-    wavControl = true;
+//Wave Slider Extraction
+void pitchFineAdjust(GCustomSlider source, GEvent event){
+if (event == GEvent.RELEASED) {
+    fineAdjust = source.getValueF();
+    if (fineAdjust == 0) {
+      pitchFine.setText("");
+    } else if (fineAdjust > 0) {
+      pitchFine.setText("+");
+    } else {
+      pitchFine.setText("-");
+    }
   }
 }
 
-void  wavDeviceOff(GEvent event){
-  if (event == GEvent.SELECTED) {
-    wavControl = false;
+void pitchCoarseAdjust(GCustomSlider source, GEvent event){
+  if (event == GEvent.RELEASED) {
+    noteIndex = source.getValueI()+1;
+    pitch.setText(note[noteIndex]);
   }
-} 
+}
 
+//LFO Device Control
 void  lfoDeviceOn(GEvent event){
   if (event == GEvent.SELECTED) {
     lfoControl = true;
@@ -59,6 +91,7 @@ void  lfoDeviceOff(GEvent event){
     lfoControl = false;
   }
 } 
+
 //LFO Selection
 void sinLFOSelect(GEvent event) {
   if (event == GEvent.SELECTED) {
@@ -93,17 +126,9 @@ void rampLFOSelect(GEvent event) {
   }
 }
 
-void envMenuStart() {
-  attack_slider.setLimits(5, 0, 10);
-  sustain_slider.setLimits(5.005, 0.01, 10);
-  release_slider.setLimits(5, 0, 10);
-  sliderVals = new float[]{5, 5, 5};
-  clearEnv = true;
-  envMult = 1;
-  envDur_slider1.setLimits(1.25, 0.5, 2.0);
-}
-
+//Envelope Slider Extraction
 void sliderUpdate(GCustomSlider source, GEvent event, int index) {
+  noSliderTouched = false;
   if (event == GEvent.RELEASED) {
     sliderVals[index] = source.getValueF();
   }
@@ -112,11 +137,15 @@ void sliderUpdate(GCustomSlider source, GEvent event, int index) {
   }
 }
 
-//Main Window
-void setModeKnob(GKnob source) {
-  mode = source.getValueF();
+//Photosynthesis Info Extraction
+void getDropdownData(GDropList source, GEvent event, int index){
+  if(event == GEvent.SELECTED){
+  freqArrPhotoMode[index] = source.getSelectedIndex();
+  }
 }
 
-void setVolKnob(GKnob source) {
-  volume = Math.round(source.getValueI()) * 0.1;//Round volume
+void toggleUpdate(GEvent event, int index) {
+  if (event == GEvent.CLICKED) {
+    photsynthesisDots[index] = !photsynthesisDots[index];
+  }
 }

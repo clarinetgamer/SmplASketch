@@ -1,40 +1,59 @@
 float[] resetSin = genSinWav();
-float[] resetEnv = genBasicEnv();
-float mode = 0.0; //0.0 is Wav Mode 1.0 is Env Mode 2.0 is IMG mode
+float mode = 0.0; 
 float prevMode = 0.0;
 boolean drawCombWav = true;
 boolean drawCombEnv = false;
 boolean drawCombLFO = false;
-
 boolean camVsCapCalib = true;
+boolean calibMode = false;
 
-void wavMode(float[] wav) { //Draw Screen, draw wav, draw outline
+PImage camCap;
+boolean extraction = false;
+
+void calibMode() { //Display/functionality of calibration
+  takePicture("calib");
+  modeDisplay.setText("Calibration");
+  PImage camCapMod;
+  camCap = loadImage("calib.jpg");
+  if (camVsCapCalib) {
+    camCapMod = crop(camCap);
+  } else {
+    camCapMod = threshed(crop(camCap));
+  }
+  image(camCapMod, 430, 128);
+  if (extraction) {
+    drawExtract(processCalibImage());
+  }
+}
+
+//Screen Modes
+void wavMode(float[] wav) { //save slot 1
   drawScreen();
   drawWav(wav);
 }
 
-void envMode(float[] env) {//Draw Screen, draw env, draw outline
+void envMode(float[] env) { //envelope editor
   drawScreen();
   drawEnv(env);
 }
 
-void lfoMode(float[] lfo) { //Draw Screen, draw wav, draw outline
+void lfoMode(float[] lfo) { //save slot 1
   drawScreen();
   drawLFO(lfo);
 }
 
-void comboMode(float[] wav, float[] env, float[] lfo) { //Draw Screen, draw wav, draw outline
+void comboMode(float[] wav, float[] env, float[] lfo) { //playback display
   drawScreen();
   if (drawCombWav)drawWav(wav);
   if (drawCombEnv)drawEnv(env);
   if (drawCombLFO)drawLFO(lfo);
 }
 
-void imgMode() { //Draw Screen, draw wavs(need to add), draw outline
+void imgMode() { //photosynthesis display
   drawScreen();
   ArrayList<float[]> arrList = processMultiImage(imageMode);
   int counter = 0;
-  for (float[] f : arrList) {
+  for (float[] f : arrList) { //only draw color wavs that are selected
     if (counter == 0) {
       if (photsynthesisDots[0] == true) drawWav(f, 255, 0, 0);
     } else if (counter == 1) {
@@ -52,7 +71,7 @@ void imgMode() { //Draw Screen, draw wavs(need to add), draw outline
   }
 }
 
-void checkMode() { //Would do else ifs but this logic makes the knob smoother
+void checkMode() { //Checks to see which position the knob is in and sends values into drawing helpers for each mode
   float[] wavtemp;
   float[] envtemp;
   float[] lfotemp;
@@ -68,7 +87,7 @@ void checkMode() { //Would do else ifs but this logic makes the knob smoother
     prevMode = 0.0;
   }
   if (1.0 == mode || prevMode == 1.0) {
-    float[] mappedSliders = new float[]{map(sliderVals[0], 0, 10, 0., 1.), map(sliderVals[1], 0, 10, 0., 1.), map(sliderVals[2], 0, 10, 0., 1.)};
+    float[] mappedSliders = new float[]{map(sliderVals[0], 0, 10, 0., 1.), map(sliderVals[1], 0, 10, 0., 1.), map(sliderVals[2], 0, 10, 0., 1.), map(sliderVals[3], 0, 10, 0., 1.)};
     envMode(mappedSliders);
     modeDisplay.setText("Envelope");
     prevMode = 1.0;
@@ -92,7 +111,7 @@ void checkMode() { //Would do else ifs but this logic makes the knob smoother
     } else {
       wavtemp = processWavImage();
     }
-    envtemp = new float[]{map(sliderVals[0], 0, 10, 0., 1.), map(sliderVals[1], 0, 10, 0., 1.), map(sliderVals[2], 0, 10, 0., 1.)};
+    envtemp = new float[]{map(sliderVals[0], 0, 10, 0., 1.), map(sliderVals[1], 0, 10, 0., 1.), map(sliderVals[2], 0, 10, 0., 1.), map(sliderVals[3], 0, 10, 0., 1.)};
     if (clearLFO && lfoControl) {
       lfotemp = resetSin;
     } else if (!lfoControl) {
@@ -111,21 +130,11 @@ void checkMode() { //Would do else ifs but this logic makes the knob smoother
   }
 }
 
-PImage camCap;
-boolean extraction = false;
-
-void calibMode() {
-  takePicture("calib");
-  modeDisplay.setText("Calibration");
-  PImage camCapMod;
-  camCap = loadImage("calib.jpg");
-  if (camVsCapCalib) {
-    camCapMod = crop(camCap);
+//sets either regular display mode or calib
+void screenMode() {
+if (calibMode) {
+    calibMode();
   } else {
-    camCapMod = threshed(crop(camCap));
-  }
-  image(camCapMod, 430, 128);
-  if (extraction) {
-    drawExtract(processCalibImage());
+    checkMode();
   }
 }
