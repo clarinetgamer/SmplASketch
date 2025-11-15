@@ -42,10 +42,10 @@ String getShortFileName(String selection) {
       modSelection += chars[i];
     }
   }
-  if (modSelection.length() >= 40){
+  if (modSelection.length() >= 30){
   char[] modchararr = modSelection.toCharArray();
   String temp = "";
-  for (int i = 0; i < 40; i ++) {
+  for (int i = 0; i < 30; i ++) {
     temp += modchararr[i];
   }
   temp += "...";

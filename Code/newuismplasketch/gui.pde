@@ -146,14 +146,6 @@ public void defaultLfo_clicked1(GOption source, GEvent event) { //_CODE_:default
   println("defaultLFO - GOption >> GEvent." + event + " @ " + millis());
 } //_CODE_:defaultLFO:562707:
 
-public void freqmod_clicked1(GOption source, GEvent event) { //_CODE_:freqmod:458289:
-  println("freqmod - GOption >> GEvent." + event + " @ " + millis());
-} //_CODE_:freqmod:458289:
-
-public void ampmod_clicked1(GOption source, GEvent event) { //_CODE_:ampmod:734614:
-  println("ampmod - GOption >> GEvent." + event + " @ " + millis());
-} //_CODE_:ampmod:734614:
-
 public void lfoLen_slider1_change1(GCustomSlider source, GEvent event) { //_CODE_:lfoLen_slider1:956883:
   println("lfoLen_slider1 - GCustomSlider >> GEvent." + event + " @ " + millis());
 } //_CODE_:lfoLen_slider1:956883:
@@ -162,7 +154,7 @@ public void lowFreq_slider2_change1(GCustomSlider source, GEvent event) { //_COD
   println("lowFreq_slider2 - GCustomSlider >> GEvent." + event + " @ " + millis());
 } //_CODE_:lowFreq_slider2:922769:
 
-public void highFreq_slider1_change1(GCustomSlider source, GEvent event) { //_CODE_:highFreq_slider1:611418:
+public void rangeFreq_slider1_change1(GCustomSlider source, GEvent event) { //_CODE_:highFreq_slider1:611418:
   println("highFreq_slider1 - GCustomSlider >> GEvent." + event + " @ " + millis());
 } //_CODE_:highFreq_slider1:611418:
 
@@ -234,11 +226,11 @@ public void resetCalib_click2(GImageButton source, GEvent event) { //_CODE_:rese
   }
 } //_CODE_:resetCalib:215921:
 
-public void clearLFO_click2(GImageButton source, GEvent event) { //_CODE_:clearLFO:939396:
+public void clearTheLFO_click2(GImageButton source, GEvent event) { //_CODE_:clearTheLFO:939396:
   if (event == GEvent.CLICKED) {
     resetLFO();
   }
-} //_CODE_:clearLFO:939396:
+} //_CODE_:clearTheLFO:939396:
 
 public void ScreenColor_change1(GCustomSlider source, GEvent event) { //_CODE_:screenColor:548097:
   screenColorControl(source, event);
@@ -301,10 +293,6 @@ public void helpButt_click2(GImageButton source, GEvent event) { //_CODE_:helpBu
 public void preset_click2(GImageButton source, GEvent event) { //_CODE_:preset:485718:
   println("preset - GImageButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:preset:485718:
-
-public void exportMP3_click2(GImageButton source, GEvent event) { //_CODE_:exportMP3:709719:
-  println("exportMP3 - GImageButton >> GEvent." + event + " @ " + millis());
-} //_CODE_:exportMP3:709719:
 
 public void photsynthesisImage_click2(GImageButton source, GEvent event) { //_CODE_:photsynthesisImage:477057:
   println("imgButton1 - GImageButton >> GEvent." + event + " @ " + millis());
@@ -406,24 +394,32 @@ public void dropListOrange_click1(GDropList source, GEvent event) { //_CODE_:dro
   getDropdownData(source, event, 5);
 } //_CODE_:dropListOrange:901739:
 
-public void ampEnv_clicked1(GOption source, GEvent event) { //_CODE_:ampEnv:841963:
+public void modeforKnob_clicked1(GOption source, GEvent event) { //_CODE_:modeforKnob:841963:
   println("ampEnv - GOption >> GEvent." + event + " @ " + millis());
-} //_CODE_:ampEnv:841963:
+} //_CODE_:modeforKnob:841963:
 
-public void ampLFO_clicked1(GOption source, GEvent event) { //_CODE_:ampLFO:784790:
+public void drawforKnob_clicked1(GOption source, GEvent event) { //_CODE_:drawforKnob:784790:
   println("ampLFO - GOption >> GEvent." + event + " @ " + millis());
-} //_CODE_:ampLFO:784790:
+} //_CODE_:drawforKnob:784790:
 
 public void octave_slider1_change1(GCustomSlider source, GEvent event) { //_CODE_:octave_slider1:947832:
-  println("octave_slider1 - GCustomSlider >> GEvent." + event + " @ " + millis());
+  if (event == GEvent.RELEASED) {
+    octIndex = source.getValueI();
+  }
 } //_CODE_:octave_slider1:947832:
 
 public void envDur_slider1_change1(GCustomSlider source, GEvent event) { //_CODE_:envDur_slider1:860031:
-  println("envDur_slider1 - GCustomSlider >> GEvent." + event + " @ " + millis());
+ if (event == GEvent.RELEASED) {
+    envMult = source.getValueF();
+  }
 } //_CODE_:envDur_slider1:860031:
 
 public void showPlayhead_clicked1(GCheckbox source, GEvent event) { //_CODE_:showPlayhead:915718:
-  println("showPlayhead - GCheckbox >> GEvent." + event + " @ " + millis());
+if(event == GEvent.SELECTED){
+  showPlayLine = true;
+} else {
+  showPlayLine = false;
+}
 } //_CODE_:showPlayhead:915718:
 
 public void sustainMode_clicked1(GCheckbox source, GEvent event) { //_CODE_:sustainMode:930059:
@@ -431,24 +427,52 @@ public void sustainMode_clicked1(GCheckbox source, GEvent event) { //_CODE_:sust
 } //_CODE_:sustainMode:930059:
 
 public void psPitch_clicked1(GCheckbox source, GEvent event) { //_CODE_:psPitch:645877:
-  println("psPitch - GCheckbox >> GEvent." + event + " @ " + millis());
+  if (event == GEvent.SELECTED) {
+    photoPitch = true;
+  } else {
+    photoPitch = false;
+  }
 } //_CODE_:psPitch:645877:
 
 public void showEnv_clicked1(GCheckbox source, GEvent event) { //_CODE_:showEnv:225755:
-  println("showEnv - GCheckbox >> GEvent." + event + " @ " + millis());
+if(event == GEvent.SELECTED) {
+drawCombEnv=true;
+} else {
+drawCombEnv=false;
+}
 } //_CODE_:showEnv:225755:
 
 public void showLFO_clicked1(GCheckbox source, GEvent event) { //_CODE_:showLFO:932922:
-  println("showLFO - GCheckbox >> GEvent." + event + " @ " + millis());
+if(event == GEvent.SELECTED) {
+drawCombLFO=true;
+} else {
+drawCombLFO=false;
+}
 } //_CODE_:showLFO:932922:
 
 public void showWav_clicked1(GCheckbox source, GEvent event) { //_CODE_:showWav:832149:
-  println("showWav - GCheckbox >> GEvent." + event + " @ " + millis());
+if(event == GEvent.SELECTED) {
+drawCombWav=true;
+} else {
+drawCombWav=false;
+}
 } //_CODE_:showWav:832149:
 
 public void expButton1_click2(GImageButton source, GEvent event) { //_CODE_:expButton1:780310:
   println("expButton1 - GImageButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:expButton1:780310:
+
+public void lfoOnSwitch_clicked1(GCheckbox source, GEvent event) { //_CODE_:lfoOnSwitch:633091:
+if(event == GEvent.SELECTED) {
+lfoOn = true;
+} else {
+  lfoOn = false;
+}
+} //_CODE_:lfoOnSwitch:633091:
+
+public void lfoNote_clicked1(GCheckbox source, GEvent event) { //_CODE_:lfoNote:226715:
+  println("lfoNote - GCheckbox >> GEvent." + event + " @ " + millis());
+} //_CODE_:lfoNote:226715:
 
 
 
@@ -512,7 +536,7 @@ public void createGUI(){
   release_slider.setLocalColorScheme(GCScheme.BLUE_SCHEME);
   release_slider.setOpaque(false);
   release_slider.addEventHandler(this, "release_slider_change1");
-  redWavOverlay = new GImageButton(this, 42, 719, 269, 101, new String[] { "redstuff.png", "redstuff.png", "redstuff.png" } );
+  redWavOverlay = new GImageButton(this, 42, 719, 269, 101, new String[] { "wavgray.png", "wavgray.png", "wavgray.png" } );
   redWavOverlay.setLocalColorScheme(GCScheme.BLUE_SCHEME);
   redWavOverlay.addEventHandler(this, "redWavOverlay_click2");
   togGroupwav = new GToggleGroup();
@@ -581,7 +605,7 @@ public void createGUI(){
   bigtone_slider1.setNumberFormat(G4P.INTEGER, 0);
   bigtone_slider1.setOpaque(false);
   bigtone_slider1.addEventHandler(this, "bigtone_slider1_change1");
-  lfored = new GImageButton(this, 892, 715, 269, 101, new String[] { "redstuff.png", "redstuff.png", "redstuff.png" } );
+  lfored = new GImageButton(this, 892, 715, 269, 101, new String[] { "wavgray.png", "wavgray.png", "wavgray.png" } );
   lfored.addEventHandler(this, "lfored_click2");
   lfoGroup1 = new GToggleGroup();
   lfosin = new GOption(this, 873, 716, 92, 45);
@@ -627,18 +651,6 @@ public void createGUI(){
   lfoControlgGroup1.addControl(lfosaveslot);
   lfosaveslot.setSelected(true);
   lfoControlgGroup1.addControl(defaultLFO);
-  lfomodGroup1 = new GToggleGroup();
-  freqmod = new GOption(this, 888, 656, 120, 20);
-  freqmod.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
-  freqmod.setOpaque(false);
-  freqmod.addEventHandler(this, "freqmod_clicked1");
-  ampmod = new GOption(this, 1028, 656, 120, 20);
-  ampmod.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
-  ampmod.setOpaque(false);
-  ampmod.addEventHandler(this, "ampmod_clicked1");
-  lfomodGroup1.addControl(freqmod);
-  freqmod.setSelected(true);
-  lfomodGroup1.addControl(ampmod);
   lfoLen_slider1 = new GCustomSlider(this, 690, 660, 160, 40, "grey_blue");
   lfoLen_slider1.setLimits(0.5, 0.0, 1.0);
   lfoLen_slider1.setNumberFormat(G4P.DECIMAL, 2);
@@ -653,7 +665,7 @@ public void createGUI(){
   highFreq_slider1.setLimits(0.5, 0.0, 1.0);
   highFreq_slider1.setNumberFormat(G4P.DECIMAL, 2);
   highFreq_slider1.setOpaque(false);
-  highFreq_slider1.addEventHandler(this, "highFreq_slider1_change1");
+  highFreq_slider1.addEventHandler(this, "rangeFreq_slider1_change1");
   calibration = new GCheckbox(this, 1405, 380, 88, 20);
   calibration.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   calibration.setOpaque(false);
@@ -699,8 +711,8 @@ public void createGUI(){
   wavClear.addEventHandler(this, "wavClear_click2");
   resetCalib = new GImageButton(this, 1349, 315, new String[] { "Reset Calib.png", "Reset Calib.png", "Reset Calib.png" } );
   resetCalib.addEventHandler(this, "resetCalib_click2");
-  clearLFO = new GImageButton(this, 1349, 342, new String[] { "clearLFO.png", "clearLFO.png", "clearLFO.png" } );
-  clearLFO.addEventHandler(this, "clearLFO_click2");
+  clearTheLFO = new GImageButton(this, 1349, 342, new String[] { "clearLFO.png", "clearLFO.png", "clearLFO.png" } );
+  clearTheLFO.addEventHandler(this, "clearTheLFO_click2");
   screenColor = new GCustomSlider(this, 1190, 232, 115, 15, "red_yellow18px");
   screenColor.setLimits(1, 0, 3);
   screenColor.setNbrTicks(4);
@@ -709,7 +721,7 @@ public void createGUI(){
   screenColor.setOpaque(false);
   screenColor.addEventHandler(this, "ScreenColor_change1");
   lfoColor = new GCustomSlider(this, 1207, 190, 272, 18, "red_yellow18px");
-  lfoColor.setLimits(0, 0, 9);
+  lfoColor.setLimits(4, 0, 9);
   lfoColor.setNbrTicks(10);
   lfoColor.setStickToTicks(true);
   lfoColor.setShowTicks(true);
@@ -717,7 +729,7 @@ public void createGUI(){
   lfoColor.setOpaque(false);
   lfoColor.addEventHandler(this, "lfoColor_change1");
   envColor = new GCustomSlider(this, 1207, 149, 272, 18, "red_yellow18px");
-  envColor.setLimits(0, 0, 9);
+  envColor.setLimits(2, 0, 9);
   envColor.setNbrTicks(10);
   envColor.setStickToTicks(true);
   envColor.setShowTicks(true);
@@ -763,8 +775,6 @@ public void createGUI(){
   helpButt.addEventHandler(this, "helpButt_click2");
   preset = new GImageButton(this, 307, 11, new String[] { "openPreset.png", "openPreset.png", "openPreset.png" } );
   preset.addEventHandler(this, "preset_click2");
-  exportMP3 = new GImageButton(this, 352, 11, new String[] { "Export.png", "Export.png", "Export.png" } );
-  exportMP3.addEventHandler(this, "exportMP3_click2");
   photsynthesisImage = new GImageButton(this, 1241, 662, 218, 159, new String[] { "blank.jpg", "blank.jpg", "blank.jpg" } );
   photsynthesisImage.addEventHandler(this, "photsynthesisImage_click2");
   redTogButton1 = new GImageToggleButton(this, 1200, 583);
@@ -831,18 +841,18 @@ public void createGUI(){
   modeDisplay.setText("Current Mode");
   modeDisplay.setLocalColorScheme(GCScheme.SCHEME_8);
   modeDisplay.setOpaque(false);
-  ampGroup1 = new GToggleGroup();
-  ampEnv = new GOption(this, 33, 314, 120, 20);
-  ampEnv.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
-  ampEnv.setOpaque(false);
-  ampEnv.addEventHandler(this, "ampEnv_clicked1");
-  ampLFO = new GOption(this, 195, 314, 120, 20);
-  ampLFO.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
-  ampLFO.setOpaque(false);
-  ampLFO.addEventHandler(this, "ampLFO_clicked1");
-  ampGroup1.addControl(ampEnv);
-  ampEnv.setSelected(true);
-  ampGroup1.addControl(ampLFO);
+  knobGroup1 = new GToggleGroup();
+  modeforKnob = new GOption(this, 33, 314, 120, 20);
+  modeforKnob.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  modeforKnob.setOpaque(false);
+  modeforKnob.addEventHandler(this, "modeforKnob_clicked1");
+  drawforKnob = new GOption(this, 195, 314, 120, 20);
+  drawforKnob.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  drawforKnob.setOpaque(false);
+  drawforKnob.addEventHandler(this, "drawforKnob_clicked1");
+  knobGroup1.addControl(modeforKnob);
+  modeforKnob.setSelected(true);
+  knobGroup1.addControl(drawforKnob);
   pitch = new GLabel(this, 246, 467, 57, 57);
   pitch.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   pitch.setText("C");
@@ -855,7 +865,7 @@ public void createGUI(){
   octave_slider1.setOpaque(false);
   octave_slider1.addEventHandler(this, "octave_slider1_change1");
   envDur_slider1 = new GCustomSlider(this, 31, 355, 267, 40, "grey_blue");
-  envDur_slider1.setLimits(0.5, 0.0, 1.0);
+  envDur_slider1.setLimits(1.25, 0.5, 2.0);
   envDur_slider1.setNumberFormat(G4P.DECIMAL, 2);
   envDur_slider1.setOpaque(false);
   envDur_slider1.addEventHandler(this, "envDur_slider1_change1");
@@ -901,6 +911,14 @@ public void createGUI(){
   pitchFine.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   pitchFine.setText(" ");
   pitchFine.setOpaque(false);
+  lfoOnSwitch = new GCheckbox(this, 888, 656, 90, 20);
+  lfoOnSwitch.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  lfoOnSwitch.setOpaque(false);
+  lfoOnSwitch.addEventHandler(this, "lfoOnSwitch_clicked1");
+  lfoNote = new GCheckbox(this, 1029, 656, 130, 20);
+  lfoNote.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  lfoNote.setOpaque(false);
+  lfoNote.addEventHandler(this, "lfoNote_clicked1");
 }
 
 // Variable declarations 
@@ -935,9 +953,6 @@ GOption lfostep;
 GToggleGroup lfoControlgGroup1; 
 GOption lfosaveslot; 
 GOption defaultLFO; 
-GToggleGroup lfomodGroup1; 
-GOption freqmod; 
-GOption ampmod; 
 GCustomSlider lfoLen_slider1; 
 GCustomSlider lowFreq_slider2; 
 GCustomSlider highFreq_slider1; 
@@ -954,7 +969,7 @@ GImageButton browseButton;
 GImageButton smplButton; 
 GImageButton wavClear; 
 GImageButton resetCalib; 
-GImageButton clearLFO; 
+GImageButton clearTheLFO; 
 GCustomSlider screenColor; 
 GCustomSlider lfoColor; 
 GCustomSlider envColor; 
@@ -970,7 +985,6 @@ GImageButton stopButt;
 GImageButton forbutt; 
 GImageButton helpButt; 
 GImageButton preset; 
-GImageButton exportMP3; 
 GImageButton photsynthesisImage; 
 GImageToggleButton redTogButton1; 
 GImageToggleButton blueTogButton1; 
@@ -997,9 +1011,9 @@ GDropList dropListYellow;
 GDropList dropListPurple; 
 GDropList dropListOrange; 
 GLabel modeDisplay; 
-GToggleGroup ampGroup1; 
-GOption ampEnv; 
-GOption ampLFO; 
+GToggleGroup knobGroup1; 
+GOption modeforKnob; 
+GOption drawforKnob; 
 GLabel pitch; 
 GCustomSlider octave_slider1; 
 GCustomSlider envDur_slider1; 
@@ -1013,3 +1027,5 @@ GLabel wavSlot;
 GLabel LFOSlot; 
 GImageButton expButton1; 
 GLabel pitchFine; 
+GCheckbox lfoOnSwitch; 
+GCheckbox lfoNote; 

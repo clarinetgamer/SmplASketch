@@ -1,7 +1,7 @@
 PImage wavImg;
-PImage envImg;
+PImage lfoImg;
 PImage modWavImg;
-PImage modEnvImg;
+PImage modLFOImg;
 PImage modCalibImg;
 
 float threshold = 0.791;
@@ -97,38 +97,42 @@ float[] processCalibImage() { // feeds in wavImg names to image processing
   return processImage(camCap, modCalibImg, true);
 }
 
-boolean isOnStraight(float f1, float f2, float f3) { //returns a value is surrounded by two like values
-  int i1 = Math.round(f1);
-  int i2 = Math.round(f2);
-  int i3 = Math.round(f3);
-  if ((i1 == i2) && (i2 == i3)) {
-    return true;
-  } else {
-    return false;
-  }
+float[] processLFOImage() { // feeds in wavImg names to image processing
+  return processImage(lfoImg, modLFOImg, true);
 }
 
-float[] processEnvImage() { //feeds in env imgs to processing function and returns splits
-  float[] splits = new float[2];
-  float[] scan = processImage(envImg, modEnvImg, false);
-  int counter = 1;
-  while (!isOnStraight(scan[counter-1], scan[counter], scan[counter+1])) {
-    counter++;
-  }
-  splits[0] = map(counter, 0, camwidth, 0, 100);
-  while (isOnStraight(scan[counter-1], scan[counter], scan[counter+1])) {
-    counter++;
-    if (counter == (scan.length - 1)) {
-      break;
-    }
-  }
-  splits[1] =  map(counter, 0, camwidth, 100, 0);
-  return splits;
-}
+//boolean isOnStraight(float f1, float f2, float f3) { //returns a value is surrounded by two like values
+//  int i1 = Math.round(f1);
+//  int i2 = Math.round(f2);
+//  int i3 = Math.round(f3);
+//  if ((i1 == i2) && (i2 == i3)) {
+//    return true;
+//  } else {
+//    return false;
+//  }
+//}
 
-void printFlArr(float[] wav) { //Print float array
-  for (int i = 0; i < width; i ++) {
-    println(i + " " + wav[i]);
-    delay(100);
-  }
-}
+//float[] processEnvImage() { //feeds in env imgs to processing function and returns splits
+//  float[] splits = new float[2];
+//  float[] scan = processImage(envImg, modEnvImg, false);
+//  int counter = 1;
+//  while (!isOnStraight(scan[counter-1], scan[counter], scan[counter+1])) {
+//    counter++;
+//  }
+//  splits[0] = map(counter, 0, camwidth, 0, 100);
+//  while (isOnStraight(scan[counter-1], scan[counter], scan[counter+1])) {
+//    counter++;
+//    if (counter == (scan.length - 1)) {
+//      break;
+//    }
+//  }
+//  splits[1] =  map(counter, 0, camwidth, 100, 0);
+//  return splits;
+//}
+
+//void printFlArr(float[] wav) { //Print float array
+//  for (int i = 0; i < width; i ++) {
+//    println(i + " " + wav[i]);
+//    delay(100);
+//  }
+//}

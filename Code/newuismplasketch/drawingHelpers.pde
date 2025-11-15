@@ -1,4 +1,5 @@
 int thickStroke = 2;
+boolean showPlayLine = false;
 
 //Data Mapping
 float[] mappedFlArr(float[] flArr) { //Map wav values to fit the ui screen
@@ -9,7 +10,7 @@ float[] mappedFlArr(float[] flArr) { //Map wav values to fit the ui screen
   return temp;
 }
 
-int[][] drawColor = {{225, 0, 0}, {225, 0, 0}, {225, 0, 0}};
+int[][] drawColor = {{225, 0, 0}, {0, 0, 225}, {102, 45, 145}};
 int screenColorNum = 200;
 
 void setColor(int index, int r, int g, int b) {
@@ -19,14 +20,16 @@ void setColor(int index, int r, int g, int b) {
 }
 
 //Save 4 l8r
-//int linecounter=0;
-//void drawGreenLine() {
-//  stroke(0, 255, 0);
-//  line(432+linecounter, 128, 432+linecounter, 448);
-//  wait(10);
-//  linecounter++;
-//  if (linecounter >680) linecounter=0;
-//}
+int linecounter = 0;
+void drawGreenLine() {
+  if(mode != 0.0 && mode != 4.0) {
+  stroke(0, 255, 0);
+  line(432+linecounter, 128, 432+linecounter, 448);
+  linecounter += 10;
+  } else {
+  linecounter = 700;
+  }
+}
 
 void colorControl(GCustomSlider source, GEvent event, int index) {
   if (event == GEvent.RELEASED) {
@@ -103,6 +106,21 @@ void drawExtract(float[] wavArr) { //takes wav arr draws it
   }
 }
 
+void drawLFO(float[] lfoArr) { //takes wav arr draws it
+  stroke(drawColor[2][0], drawColor[2][1], drawColor[2][2]);
+  strokeWeight(thickStroke);
+  float[] lfo = mappedFlArr(lfoArr);
+  if (lfoOn) {
+    for (int i = 0; i < lfo.length-1; i ++) {
+      line(i+430, lfo[i], i+431, lfo[i+1]);
+    }
+  } else {
+    for (int i = 0; i < lfo.length-1; i ++) {
+      line(i+430, 290, i+431, 290);
+    }
+  }
+}
+
 void drawWav(float[] wavArr, int r, int g, int b) { //takes wav arr draws it
   stroke(r, g, b);
   strokeWeight(thickStroke);
@@ -121,14 +139,14 @@ void drawEnv(float[] envArr) { //takes env arr draws it
   line(430+env[0]+env[1], 300, 430+camwidth, 448);
 }
 
-void setAdditionSchemes(){
-  dropListRed.setLocalColor(2, color(0,0,0));
-  dropListBlue.setLocalColor(2, color(0,0,0));
-  dropListGreen.setLocalColor(2, color(0,0,0));
-  dropListYellow.setLocalColor(2, color(0,0,0));
-  dropListPurple.setLocalColor(2, color(0,0,0));
-  dropListOrange.setLocalColor(2, color(0,0,0));
+void setAdditionSchemes() {
+  dropListRed.setLocalColor(2, color(0, 0, 0));
+  dropListBlue.setLocalColor(2, color(0, 0, 0));
+  dropListGreen.setLocalColor(2, color(0, 0, 0));
+  dropListYellow.setLocalColor(2, color(0, 0, 0));
+  dropListPurple.setLocalColor(2, color(0, 0, 0));
+  dropListOrange.setLocalColor(2, color(0, 0, 0));
   fileName.setLocalColorScheme(GCScheme.RED_SCHEME);
-  fileName.setLocalColor(2, color(255,0,0)); 
-  pitch.setLocalColor(2, color(0,0,0)); 
+  fileName.setLocalColor(2, color(255, 0, 0));
+  pitch.setLocalColor(2, color(0, 0, 0));
 }

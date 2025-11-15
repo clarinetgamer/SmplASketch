@@ -13,8 +13,8 @@ int camwidth = sizeArr[0];
 int camheight = sizeArr[1];
 
 public void setup() {
-  size(1512, 850, JAVA2D);
-  smooth(10);
+  size(1512, 850, P2D);
+  //smooth(10);
   createGUI();
   bigtone_slider1.setShowTicks(false);//partofcreateGUI
   octave_slider1.setShowTicks(false);//partofcreateGUI
@@ -22,7 +22,7 @@ public void setup() {
   //Img processing setup
   modWavImg = createImage(camwidth, camheight, RGB); // Create image to write other data to
   modCalibImg = createImage(camwidth, camheight, RGB); // Create image to write other data to
-  modEnvImg = createImage(camwidth, camheight, RGB); // Create env image to write other data to
+  modLFOImg = createImage(camwidth, camheight, RGB); // Create env image to write other data to
   initImgFromFile("blank.jpg");
   searchForCamera();
   //clear cache
@@ -31,18 +31,21 @@ public void setup() {
   s = new Sound(this);
   s.volume(0.2);
   //Setup Envelope Code
-  envMenuStart();  
+  envMenuStart();
 }
 
 public void draw() {
   drawDarkMode();
-  if(calibMode){
+  if (calibMode) {
     calibMode();
   } else {
     checkMode();
   }
   setOnDotsVis();
-  
+  setSmplLength();
+  if (showPlayLine && activateGreen) {
+    if (linecounter < 680) drawGreenLine();
+  }
 }
 
 void drawDarkMode() {
@@ -53,7 +56,7 @@ void drawDarkMode() {
   rect(0, 830, 1512, 57);
   fill(200);
   rect(420, 120, 670, 325);
-  fill(255,255, 150);
+  fill(255, 255, 150);
   rect(246, 467, 57, 57);
 }
 
@@ -73,13 +76,13 @@ void keyPressed() { //test true is for keyboard control test false is obscure as
     wavSnap();
     println("wavSnap");
   } else if ((test == true && key == 'e')||(test == false && key == 'ƒ')) {
-    envSnap();
+    lfoSnap();
     println("envSnap");
   } else if ((test == true && key == '[')||(test == false && key == '†')) {
-    decEnvMult();
+    decLFOMult();
     println("decEnv");
   } else if ((test == true && key == ']')||(test == false && key == '‡')) {
-    incEnvMult();
+    incLFOMult();
     println("incEnv");
   } else if ((test == true && key == '-')||(test == false && key == '‰')) {
     decWavMult();
@@ -95,7 +98,7 @@ void keyPressed() { //test true is for keyboard control test false is obscure as
     println("resetWav");
   } else if ((test == true && key == 't')||(test == false && key == '◊')) {
     resetLFO();
-    println("resetEnv");
+    println("resetLFO");
   } else if (key == (char)27) {//Escape key always exits program
     clearCache();
     println("Program Exit");

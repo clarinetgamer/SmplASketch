@@ -169,6 +169,8 @@ void envMenuStart() {
     release_slider.setLimits(5, 0, 10);
     sliderVals = new float[]{5, 5, 5};
     clearEnv = true;
+    envMult = 1;
+    envDur_slider1.setLimits(1.25, 0.5, 2.0);
 }
 
 void sliderUpdate(GCustomSlider source, GEvent event, int index) {
