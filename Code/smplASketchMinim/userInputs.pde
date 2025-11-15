@@ -271,7 +271,7 @@ if (event == GEvent.SELECTED) {
 }
 
 //Color Controls
-void strokeSet(GEvent event) {
+void strokeSet(GCustomSlider source, GEvent event) {
 if (event == GEvent.RELEASED || event == GEvent.PRESSED || event == GEvent.VALUE_STEADY) {
     thickStroke = source.getValueI();
   }

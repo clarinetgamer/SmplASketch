@@ -160,7 +160,7 @@ public void browseButton_click1(GImageButton source, GEvent event) { //_CODE_:br
 } //_CODE_:browseButton:763920:
 
 public void smplButton1_click2(GImageButton source, GEvent event) { //_CODE_:smplButton:548598:
-  smplUIButton(event)
+  smplUIButton(event);
 } //_CODE_:smplButton:548598:
 
 public void wavClear_click2(GImageButton source, GEvent event) { //_CODE_:wavClear:280934:
@@ -192,7 +192,7 @@ public void wavColor_change1(GCustomSlider source, GEvent event) { //_CODE_:wavC
 } //_CODE_:wavColor:859202:
 
 public void thickness_change1(GCustomSlider source, GEvent event) { //_CODE_:thickness:554351:
-  strokeSet(event);
+  strokeSet(source, event);
 } //_CODE_:thickness:554351:
 
 public void browseExport_click2(GImageButton source, GEvent event) { //_CODE_:browseExport:709904:
