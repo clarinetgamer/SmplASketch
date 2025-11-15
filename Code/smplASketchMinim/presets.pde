@@ -7,6 +7,7 @@ boolean susMode = false;
 float[] sliderVals = new float[4];
 boolean spaceHit = false;
 boolean photoPitch = true;
+boolean photoEnvDisplay = false;
 boolean lfoOn = false;
 boolean noShow = false;
 PImage filereset = createImage(camwidth, camheight, RGB);

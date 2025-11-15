@@ -128,33 +128,19 @@ public void rangeFreq_slider1_change1(GCustomSlider source, GEvent event) { //_C
 } //_CODE_:highFreq_slider1:611418:
 
 public void calibration_clicked1(GCheckbox source, GEvent event) { //_CODE_:calibration:261462:
-  if (event == GEvent.SELECTED) {
-    calibMode = true;
-  }
-  if (event == GEvent.DESELECTED) {
-    calibMode = false;
-    filereset.save("calib.jpg");
-  }
+  calibrationOn(event);
 } //_CODE_:calibration:261462:
 
 public void showCam_clicked1(GOption source, GEvent event) { //_CODE_:showCam:597026:
-  if (event == GEvent.SELECTED) {
-    camVsCapCalib = true;
-  }
+  calibCam(event);
 } //_CODE_:showCam:597026:
 
 public void capturecali_clicked1(GOption source, GEvent event) { //_CODE_:capturecali:200276:
-  if (event == GEvent.SELECTED) {
-    camVsCapCalib = false;
-  }
+  calibCapture(event);
 } //_CODE_:capturecali:200276:
 
 public void showExtract_clicked1(GCheckbox source, GEvent event) { //_CODE_:showExtract:883300:
-  if (event == GEvent.SELECTED) {
-    extraction = true;
-  } else if (event == GEvent.DESELECTED) {
-    extraction = false;
-  }
+  calibExtract(event);
 } //_CODE_:showExtract:883300:
 
 public void threshold_slider1_change1(GCustomSlider source, GEvent event) { //_CODE_:threshold_slider1:865497:
@@ -166,39 +152,27 @@ public void zoom_slider2_change1(GCustomSlider source, GEvent event) { //_CODE_:
 } //_CODE_:zoom_slider2:491766:
 
 public void envClear_click3(GImageButton source, GEvent event) { //_CODE_:envClear:356676:
-  if (event == GEvent.CLICKED) {
-    resetEnv();
-  }
+  envRButton(event);
 } //_CODE_:envClear:356676:
 
 public void browseButton_click1(GImageButton source, GEvent event) { //_CODE_:browseButton:763920:
-  if (event == GEvent.CLICKED) {
-    selectPhotosynthesisFile();
-  }
+   psSearchFile(event);
 } //_CODE_:browseButton:763920:
 
 public void smplButton1_click2(GImageButton source, GEvent event) { //_CODE_:smplButton:548598:
-  if (event == GEvent.CLICKED) {
-    smpl();
-  }
+  smplUIButton(event)
 } //_CODE_:smplButton:548598:
 
 public void wavClear_click2(GImageButton source, GEvent event) { //_CODE_:wavClear:280934:
-  if (event == GEvent.CLICKED) {
-    resetWav();
-  }
+  wavRButton(event);
 } //_CODE_:wavClear:280934:
 
 public void resetCalib_click2(GImageButton source, GEvent event) { //_CODE_:resetCalib:215921:
-  if (event == GEvent.CLICKED) {
-    resetCalib();
-  }
+  calibRButton(event);
 } //_CODE_:resetCalib:215921:
 
 public void clearTheLFO_click2(GImageButton source, GEvent event) { //_CODE_:clearTheLFO:939396:
-  if (event == GEvent.CLICKED) {
-    resetLFO();
-  }
+  lfoRButton(event);
 } //_CODE_:clearTheLFO:939396:
 
 public void ScreenColor_change1(GCustomSlider source, GEvent event) { //_CODE_:screenColor:548097:
@@ -218,15 +192,11 @@ public void wavColor_change1(GCustomSlider source, GEvent event) { //_CODE_:wavC
 } //_CODE_:wavColor:859202:
 
 public void thickness_change1(GCustomSlider source, GEvent event) { //_CODE_:thickness:554351:
-  if (event == GEvent.RELEASED || event == GEvent.PRESSED || event == GEvent.VALUE_STEADY) {
-    thickStroke = source.getValueI();
-  }
+  strokeSet(event);
 } //_CODE_:thickness:554351:
 
 public void browseExport_click2(GImageButton source, GEvent event) { //_CODE_:browseExport:709904:
-  if (event == GEvent.CLICKED) {
-    selectSaveLoc();
-  }
+  setExport(event);
 } //_CODE_:browseExport:709904:
 
 public void fileName_change1(GTextField source, GEvent event) { //_CODE_:fileName:663355:
@@ -254,9 +224,7 @@ public void forButt_click2(GImageButton source, GEvent event) { //_CODE_:forbutt
 } //_CODE_:forbutt:485441:
 
 public void helpButt_click2(GImageButton source, GEvent event) { //_CODE_:helpButt:585685:
-  if (event == GEvent.CLICKED) {
-    helpButton();
-  }
+  helpLink(event);
 } //_CODE_:helpButt:585685:
 
 public void preset_click2(GImageButton source, GEvent event) { //_CODE_:preset:485718:
@@ -372,59 +340,35 @@ public void drawforKnob_clicked1(GOption source, GEvent event) { //_CODE_:drawfo
 } //_CODE_:drawforKnob:784790:
 
 public void octave_slider1_change1(GCustomSlider source, GEvent event) { //_CODE_:octave_slider1:947832:
-  if (event == GEvent.RELEASED) {
-    octIndex = source.getValueI();
-  }
+octaveSliderSet(source, event);
 } //_CODE_:octave_slider1:947832:
 
 public void envDur_slider1_change1(GCustomSlider source, GEvent event) { //_CODE_:envDur_slider1:860031:
-  if (event == GEvent.RELEASED) {
-    envMult = source.getValueF();
-  }
+envelopeDuration(source, event);
 } //_CODE_:envDur_slider1:860031:
 
 public void showPlayhead_clicked1(GCheckbox source, GEvent event) { //_CODE_:showPlayhead:915718:
-  if (event == GEvent.SELECTED) {
-    showPlayLine = true;
-  } else {
-    showPlayLine = false;
-  }
+  playDisplay(event);
 } //_CODE_:showPlayhead:915718:
 
-public void sustainMode_clicked1(GCheckbox source, GEvent event) { //_CODE_:sustainMode:930059:
-  println("susMode - GCheckbox >> GEvent." + event + " @ " + millis());
-} //_CODE_:sustainMode:930059:
+public void envinPS_clicked1(GCheckbox source, GEvent event) { //_CODE_:envinPS:930059:
+  psEnv(event);
+} //_CODE_:envinPS:930059:
 
 public void psPitch_clicked1(GCheckbox source, GEvent event) { //_CODE_:psPitch:645877:
-  if (event == GEvent.SELECTED) {
-    photoPitch = true;
-  } else {
-    photoPitch = false;
-  }
+  psPitch(event);
 } //_CODE_:psPitch:645877:
 
 public void showEnv_clicked1(GCheckbox source, GEvent event) { //_CODE_:showEnv:225755:
-  if (event == GEvent.SELECTED) {
-    drawCombEnv=true;
-  } else {
-    drawCombEnv=false;
-  }
+  combEnv(event);
 } //_CODE_:showEnv:225755:
 
 public void showLFO_clicked1(GCheckbox source, GEvent event) { //_CODE_:showLFO:932922:
-  if (event == GEvent.SELECTED) {
-    drawCombLFO=true;
-  } else {
-    drawCombLFO=false;
-  }
+  combLFO(event);
 } //_CODE_:showLFO:932922:
 
 public void showWav_clicked1(GCheckbox source, GEvent event) { //_CODE_:showWav:832149:
-  if (event == GEvent.SELECTED) {
-    drawCombWav=true;
-  } else {
-    drawCombWav=false;
-  }
+  combWav(event);
 } //_CODE_:showWav:832149:
 
 public void expButton1_click2(GImageButton source, GEvent event) { //_CODE_:expButton1:780310:
@@ -432,20 +376,20 @@ public void expButton1_click2(GImageButton source, GEvent event) { //_CODE_:expB
 } //_CODE_:expButton1:780310:
 
 public void lfoOnSwitch_clicked1(GCheckbox source, GEvent event) { //_CODE_:lfoOnSwitch:633091:
-  if (event == GEvent.SELECTED) {
-    lfoOn = true;
-  } else {
-    lfoOn = false;
-  }
+  lfoOnSwitch(event);
 } //_CODE_:lfoOnSwitch:633091:
-
-public void lfoNote_clicked1(GCheckbox source, GEvent event) { //_CODE_:lfoNote:226715:
-  println("lfoNote - GCheckbox >> GEvent." + event + " @ " + millis());
-} //_CODE_:lfoNote:226715:
 
 public void decay_slider1_change1(GCustomSlider source, GEvent event) { //_CODE_:decay_slider1:939979:
   sliderUpdate(source, event, 1);
 } //_CODE_:decay_slider1:939979:
+
+public void fmTog_clicked1(GOption source, GEvent event) { //_CODE_:fmTog:284432:
+  println("fmTog - GOption >> GEvent." + event + " @ " + millis());
+} //_CODE_:fmTog:284432:
+
+public void amTog_clicked1(GOption source, GEvent event) { //_CODE_:amTog:439993:
+  println("amTog - GOption >> GEvent." + event + " @ " + millis());
+} //_CODE_:amTog:439993:
 
 
 
@@ -578,7 +522,7 @@ public void createGUI() {
   bigtone_slider1.setNumberFormat(G4P.INTEGER, 0);
   bigtone_slider1.setOpaque(false);
   bigtone_slider1.addEventHandler(this, "bigtone_slider1_change1");
-  lfored = new GImageButton(this, 892, 715, 269, 101, new String[] { "wavgray.png", "wavgray.png", "wavgray.png" } );
+  lfored = new GImageButton(this, 892, 715, 269, 101, new String[] { "purplelfomenu.png", "purplelfomenu.png", "purplelfomenu.png" } );
   lfored.addEventHandler(this, "lfored_click2");
   lfoGroup1 = new GToggleGroup();
   lfosin = new GOption(this, 873, 716, 92, 45);
@@ -846,10 +790,10 @@ public void createGUI() {
   showPlayhead.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   showPlayhead.setOpaque(false);
   showPlayhead.addEventHandler(this, "showPlayhead_clicked1");
-  sustainMode = new GCheckbox(this, 18, 489, 212, 23);
-  sustainMode.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
-  sustainMode.setOpaque(false);
-  sustainMode.addEventHandler(this, "sustainMode_clicked1");
+  envinPS = new GCheckbox(this, 18, 489, 212, 23);
+  envinPS.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  envinPS.setOpaque(false);
+  envinPS.addEventHandler(this, "envinPS_clicked1");
   psPitch = new GCheckbox(this, 18, 512, 213, 22);
   psPitch.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   psPitch.setOpaque(false);
@@ -888,15 +832,23 @@ public void createGUI() {
   lfoOnSwitch.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   lfoOnSwitch.setOpaque(false);
   lfoOnSwitch.addEventHandler(this, "lfoOnSwitch_clicked1");
-  lfoNote = new GCheckbox(this, 1029, 656, 130, 20);
-  lfoNote.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
-  lfoNote.setOpaque(false);
-  lfoNote.addEventHandler(this, "lfoNote_clicked1");
   decay_slider1 = new GCustomSlider(this, 350, 695, 300, 40, "grey_blue");
   decay_slider1.setLimits(5.0, 0.0, 10.0);
   decay_slider1.setNumberFormat(G4P.DECIMAL, 2);
   decay_slider1.setOpaque(false);
   decay_slider1.addEventHandler(this, "decay_slider1_change1");
+  fmamlfoGroup1 = new GToggleGroup();
+  fmTog = new GOption(this, 1028, 654, 50, 20);
+  fmTog.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  fmTog.setOpaque(false);
+  fmTog.addEventHandler(this, "fmTog_clicked1");
+  amTog = new GOption(this, 1096, 654, 50, 20);
+  amTog.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  amTog.setOpaque(false);
+  amTog.addEventHandler(this, "amTog_clicked1");
+  fmamlfoGroup1.addControl(fmTog);
+  fmTog.setSelected(true);
+  fmamlfoGroup1.addControl(amTog);
 }
 
 // Variable declarations
@@ -996,7 +948,7 @@ GLabel pitch;
 GCustomSlider octave_slider1;
 GCustomSlider envDur_slider1;
 GCheckbox showPlayhead;
-GCheckbox sustainMode;
+GCheckbox envinPS;
 GCheckbox psPitch;
 GCheckbox showEnv;
 GCheckbox showLFO;
@@ -1006,5 +958,7 @@ GLabel LFOSlot;
 GImageButton expButton1;
 GLabel pitchFine;
 GCheckbox lfoOnSwitch;
-GCheckbox lfoNote;
 GCustomSlider decay_slider1;
+GToggleGroup fmamlfoGroup1;
+GOption fmTog;
+GOption amTog;
