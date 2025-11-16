@@ -85,7 +85,10 @@ void smpl() {
     float dur = (envVals[2]*envMult) +(envMult);
     float mappedAdj = map(fineAdjust, -20.0, 20.0, noteHz[noteIndex-1]+0.5-noteHz[noteIndex], noteHz[noteIndex+1]-0.5-noteHz[noteIndex]);
     float freq = (noteHz[noteIndex]+mappedAdj)*oct[octIndex];
+    recorder.beginRecord();
     out.playNote( 0.0, dur, new SmplInstrument(wav, lfo, env, freq));
+    recorder.endRecord();
+        recorder.save();
   } else {
     photowaveformSmpl();
   }

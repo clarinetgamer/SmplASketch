@@ -12,6 +12,7 @@ int camheight = sizeArr[1];
 //Minim Setup
 Minim minim;
 AudioOutput out;
+AudioRecorder recorder;
 
 public void setup() {
   //Setup Main Window
@@ -31,6 +32,7 @@ public void setup() {
   //Minim Setup
   minim = new Minim(this);
   out = minim.getLineOut( Minim.MONO, 2048 );
+  recorder = minim.createRecorder(out, "myrecording.wav");
 }
 
 public void draw() {
