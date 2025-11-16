@@ -11,6 +11,7 @@ boolean photoEnvDisplay = false;
 boolean lfoOn = false;
 boolean noShow = false;
 PImage filereset = createImage(camwidth, camheight, RGB);
+float[] emptyWav = {0.0};
 
 //UI Setup
 void uiSetup() {

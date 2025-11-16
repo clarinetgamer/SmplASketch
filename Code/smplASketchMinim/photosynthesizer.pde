@@ -1,49 +1,56 @@
-Oscil       ff;
-Oscil       h1;
-Oscil       h2;
-Oscil       h3;
-Oscil       h4;
-Oscil       h5;
-Wavetable   fftable;
-Wavetable   h1table;
-Wavetable   h2table;
-Wavetable   h3table;
-Wavetable   h4table;
-Wavetable   h5table;
+Oscil       red;
+Oscil       green;
+Oscil       blue;
+Oscil       yellow;
+Oscil       purple;
+Oscil       orange;
+Wavetable   redtable;
+Wavetable   greentable;
+Wavetable   bluetable;
+Wavetable   yellowtable;
+Wavetable   purpletable;
+Wavetable   orangetable;
 
 class Photosynthesizer implements Instrument
 {
 
   ADSR adsr;
   // constructor
-  Photosynthesizer(float[] FF, float[] H1, float[] H2, float[] H3, float[] H4, float[] H5, ADSR env, float hz)
+  Photosynthesizer(float[] Red, float[] Green, float[] Blue, float[] Yellow, float[] Purple, float[] Orange, ADSR env, float hz, int[] indexes, boolean[] switches)
   {
     Summer sum = new Summer();
     adsr = env;
+    float[] amp = {1.0f, 0.7f, 0.5f, 0.3f, 0.1f, 0.05f};
     // create oscillators of wavtables from float[]'s
-    fftable = new Wavetable(FF);
-    ff  = new Oscil( hz, 1.0f, fftable );
-    ff.patch( sum );
-    h1table = new Wavetable(H1);
-    h1  = new Oscil( 2*hz, 0.7f, h1table );
-    h1.patch( sum );
-    h2table = new Wavetable(H2);
-    h2  = new Oscil( 3*hz, 0.5f, h2table );
-    h2.patch( sum );
-    h3table = new Wavetable(H3);
-    h3  = new Oscil( 4*hz, 0.3f, h3table );
-    h3.patch( sum );
-    h4table = new Wavetable(H4);
-    h4  = new Oscil( 5*hz, 0.1f, h4table );
-    h4.patch( sum );
-    h4table = new Wavetable(H5);
-    h4  = new Oscil( 6*hz, 0.05f, h5table );
-    h4.patch( sum );
-
+    if(switches[0]) {
+    redtable = new Wavetable(Red);
+    red  = new Oscil( ((float)indexes[0]+1) * hz, amp[indexes[0]], redtable );
+    red.patch( sum );
+    }if(switches[1]) {
+    greentable = new Wavetable(Green);
+    green  = new Oscil( ((float)indexes[1]+1) * hz, amp[indexes[1]], greentable );
+    green.patch( sum );
+    }if(switches[2]) {
+    bluetable = new Wavetable(Blue);
+    blue  = new Oscil( ((float)indexes[2]+1) * hz, amp[indexes[2]], bluetable );
+    blue.patch( sum );
+    }if(switches[3]) {
+    yellowtable = new Wavetable(Yellow);
+    yellow  = new Oscil( ((float)indexes[3]+1) * hz, amp[indexes[3]], yellowtable );
+    yellow.patch( sum );
+    }if(switches[4]) {
+    purpletable = new Wavetable(Purple);
+    purple  = new Oscil( ((float)indexes[4]+1) * hz, amp[indexes[4]], purpletable );
+    purple.patch( sum );
+    }if(switches[5]) {
+    orangetable = new Wavetable(Orange); //<>//
+    orange  = new Oscil( ((float)indexes[5]+1) * hz, amp[indexes[5]], orangetable ); //<>//
+    orange.patch( sum ); //<>//
+    } //<>//
     //Send Wav to ADSR
     sum.patch( adsr );
   }
-  //noteOn and noteOff called when out.playNote() is called
+  //noteOn and noteOred called when out.playNote() is called
   void noteOn( float dur )
   {
     adsr.noteOn();

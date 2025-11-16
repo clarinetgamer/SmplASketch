@@ -19,6 +19,15 @@ float fineAdjust = 0.0;
 float[] oct = {0.25, 0.5, 1.0, 2.0, 4.0};
 int noteIndex = 7;
 int octIndex = 2;
+//PS Wav Usage
+float[] wavR;
+float[] wavG;
+float[] wavB;
+float[] wavY;
+float[] wavP;
+float[] wavO;
+boolean[] wavSet = {false, false, false, false, false, false};
+
 
 //ADSR Generation Code
 float[] mapADSR() {
@@ -31,7 +40,6 @@ float[] mapADSR() {
     decay = 0.5;
     sustain = 0.5;
     release = 0.5;
-    
   } else {
     attack = map(sliderVals[0], 0, 10, 0., 1.);
     decay = map(sliderVals[1], 0, 10, 0., 1.);
@@ -84,49 +92,53 @@ void smpl() {
 }
 
 //Playback for Photosynthesis Mode
-void photowaveformSmpl() { //this is very rudimentary and will do more later
-  //ArrayList<float[]> processed = processMultiImage(imageMode);
-  //float photoSampleRate;
-  //if (photoPitch) {
-  //  photoSampleRate = (samplerate[noteIndex]+fineAdjust)/4;
-  //} else {
-  //  photoSampleRate = (samplerate[6]+fineAdjust)/4;
-  //}
+void photowaveformSmpl() {
+  ArrayList<float[]> processed = processMultiImage(imageMode);
+  float photoSampleRate;
+  if (photoPitch) {
+    photoSampleRate = (noteHz[noteIndex]+fineAdjust)/2;
+  } else {
+    photoSampleRate = (noteHz[7]+fineAdjust)/2;
+  }
+  if (photsynthesisDots[0] == true) {
+    wavR = processed.get(0);
+    wavSet[0] = true;
+  } else {
+    wavSet[0] = false;
+  }
+  if (photsynthesisDots[2] == true) {
+    wavG = processed.get(1);
+    wavSet[1] = true;
+  } else {
+    wavSet[1] = false;
+  }
+  if (photsynthesisDots[1] == true) {
+    wavB = processed.get(2);
+    wavSet[2] = true;
+  } else {
+    wavSet[2] = false;
+  }
+  if (photsynthesisDots[3] == true) {
+    wavY = processed.get(3);
+    wavSet[3] = true;
+  } else {
+    wavSet[3] = false;
+  }
+  if (photsynthesisDots[4] == true) {
+    wavP = processed.get(4);
+    wavSet[4] = true;
+  } else {
+    wavSet[4] = false;
+  }
+  if (photsynthesisDots[5] == true) {
+    wavO = processed.get(5);
+    wavSet[5] = true;
+  } else {
+    wavSet[5] = false;
+  }
 
-  //if (photsynthesisDots[0] == true) {
-  //  float[] wavR = processed.get(0);
-  //  AudioSample smplR = createSample(wavR);
-  //  playWav(smplR, photoSampleRate*(1+freqArrPhotoMode[0]));
-  //  playSliderEnv(smplR);
-  //}
-  //if (photsynthesisDots[2] == true) {
-  //  float[] wavG = processed.get(1);
-  //  AudioSample smplG = createSample(wavG);
-  //  playWav(smplG, photoSampleRate*(1+freqArrPhotoMode[1]));
-  //  playSliderEnv(smplG);
-  //}
-  //if (photsynthesisDots[1] == true) {
-  //  float[] wavB = processed.get(2);
-  //  AudioSample smplB = createSample(wavB);
-  //  playWav(smplB, photoSampleRate*(1+freqArrPhotoMode[2]));
-  //  playSliderEnv(smplB);
-  //}
-  //if (photsynthesisDots[3] == true) {
-  //  float[] wavY = processed.get(3);
-  //  AudioSample smplY = createSample(wavY);
-  //  playWav(smplY, photoSampleRate*(1+freqArrPhotoMode[3]));
-  //  playSliderEnv(smplY);
-  //}
-  //if (photsynthesisDots[4] == true) {
-  //  float[] wavP = processed.get(4);
-  //  AudioSample smplP = createSample(wavP);
-  //  playWav(smplP, photoSampleRate*(1+freqArrPhotoMode[4]));
-  //  playSliderEnv(smplP);
-  //}
-  //if (photsynthesisDots[5] == true) {
-  //  float[] wavO = processed.get(5);
-  //  AudioSample smplO = createSample(wavO);
-  //  playWav(smplO, photoSampleRate*(1+freqArrPhotoMode[5]));
-  //  playSliderEnv(smplO);
-  //}
+  float[] envVals = mapADSR();
+  ADSR env = genADSR(volume, envVals[0], envVals[1], envVals[3], 0.275);
+  float dur = (envVals[2]*envMult) +(envMult);
+  out.playNote( 0.0, dur, new Photosynthesizer(wavR, wavG, wavB, wavY, wavP, wavO, env, photoSampleRate, freqArrPhotoMode, wavSet));
 }
