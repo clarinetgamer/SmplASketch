@@ -184,14 +184,26 @@ void rampLFOSelect(GEvent event) {
   }
 }
 
+//LFO Slider Extraction
+void sliderUpdateLFO(GCustomSlider source, GEvent event, int index) {
+  if (event == GEvent.RELEASED) {
+    lfoMods[index] = source.getValueF();
+  }
+}
+
+void lfoFM(GEvent event){
+if(event == GEvent.SELECTED) fmOn = true;
+}
+void lfoAM(GEvent event){
+if(event == GEvent.SELECTED) fmOn = false;
+}
+
+
 //Envelope Slider Extraction
 void sliderUpdate(GCustomSlider source, GEvent event, int index) {
   noSliderTouched = false;
   if (event == GEvent.RELEASED) {
     sliderVals[index] = source.getValueF();
-  }
-  for (float f : sliderVals) {
-    println(f);
   }
 }
 

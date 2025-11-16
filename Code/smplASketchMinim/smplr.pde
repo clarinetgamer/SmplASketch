@@ -2,7 +2,7 @@ Oscil       wave;
 Oscil       lfo;
 Wavetable   wavtable;
 Wavetable   lfotable;
-
+Constant lfoAdd;
 class SmplInstrument implements Instrument
 {
 
@@ -16,11 +16,24 @@ class SmplInstrument implements Instrument
     wave  = new Oscil( hz, 0.5f, wavtable );
 
     if (lfoOn) {
+      if(fmOn){
       lfotable = new Wavetable(lfoCapture);
-      lfo  = new Oscil( 0.5, 220.0f, lfotable );
-
+      float freq = map(lfoMods[0], 0.0, 1.0, 0.05, 5.0);
+      float amp = map(lfoMods[2], 0.0, 1.0, 000.0, 400.0);
+      lfoAdd = new Constant(map(lfoMods[1], 0.0, 1.0, 300.0, 400.0));
+      Summer lfoSum = new Summer();
+      lfo  = new Oscil(freq, amp, lfotable );
+      lfoAdd.patch(lfoSum);
+      lfo.patch(lfoSum);
       //send LFO to to Wav
-      lfo.patch( wave.frequency );
+      lfoSum.patch( wave.frequency );
+      } else {
+      lfotable = new Wavetable(lfoCapture);
+      float freq = map(lfoMods[0], 0.0, 1.0, 0.05, 5.0);
+      float amp = lfoMods[2];
+      lfo  = new Oscil(freq, amp, lfotable );
+      lfo.patch(wave.amplitude);
+      }
     }
     //Send Wav to ADSR
     wave.patch( adsr );

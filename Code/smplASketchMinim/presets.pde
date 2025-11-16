@@ -5,6 +5,7 @@ boolean clearLFO = true;
 boolean clearEnv = true;
 boolean susMode = false;
 float[] sliderVals = new float[4];
+float[] lfoMods = {0.5, 0.5, 0.5};
 boolean spaceHit = false;
 boolean photoPitch = true;
 boolean photoEnvDisplay = false;
@@ -12,6 +13,7 @@ boolean lfoOn = false;
 boolean noShow = false;
 PImage filereset = createImage(camwidth, camheight, RGB);
 float[] emptyWav = {0.0};
+boolean fmOn = true;
 
 //UI Setup
 void uiSetup() {

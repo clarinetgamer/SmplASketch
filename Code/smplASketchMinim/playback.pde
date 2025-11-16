@@ -73,11 +73,11 @@ void smpl() {
       wav = processWavImage();
     }
     if (clearLFO && lfoControl) {
-      lfo = resetSin;
+      lfo = invertFlArr(genSinWav());
     } else if (!lfoControl) {
-      lfo = defaultLFO;
+      lfo = invertFlArr(defaultLFO);
     } else {
-      lfo = processLFOImage();
+      lfo = invertFlArr(processLFOImage());
     }
     float[] envVals = mapADSR();
     ADSR env = genADSR(volume, envVals[0], envVals[1], envVals[3], 0.275);

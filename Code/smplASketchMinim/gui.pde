@@ -116,15 +116,15 @@ public void defaulttheLfo_clicked1(GOption source, GEvent event) { //_CODE_:defa
 } //_CODE_:defaulttheLFO:562707:
 
 public void lfoLen_slider1_change1(GCustomSlider source, GEvent event) { //_CODE_:lfoLen_slider1:956883:
-  println("lfoLen_slider1 - GCustomSlider >> GEvent." + event + " @ " + millis());
+  sliderUpdateLFO(source, event, 0);
 } //_CODE_:lfoLen_slider1:956883:
 
 public void lowFreq_slider2_change1(GCustomSlider source, GEvent event) { //_CODE_:lowFreq_slider2:922769:
-  println("lowFreq_slider2 - GCustomSlider >> GEvent." + event + " @ " + millis());
+  sliderUpdateLFO(source, event, 1);
 } //_CODE_:lowFreq_slider2:922769:
 
 public void rangeFreq_slider1_change1(GCustomSlider source, GEvent event) { //_CODE_:highFreq_slider1:611418:
-  println("highFreq_slider1 - GCustomSlider >> GEvent." + event + " @ " + millis());
+  sliderUpdateLFO(source, event, 2);
 } //_CODE_:highFreq_slider1:611418:
 
 public void calibration_clicked1(GCheckbox source, GEvent event) { //_CODE_:calibration:261462:
@@ -156,7 +156,7 @@ public void envClear_click3(GImageButton source, GEvent event) { //_CODE_:envCle
 } //_CODE_:envClear:356676:
 
 public void browseButton_click1(GImageButton source, GEvent event) { //_CODE_:browseButton:763920:
-   psSearchFile(event);
+  psSearchFile(event);
 } //_CODE_:browseButton:763920:
 
 public void smplButton1_click2(GImageButton source, GEvent event) { //_CODE_:smplButton:548598:
@@ -232,7 +232,6 @@ public void preset_click2(GImageButton source, GEvent event) { //_CODE_:preset:4
 } //_CODE_:preset:485718:
 
 public void photsynthesisImage_click2(GImageButton source, GEvent event) { //_CODE_:photsynthesisImage:477057:
-  println("imgButton1 - GImageButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:photsynthesisImage:477057:
 
 public void redTogButton1_click1(GImageToggleButton source, GEvent event) { //_CODE_:redTogButton1:324535:
@@ -260,51 +259,39 @@ public void orangeTogButton1_click1(GImageToggleButton source, GEvent event) { /
 } //_CODE_:orangeTogButton1:547732:
 
 public void reddot_click2(GImageButton source, GEvent event) { //_CODE_:reddot:657772:
-  println("reddot - GImageButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:reddot:657772:
 
 public void greendot_click2(GImageButton source, GEvent event) { //_CODE_:greendot:438665:
-  println("greendot - GImageButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:greendot:438665:
 
 public void bluedot_click2(GImageButton source, GEvent event) { //_CODE_:bluedot:934792:
-  println("bluedot - GImageButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:bluedot:934792:
 
 public void yellowdot_click2(GImageButton source, GEvent event) { //_CODE_:yellowdot:430374:
-  println("yellowdot - GImageButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:yellowdot:430374:
 
 public void purpledot_click2(GImageButton source, GEvent event) { //_CODE_:purpledot:404593:
-  println("purpledot - GImageButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:purpledot:404593:
 
 public void orangedot_click2(GImageButton source, GEvent event) { //_CODE_:orangedot:893370:
-  println("orangedot - GImageButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:orangedot:893370:
 
 public void redon_click2(GImageButton source, GEvent event) { //_CODE_:redon:700357:
-  println("redon - GImageButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:redon:700357:
 
 public void blueon_click2(GImageButton source, GEvent event) { //_CODE_:blueon:760373:
-  println("blueon - GImageButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:blueon:760373:
 
 public void greenon_click2(GImageButton source, GEvent event) { //_CODE_:greenon:764788:
-  println("greenon - GImageButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:greenon:764788:
 
 public void yellowon_click2(GImageButton source, GEvent event) { //_CODE_:yellowon:429709:
-  println("yellowon - GImageButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:yellowon:429709:
 
 public void prupleon_click2(GImageButton source, GEvent event) { //_CODE_:purpleon:798097:
-  println("purplon - GImageButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:purpleon:798097:
 
 public void orangeon_click2(GImageButton source, GEvent event) { //_CODE_:orangeon:464327:
-  println("orangeon - GImageButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:orangeon:464327:
 
 public void dropListRed_click1(GDropList source, GEvent event) { //_CODE_:dropListRed:883689:
@@ -340,11 +327,11 @@ public void drawforKnob_clicked1(GOption source, GEvent event) { //_CODE_:drawfo
 } //_CODE_:drawforKnob:784790:
 
 public void octave_slider1_change1(GCustomSlider source, GEvent event) { //_CODE_:octave_slider1:947832:
-octaveSliderSet(source, event);
+  octaveSliderSet(source, event);
 } //_CODE_:octave_slider1:947832:
 
 public void envDur_slider1_change1(GCustomSlider source, GEvent event) { //_CODE_:envDur_slider1:860031:
-envelopeDuration(source, event);
+  envelopeDuration(source, event);
 } //_CODE_:envDur_slider1:860031:
 
 public void showPlayhead_clicked1(GCheckbox source, GEvent event) { //_CODE_:showPlayhead:915718:
@@ -384,13 +371,12 @@ public void decay_slider1_change1(GCustomSlider source, GEvent event) { //_CODE_
 } //_CODE_:decay_slider1:939979:
 
 public void fmTog_clicked1(GOption source, GEvent event) { //_CODE_:fmTog:284432:
-  println("fmTog - GOption >> GEvent." + event + " @ " + millis());
+lfoFM(event);
 } //_CODE_:fmTog:284432:
 
 public void amTog_clicked1(GOption source, GEvent event) { //_CODE_:amTog:439993:
-  println("amTog - GOption >> GEvent." + event + " @ " + millis());
+lfoAM(event);
 } //_CODE_:amTog:439993:
-
 
 
 // Create all the GUI controls.

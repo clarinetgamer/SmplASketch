@@ -1,4 +1,4 @@
-float volume = 0.2; 
+float volume = 0.2;
 float wavMult = 1;
 float envMult = 1;
 float lfoMult = 1;
@@ -26,8 +26,20 @@ void resetWav() {
 void resetLFO() {
   lfoMult = 1;
   clearLFO = true;
+  lfoControl=true;
+  defaultLFO = resetSin;
+  lfoLen_slider1.setLimits(0.5, 0.0, 1.0);
+  lowFreq_slider2.setLimits(0.5, 0.0, 1.0);
+  highFreq_slider1.setLimits(0.5, 0.0, 1.0);
+  lfoOnSwitch.setSelected(false);
+  lfoOn = false;
+  lfosin.setSelected(true);
+  lfosaveslot.setSelected(true);
+  fmTog.setSelected(true);
+  lfoMods = new float[] {0.5, 0.5, 0.5};
   filereset.save("lfo_image.jpg");
   LFOSlot.setText("Empty");
+  fmOn = true;
 }
 
 void resetEnv() {
@@ -59,4 +71,12 @@ void wait(int time) {
   int start = millis();
   while (millis() <= start+time) {
   }
+}
+
+float[] invertFlArr(float[] arr) {
+  float[] arrCopy = new float[arr.length];
+  for (int i = 0; i < arr.length; i ++) {
+    arrCopy[i]= -arr[i];
+  }
+  return arrCopy;
 }
