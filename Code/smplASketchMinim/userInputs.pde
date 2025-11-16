@@ -11,15 +11,33 @@ void setVolKnob(GKnob source) {
   volume = Math.round(source.getValueI()) * 0.1;//Round volume
 }
 
-void helpLink(GEvent event){
-if (event == GEvent.CLICKED) {
+void helpLink(GEvent event) {
+  if (event == GEvent.CLICKED) {
     helpButton();
   }
 }
 
-void smplUIButton(GEvent event){
-if (event == GEvent.CLICKED) {
+void smplUIButton(GEvent event) {
+  if (event == GEvent.CLICKED) {
     smpl();
+  }
+}
+
+void exportToDisk(GEvent event) {
+  if (event == GEvent.CLICKED) {
+    recordEnabled=true;
+    if (saveLoc != "") {
+      recorder = minim.createRecorder(out, saveLoc+"/"+fileName.getText()+".wav");
+    } else {
+      if (fileName.getText() == "") {
+        recorder = minim.createRecorder(out, "untitled.wav");
+      } else {
+        recorder = minim.createRecorder(out, fileName.getText()+".wav");
+      }
+    }
+
+    smpl();
+    recordEnabled=false;
   }
 }
 
@@ -33,7 +51,7 @@ void playDisplay(GEvent event) {
 }
 
 void psEnv(GEvent event) {
-if (event == GEvent.SELECTED) {
+  if (event == GEvent.SELECTED) {
     photoEnvDisplay = true;
   } else {
     photoEnvDisplay = false;
@@ -41,7 +59,7 @@ if (event == GEvent.SELECTED) {
 }
 
 void psPitch(GEvent event) {
- if (event == GEvent.SELECTED) {
+  if (event == GEvent.SELECTED) {
     photoPitch = true;
   } else {
     photoPitch = false;
@@ -61,30 +79,28 @@ void octaveSliderSet(GCustomSlider source, GEvent event) {
 }
 
 //Wav Device Control
-void  wavDeviceOn(GEvent event){
+void  wavDeviceOn(GEvent event) {
   if (event == GEvent.SELECTED) {
     wavControl = true;
   }
 }
 
-void  wavDeviceOff(GEvent event){
+void  wavDeviceOff(GEvent event) {
   if (event == GEvent.SELECTED) {
     wavControl = false;
   }
-} 
+}
 
 // Wav Selection
 void sinWavSelect(GEvent event) {
   if (event == GEvent.SELECTED) {
     defaultSin(true);
   }
-  
 }
 void triWavSelect(GEvent event) {
   if (event == GEvent.SELECTED) {
     defaultTri(true);
-}
-  
+  }
 }
 void sqrWavSelect(GEvent event) {
   if (event == GEvent.SELECTED) {
@@ -108,8 +124,8 @@ void rampWavSelect(GEvent event) {
 }
 
 //Wave Slider Extraction
-void pitchFineAdjust(GCustomSlider source, GEvent event){
-if (event == GEvent.RELEASED) {
+void pitchFineAdjust(GCustomSlider source, GEvent event) {
+  if (event == GEvent.RELEASED) {
     fineAdjust = source.getValueF();
     if (fineAdjust == 0) {
       pitchFine.setText("");
@@ -121,7 +137,7 @@ if (event == GEvent.RELEASED) {
   }
 }
 
-void pitchCoarseAdjust(GCustomSlider source, GEvent event){
+void pitchCoarseAdjust(GCustomSlider source, GEvent event) {
   if (event == GEvent.RELEASED) {
     noteIndex = source.getValueI()+1;
     pitch.setText(note[noteIndex]);
@@ -129,8 +145,8 @@ void pitchCoarseAdjust(GCustomSlider source, GEvent event){
 }
 
 //LFO Controls
-void lfoOnSwitch(GEvent event){
-if (event == GEvent.SELECTED) {
+void lfoOnSwitch(GEvent event) {
+  if (event == GEvent.SELECTED) {
     lfoOn = true;
   } else {
     lfoOn = false;
@@ -138,30 +154,28 @@ if (event == GEvent.SELECTED) {
 }
 
 //LFO Device Control
-void  lfoDeviceOn(GEvent event){
+void  lfoDeviceOn(GEvent event) {
   if (event == GEvent.SELECTED) {
     lfoControl = true;
   }
 }
 
-void  lfoDeviceOff(GEvent event){
+void  lfoDeviceOff(GEvent event) {
   if (event == GEvent.SELECTED) {
     lfoControl = false;
   }
-} 
+}
 
 //LFO Selection
 void sinLFOSelect(GEvent event) {
   if (event == GEvent.SELECTED) {
     defaultSin(false);
   }
-  
 }
 void triLFOSelect(GEvent event) {
   if (event == GEvent.SELECTED) {
     defaultTri(false);
-}
-  
+  }
 }
 void sqrLFOSelect(GEvent event) {
   if (event == GEvent.SELECTED) {
@@ -191,11 +205,11 @@ void sliderUpdateLFO(GCustomSlider source, GEvent event, int index) {
   }
 }
 
-void lfoFM(GEvent event){
-if(event == GEvent.SELECTED) fmOn = true;
+void lfoFM(GEvent event) {
+  if (event == GEvent.SELECTED) fmOn = true;
 }
-void lfoAM(GEvent event){
-if(event == GEvent.SELECTED) fmOn = false;
+void lfoAM(GEvent event) {
+  if (event == GEvent.SELECTED) fmOn = false;
 }
 
 
@@ -233,9 +247,9 @@ void combWav(GEvent event) {
 }
 
 //Photosynthesis Info Extraction
-void getDropdownData(GDropList source, GEvent event, int index){
-  if(event == GEvent.SELECTED){
-  freqArrPhotoMode[index] = source.getSelectedIndex();
+void getDropdownData(GDropList source, GEvent event, int index) {
+  if (event == GEvent.SELECTED) {
+    freqArrPhotoMode[index] = source.getSelectedIndex();
   }
 }
 
@@ -245,8 +259,8 @@ void toggleUpdate(GEvent event, int index) {
   }
 }
 
-void psSearchFile(GEvent event){
-if (event == GEvent.CLICKED) {
+void psSearchFile(GEvent event) {
+  if (event == GEvent.CLICKED) {
     selectPhotosynthesisFile();
   }
 }
@@ -262,20 +276,20 @@ void calibrationOn(GEvent event) {
   }
 }
 
-void calibCam(GEvent event){
+void calibCam(GEvent event) {
   if (event == GEvent.SELECTED) {
     camVsCapCalib = true;
   }
 }
 
-void calibCapture(GEvent event){
-if (event == GEvent.SELECTED) {
+void calibCapture(GEvent event) {
+  if (event == GEvent.SELECTED) {
     camVsCapCalib = false;
   }
 }
 
-void calibExtract(GEvent event){
-if (event == GEvent.SELECTED) {
+void calibExtract(GEvent event) {
+  if (event == GEvent.SELECTED) {
     extraction = true;
   } else if (event == GEvent.DESELECTED) {
     extraction = false;
@@ -284,7 +298,7 @@ if (event == GEvent.SELECTED) {
 
 //Color Controls
 void strokeSet(GCustomSlider source, GEvent event) {
-if (event == GEvent.RELEASED || event == GEvent.PRESSED || event == GEvent.VALUE_STEADY) {
+  if (event == GEvent.RELEASED || event == GEvent.PRESSED || event == GEvent.VALUE_STEADY) {
     thickStroke = source.getValueI();
   }
 }
@@ -333,28 +347,28 @@ void screenColorControl(GCustomSlider source, GEvent event) {
 
 //Reset Controls
 void setExport(GEvent event) {
-if (event == GEvent.CLICKED) {
+  if (event == GEvent.CLICKED) {
     selectSaveLoc();
   }
 }
 
-void envRButton(GEvent event){
-if (event == GEvent.CLICKED) {
+void envRButton(GEvent event) {
+  if (event == GEvent.CLICKED) {
     resetEnv();
   }
 }
-void wavRButton(GEvent event){
-if (event == GEvent.CLICKED) {
+void wavRButton(GEvent event) {
+  if (event == GEvent.CLICKED) {
     resetWav();
   }
 }
-void calibRButton(GEvent event){
-if (event == GEvent.CLICKED) {
+void calibRButton(GEvent event) {
+  if (event == GEvent.CLICKED) {
     resetCalib();
   }
 }
-void lfoRButton(GEvent event){
-if (event == GEvent.CLICKED) {
+void lfoRButton(GEvent event) {
+  if (event == GEvent.CLICKED) {
     resetLFO();
   }
 }

@@ -27,6 +27,7 @@ float[] wavY;
 float[] wavP;
 float[] wavO;
 boolean[] wavSet = {false, false, false, false, false, false};
+boolean recordEnabled=false;
 
 
 //ADSR Generation Code
@@ -81,14 +82,18 @@ void smpl() {
     }
     float[] envVals = mapADSR();
     ADSR env = genADSR(volume, envVals[0], envVals[1], envVals[3], 0.275);
-    print(noteHz[noteIndex]);
     float dur = (envVals[2]*envMult) +(envMult);
     float mappedAdj = map(fineAdjust, -20.0, 20.0, noteHz[noteIndex-1]+0.5-noteHz[noteIndex], noteHz[noteIndex+1]-0.5-noteHz[noteIndex]);
     float freq = (noteHz[noteIndex]+mappedAdj)*oct[octIndex];
-    recorder.beginRecord();
+    if (recordEnabled) {
+      recorder.beginRecord();
+    }
     out.playNote( 0.0, dur, new SmplInstrument(wav, lfo, env, freq));
-    recorder.endRecord();
-        recorder.save();
+    if (recordEnabled) {
+      wait(9000);
+      recorder.endRecord();
+      recorder.save();
+    }
   } else {
     photowaveformSmpl();
   }
@@ -143,5 +148,13 @@ void photowaveformSmpl() {
   float[] envVals = mapADSR();
   ADSR env = genADSR(volume, envVals[0], envVals[1], envVals[3], 0.275);
   float dur = (envVals[2]*envMult) +(envMult);
+  if (recordEnabled) {
+    recorder.beginRecord();
+  }
   out.playNote( 0.0, dur, new Photosynthesizer(wavR, wavG, wavB, wavY, wavP, wavO, env, photoSampleRate, freqArrPhotoMode, wavSet));
+  if (recordEnabled) {
+    wait(9000);
+    recorder.endRecord();
+    recorder.save();
+  }
 }

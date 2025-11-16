@@ -32,7 +32,6 @@ public void setup() {
   //Minim Setup
   minim = new Minim(this);
   out = minim.getLineOut( Minim.MONO, 2048 );
-  recorder = minim.createRecorder(out, "myrecording.wav");
 }
 
 public void draw() {
