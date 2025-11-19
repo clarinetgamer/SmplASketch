@@ -1,72 +1,43 @@
-import java.util.Map;
-import processing.sound.*;
 import g4p_controls.*;
+import ddf.minim.*;
+import ddf.minim.ugens.*;
 
-Sound s;
-
-boolean test = false;
+boolean test = true;
 
 //Camera Dimensions Setup
-int[] sizeArr = {640, 480}; //fix width to match pi cam(mac cam is 640 480)
+int[] sizeArr = {661, 480};
 int camwidth = sizeArr[0];
 int camheight = sizeArr[1];
 
-void setup() {
-  //GUI Setup
-  size(720, 466, JAVA2D);
-  createGUI();
-  //Img processing setup
-  modWavImg = createImage(camwidth, camheight, RGB); // Create image to write other data to
-  modEnvImg = createImage(camwidth, camheight, RGB); // Create env image to write other data to
-  initImgFromFile("test.png");
+//Minim Setup
+Minim minim;
+AudioOutput out;
+AudioRecorder recorder;
+
+public void setup() {
+  //Setup Main Window
+  size(1512, 850, JAVA2D);
+  smooth(10);
+  uiSetup();
+  //Img setup(create blank copies for processsion)
+  modWavImg = createImage(camwidth, camheight, RGB);
+  modCalibImg = createImage(camwidth, camheight, RGB);
+  modLFOImg = createImage(camwidth, camheight, RGB);
+  initImgFromFile("blank.jpg");
+  //Camera Setup
   searchForCamera();
   //clear cache
   clearCache();
-  //Setup volume control
-  s = new Sound(this);
-  s.volume(0.2);
-  //
+  //Setup Envelope Code
+  resetEnv();
+  //Minim Setup
+  minim = new Minim(this);
+  out = minim.getLineOut( Minim.MONO, 2048 );
 }
 
-void draw() {
-  background(143, 3, 3);
-  checkMode();
-  checkForConnection();
-}
-
-void keyPressed() { //test true is for keyboard control test false is obscure ascii to talk to teensy
-  if ((test == true && key == 'w')||(test == false && key == '€')) {
-    wavSnap();
-    println("wavSnap");
-  } else if ((test == true && key == 'e')||(test == false && key == 'ƒ')) {
-    envSnap();
-    println("envSnap");
-  } else if ((test == true && key == '[')||(test == false && key == '†')) {
-    decEnvMult();
-    println("decEnv");
-  } else if ((test == true && key == ']')||(test == false && key == '‡')) {
-    incEnvMult();
-    println("incEnv");
-  } else if ((test == true && key == '-')||(test == false && key == '‰')) {
-    decWavMult();
-    println("decWav");
-  } else if ((test == true && key == '=')||(test == false && key == '°')) {
-    incWavMult();
-    println("incWav");
-  } else if ((test == true && key == 's')||(test == false && key == 'Œ')) {
-    smpl();
-    println("smpl");
-  } else if ((test == true && key == 'r')||(test == false && key == '™')) {
-    resetWav();
-    println("resetWav");
-  } else if ((test == true && key == 't')||(test == false && key == '◊')) {
-    resetEnv();
-    println("resetEnv");
-  } else if (key == (char)27) {//Escape key always exits program
-    clearCache();
-    println("Program Exit");
-    exit();
-  } else if (key == (char)32) {
-    clearActiveSamples();
-  }
+public void draw() {
+  drawDarkMode(); //Draw background
+  setOnDotsVis(); //Set photosynthesis knob lights to off
+  screenMode(); //Choose what to display on SmplASketch screen
+  playheadAnimation(); //If playhead is on handle animation
 }
