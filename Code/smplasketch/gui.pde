@@ -357,10 +357,6 @@ public void showWav_clicked1(GCheckbox source, GEvent event) { //_CODE_:showWav:
   combWav(event);
 } //_CODE_:showWav:832149:
 
-public void expButton1_click2(GImageButton source, GEvent event) { //_CODE_:expButton1:780310:
-  println("expButton1 - GImageButton >> GEvent." + event + " @ " + millis());
-} //_CODE_:expButton1:780310:
-
 public void lfoOnSwitch_clicked1(GCheckbox source, GEvent event) { //_CODE_:lfoOnSwitch:633091:
   lfoOnSwitch(event);
 } //_CODE_:lfoOnSwitch:633091:
@@ -816,8 +812,6 @@ public void createGUI(){
   LFOSlot.setText("Empty");
   LFOSlot.setLocalColorScheme(GCScheme.SCHEME_8);
   LFOSlot.setOpaque(false);
-  expButton1 = new GImageButton(this, 1155, 57, new String[] { "expand.png", "expand.png", "expand.png" } );
-  expButton1.addEventHandler(this, "expButton1_click2");
   pitchFine = new GLabel(this, 281, 467, 21, 19);
   pitchFine.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   pitchFine.setText(" ");
@@ -968,7 +962,6 @@ GCheckbox showLFO;
 GCheckbox showWav; 
 GLabel wavSlot; 
 GLabel LFOSlot; 
-GImageButton expButton1; 
 GLabel pitchFine; 
 GCheckbox lfoOnSwitch; 
 GCustomSlider decay_slider1; 
