@@ -3,6 +3,8 @@ float[] defaultLFO = resetSin;
 boolean noSliderTouched = true;
 String trueFileName = "Untitled";
 boolean drawMode = false;
+int[] saveColor = {0,2,4};
+int screenSlide = 1;
 
 //Main Window
 void setModeKnob(GKnob source) {
@@ -341,6 +343,7 @@ void strokeSet(GCustomSlider source, GEvent event) {
 void colorControl(GCustomSlider source, GEvent event, int index) {
   if (event == GEvent.RELEASED) {
     int colorDraw = source.getValueI();
+    saveColor[index] = source.getValueI();
     if (colorDraw == 0) {
       setColor(index, 255, 0, 0); //red
     } else if (colorDraw == 1) {
@@ -368,6 +371,7 @@ void colorControl(GCustomSlider source, GEvent event, int index) {
 void screenColorControl(GCustomSlider source, GEvent event) {
   if (event == GEvent.RELEASED) {
     int colorDraw = source.getValueI();
+    screenSlide = source.getValueI();;
     if (colorDraw == 0) {
       screenColorNum = 255; //white
     } else if (colorDraw == 1) {
