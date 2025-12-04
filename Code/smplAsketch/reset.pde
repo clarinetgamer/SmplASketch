@@ -1,6 +1,6 @@
 float volume = 0.2;
 float wavMult = 1;
-float envMult = 1;
+float envMult = 1.25;
 float lfoMult = 1;
 float lfoBound = 0.5;
 float lfoRange = 1.5;
@@ -49,7 +49,7 @@ void resetEnv() {
   release_slider.setLimits(5.005, 0.01, 10);
   sliderVals = new float[]{5, 5, 5, 5};
   clearEnv = true;
-  envMult = 1;
+  envMult = 1.25;
   envDur_slider1.setLimits(1.25, 0.5, 2.0);
 }
 

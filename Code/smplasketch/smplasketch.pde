@@ -33,6 +33,7 @@ public void setup() {
   //Minim Setup
   minim = new Minim(this);
   out = minim.getLineOut( Minim.MONO, 2048 );
+ 
 }
 
 public void draw() {

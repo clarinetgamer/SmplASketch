@@ -5,6 +5,8 @@ String trueFileName = "Untitled";
 boolean drawMode = false;
 int[] saveColor = {0,2,4};
 int screenSlide = 1;
+int indexForDefWav = 0;
+int indexForDefLFO = 0;
 
 //Main Window
 void setModeKnob(GKnob source) {
@@ -132,31 +134,37 @@ void  wavDeviceOff(GEvent event) {
 void sinWavSelect(GEvent event) {
   if (event == GEvent.SELECTED) {
     defaultSin(true);
+    indexForDefWav = 0;
   }
 }
 void triWavSelect(GEvent event) {
   if (event == GEvent.SELECTED) {
     defaultTri(true);
+    indexForDefWav = 1;
   }
 }
 void sqrWavSelect(GEvent event) {
   if (event == GEvent.SELECTED) {
     defaultSqr(true);
+    indexForDefWav = 3;
   }
 }
 void sawWavSelect(GEvent event) {
   if (event == GEvent.SELECTED) {
     defaultSaw(true);
+    indexForDefWav = 4;
   }
 }
 void stepWavSelect(GEvent event) {
   if (event == GEvent.SELECTED) {
     defaultStep(true);
+    indexForDefWav = 5;
   }
 }
 void rampWavSelect(GEvent event) {
   if (event == GEvent.SELECTED) {
     defaultRamp(true);
+    indexForDefWav = 2;
   }
 }
 
@@ -206,31 +214,37 @@ void  lfoDeviceOff(GEvent event) {
 //LFO Selection
 void sinLFOSelect(GEvent event) {
   if (event == GEvent.SELECTED) {
+    indexForDefLFO = 0;
     defaultSin(false);
   }
 }
 void triLFOSelect(GEvent event) {
   if (event == GEvent.SELECTED) {
+    indexForDefLFO = 1;
     defaultTri(false);
   }
 }
 void sqrLFOSelect(GEvent event) {
   if (event == GEvent.SELECTED) {
+    indexForDefLFO = 3;
     defaultSqr(false);
   }
 }
 void sawLFOSelect(GEvent event) {
   if (event == GEvent.SELECTED) {
+    indexForDefLFO = 4;
     defaultSaw(false);
   }
 }
 void stepLFOSelect(GEvent event) {
   if (event == GEvent.SELECTED) {
+    indexForDefLFO = 5;
     defaultStep(false);
   }
 }
 void rampLFOSelect(GEvent event) {
   if (event == GEvent.SELECTED) {
+    indexForDefLFO = 2;
     defaultRamp(false);
   }
 }

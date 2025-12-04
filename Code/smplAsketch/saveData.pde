@@ -1,21 +1,24 @@
-String[] varData = new String[100];
+String[] varData = new String[42];
 String[] inData;
 
 void saveAll() {
   saveColorVariableData();
   saveCalibVariables();
   saveEnvData();
-  saveStrings("SaveFile.txt", varData);
+  saveMainControls();
+  saveWavControls();
+  saveLFOControls();
+  saveStrings("SaveFile.smpl", varData);
 }
 
 void importPreset() {
-  inData = loadStrings("SaveFile.txt");
-  for (int i = 0; i < inData.length; i++) {
-    println(inData[i]);
-  }
+  inData = loadStrings("SaveFile.smpl");
   openColorVariableData();
   openCalibVariables();
   openEnvData();
+  openMainControls();
+  openWavControls();
+  openLFOControls();
 }
 
 void saveColorVariableData() {//15Vars
@@ -48,6 +51,67 @@ void saveEnvData() {
   varData[20] = Float.toString(sliderVals[1]);
   varData[21] = Float.toString(sliderVals[2]);
   varData[22] = Float.toString(sliderVals[3]);
+}
+
+void saveMainControls() {
+  varData[23] = note[noteIndex];
+  varData[24] = Float.toString(volume);
+  varData[25] = fileName.getPromptText();
+  varData[26] = wavSlot.getText();
+  varData[27] = LFOSlot.getText();
+  varData[28] = Float.toString(envMult);
+  varData[29] = Integer.toString(octIndex);
+  varData[30] = String.valueOf(photoPitch);
+}
+
+void saveWavControls() {
+  varData[31] = Integer.toString(indexForDefWav);
+  varData[32] = Float.toString(fineAdjust);
+  varData[33] = Integer.toString(noteIndex);
+  varData[34] = String.valueOf(wavControl);
+}
+void saveLFOControls() {
+  varData[35] = Integer.toString(indexForDefLFO);
+  varData[36] = Float.toString(lfoMods[0]);
+  varData[37] = Float.toString(lfoMods[1]);
+  varData[38] = Float.toString(lfoMods[2]);
+  varData[39] = String.valueOf(lfoOn);
+  varData[40] = String.valueOf(fmOn);
+  varData[41] = String.valueOf(lfoControl);
+}
+
+void openWavControls() {
+  indexForDefWav = Integer.valueOf(inData[31]);
+  fineAdjust = Float.valueOf(inData[32]);
+  noteIndex = Integer.valueOf(inData[33]);
+  wavControl = Boolean.valueOf(inData[34]);
+}
+
+void openLFOControls() {
+  indexForDefLFO = Integer.valueOf(inData[35]);
+  lfoMods[0] = Float.valueOf(inData[36]);
+  lfoMods[1] = Float.valueOf(inData[37]);
+  lfoMods[2] = Float.valueOf(inData[38]);
+  lfoOn = Boolean.valueOf(inData[39]);
+  fmOn = Boolean.valueOf(inData[40]);
+  lfoControl = Boolean.valueOf(inData[41]);
+}
+
+void openMainControls() {
+  note[noteIndex] = inData[23];
+  volume = Float.valueOf(inData[24]);
+  fileName.setPromptText(inData[25]);
+  wavSlot.setText(inData[26]);
+  LFOSlot.setText(inData[27]);
+  envMult= Float.valueOf(inData[28]);
+  octIndex= Integer.valueOf(inData[29]);
+  photoPitch = Boolean.valueOf(inData[30]);
+  pitch.setText(note[noteIndex]);
+  volknob1.setLimits(volume*10, 0.0, 10.0);
+  psPitch.setSelected(photoPitch);
+  print(envMult);
+  envDur_slider1.setLimits(envMult, 0.5, 2.0);
+  octave_slider1.setLimits(octIndex, 0.0, 4.0);
 }
 
 void openEnvData() {
@@ -94,46 +158,3 @@ void openColorVariableData() {
   screenColor.setLimits(Integer.valueOf(inData[14]), 0, 3);
   thickness.setLimits(Integer.valueOf(inData[10]), 1, 10);
 }
-
-//varData[16] = FileName.getText();
-//varData[17] = (String)photsynthesisDots[0];
-//varData[18] = (String)photsynthesisDots[1];
-//varData[19] = (String)photsynthesisDots[2];
-//varData[20] = (String)photsynthesisDots[3];
-//varData[21] = (String)photsynthesisDots[4];
-//varData[22] = (String)photsynthesisDots[5];
-//varData[23] = (String)freqArrPhotoMode[0];
-//varData[24] = (String)freqArrPhotoMode[1];
-//varData[25] = (String)freqArrPhotoMode[2];
-//varData[26] = (String)freqArrPhotoMode[3];
-//varData[27] = (String)freqArrPhotoMode[4];
-//varData[28] = (String)freqArrPhotoMode[5];
-//varData[29] = (String)lfoMods[0];
-//varData[30] = (String)lfoMods[1];
-//varData[31] = (String)lfoMods[2];
-//varData[32] = (String)lfoOn;
-//varData[33] = (String)fmOn;
-//varData[34] = (String)lfoControl;
-//varData[35] = (String); //default index
-//varData[36] = (String)sliderVals[0];
-//varData[37] = (String)sliderVals[1];
-//varData[38] = (String)sliderVals[2];
-//varData[39] = (String)sliderVals[3];
-//varData[40] = ;
-//varData[41] = ;
-//varData[42] = ;
-//varData[43] = ;
-//varData[44] = ;
-//varData[45] = ;
-//varData[46] = ;
-//varData[47] = ;
-//varData[48] = ;
-//varData[49] = ;
-//varData[50] = ;
-//varData[51] = ;
-//varData[52] = ;
-//varData[53] = ;
-//varData[54] = ;
-//varData[55] = ;
-//varData[56] = ;
-//varData[57] = ;
