@@ -1,4 +1,5 @@
 String saveLoc = "";
+String savePresetLoc = "";
 
 void initImgFromFile(String imgName) {//Warp image to cam dimensions
   imageMode = loadImage(imgName);
@@ -17,6 +18,18 @@ void folderSelected(File selection) {
     exportLocLabel.setText(getShortFileName(selection.getAbsolutePath()));
   }
 }
+void selectPresetSaveLoc() { //Select export location for mp3/editor files
+  selectFolder("Select a folder to process:", "saveFolderSelected");
+}
+void saveFolderSelected(File selection) {
+  if (selection == null) {
+    println("Window was closed or the user hit cancel.");
+  } else {
+    print(selection.getAbsolutePath());
+    savePresetLoc = selection.getAbsolutePath();
+    saveAll();
+  }
+}
 
 void selectPhotosynthesisFile() {//Select image location for PS
   selectInput("Select an image to process:", "fileSelected");
@@ -30,6 +43,18 @@ void fileSelected(File selection) {
     imageMode = loadImage(selection.getAbsolutePath());
     imageMode.resize(camwidth, camheight);
     photsynthesisImage = new GImageButton(this, 1241, 662, 218, 159, new String[] { selection.getAbsolutePath(), selection.getAbsolutePath(), selection.getAbsolutePath() } );
+  }
+}
+
+void selectImportFile() {//Select image location for PS
+  selectInput("Select an image to process:", "importFileSelected");
+}
+
+void importFileSelected(File selection) {
+  if (selection == null) {
+    println("Window was closed or the user hit cancel.");
+  } else {
+    importPreset(selection.getAbsolutePath());
   }
 }
 

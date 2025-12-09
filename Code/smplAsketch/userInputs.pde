@@ -3,7 +3,7 @@ float[] defaultLFO = resetSin;
 boolean noSliderTouched = true;
 String trueFileName = "Untitled";
 boolean drawMode = false;
-int[] saveColor = {0,2,4};
+int[] saveColor = {0, 2, 4};
 int screenSlide = 1;
 int indexForDefWav = 0;
 int indexForDefLFO = 0;
@@ -385,7 +385,8 @@ void colorControl(GCustomSlider source, GEvent event, int index) {
 void screenColorControl(GCustomSlider source, GEvent event) {
   if (event == GEvent.RELEASED) {
     int colorDraw = source.getValueI();
-    screenSlide = source.getValueI();;
+    screenSlide = source.getValueI();
+    ;
     if (colorDraw == 0) {
       screenColorNum = 255; //white
     } else if (colorDraw == 1) {
@@ -423,5 +424,17 @@ void calibRButton(GEvent event) {
 void lfoRButton(GEvent event) {
   if (event == GEvent.CLICKED) {
     resetLFO();
+  }
+}
+
+void importPresetTog(GEvent event) {
+  if (event == GEvent.CLICKED) {
+    selectImportFile();
+  }
+}
+
+void saveTog(GEvent event) {
+  if (event == GEvent.CLICKED) {
+    selectPresetSaveLoc();
   }
 }

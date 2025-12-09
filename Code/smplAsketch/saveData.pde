@@ -1,6 +1,9 @@
 String[] varData = new String[42];
 String[] inData;
 
+PImage savWav;
+PImage savLFO;
+
 void saveAll() {
   saveColorVariableData();
   saveCalibVariables();
@@ -8,17 +11,38 @@ void saveAll() {
   saveMainControls();
   saveWavControls();
   saveLFOControls();
-  saveStrings("SaveFile.smpl", varData);
+  saveStrings(savePresetLoc+"/"+trueFileName+".smpl", varData);
+  saveImages();
 }
 
-void importPreset() {
-  inData = loadStrings("SaveFile.smpl");
+void importPreset(String loc) {
+  inData = loadStrings(loc);
+  String revloc = reviseLoc(loc);
+  openImages(revloc);
   openColorVariableData();
   openCalibVariables();
   openEnvData();
   openMainControls();
   openWavControls();
   openLFOControls();
+}
+
+String reviseLoc(String loc) {
+  char[] chars = loc.toCharArray();
+  int dot = 0;
+  for (int i = 0; i < loc.length(); i ++) {
+    if (chars[i] == '.') dot = i;
+  }
+  String modSelection = loc;
+  if (dot != 0) {
+    modSelection = "";
+    for (int i = 0; i < dot; i ++) {
+      modSelection += chars[i];
+    }
+  }
+  println(modSelection);
+  println();
+  return modSelection;
 }
 
 void saveColorVariableData() {//15Vars
@@ -80,11 +104,69 @@ void saveLFOControls() {
   varData[41] = String.valueOf(lfoControl);
 }
 
+void saveImages() {
+  if(!varData[26].equals("Empty")){
+  savWav = wavImg;
+  savWav.save(savePresetLoc+"/"+trueFileName+"wavPreset.jpg");
+  }
+  if(!varData[27].equals("Empty")){
+  savLFO = lfoImg;
+  savLFO.save(savePresetLoc+"/"+trueFileName+"lfoPreset.jpg");
+  }
+}
+
+void openImages(String loc) {
+  if(!inData[26].equals("Empty")){
+    try{
+      wavImg = loadImage(loc+"wavPreset.jpg");
+      clearWav = false;
+    } catch(Exception e) {
+    inData[26] = "In Use";
+    }
+  
+  }
+  if(!inData[27].equals("Empty")){
+    try{
+      lfoImg = loadImage(loc+"lfoPreset.jpg");
+      clearLFO = false;
+    } catch(Exception e) {
+    inData[27] = "In Use";
+    }
+  }
+
+}
+
 void openWavControls() {
   indexForDefWav = Integer.valueOf(inData[31]);
   fineAdjust = Float.valueOf(inData[32]);
   noteIndex = Integer.valueOf(inData[33]);
   wavControl = Boolean.valueOf(inData[34]);
+  if (indexForDefWav == 0) {
+    defaultSin(true);
+    sinButt.setSelected(true);
+  } else if (indexForDefWav == 1) {
+    defaultTri(true);
+    triButt.setSelected(true);
+  } else if (indexForDefWav == 2) {
+    defaultRamp(true);
+    rampButt.setSelected(true);
+  } else if (indexForDefWav == 3) {
+    defaultSqr(true);
+    sqrButt.setSelected(true);
+  } else if (indexForDefWav == 4) {
+    defaultSaw(true);
+    sawButt.setSelected(true);
+  } else if (indexForDefWav == 5) {
+    defaultStep(true);
+    stepButt.setSelected(true);
+  }
+  freq_slider1.setLimits(fineAdjust, -20.0, 20.0);
+  bigtone_slider1.setLimits(noteIndex-1, 0, 12);
+  if (wavControl) {
+    DevControWav.setSelected(true);
+  } else {
+    DefaultWav.setSelected(true);
+  }
 }
 
 void openLFOControls() {
@@ -95,6 +177,43 @@ void openLFOControls() {
   lfoOn = Boolean.valueOf(inData[39]);
   fmOn = Boolean.valueOf(inData[40]);
   lfoControl = Boolean.valueOf(inData[41]);
+  if (indexForDefLFO == 0) {
+    defaultSin(false);
+    lfosin.setSelected(true);
+  } else if (indexForDefLFO == 1) {
+    defaultTri(false);
+    lfotri.setSelected(true);
+  } else if (indexForDefLFO == 2) {
+    defaultRamp(false);
+    lforamp.setSelected(true);
+  } else if (indexForDefLFO == 3) {
+    defaultSqr(false);
+    lfosqr.setSelected(true);
+  } else if (indexForDefLFO == 4) {
+    defaultSaw(false);
+    lfosaw.setSelected(true);
+  } else if (indexForDefLFO == 5) {
+    defaultStep(false);
+    lfostep.setSelected(true);
+  }
+  if (lfoOn) {
+    lfoOnSwitch.setSelected(true);
+  } else {
+    lfoOnSwitch.setSelected(false);
+  }
+  if (fmOn) {
+    fmTog.setSelected(true);
+  } else {
+    amTog.setSelected(true);
+  }
+  if (lfoControl) {
+    lfosaveslot.setSelected(true);
+  } else {
+    defaulttheLFO.setSelected(true);
+  }
+  lfoLen_slider1.setLimits( lfoMods[0], 0.0, 1.0);
+  lowFreq_slider2.setLimits( lfoMods[1], 0.0, 1.0);
+  highFreq_slider1.setLimits( lfoMods[2], 0.0, 1.0);
 }
 
 void openMainControls() {
@@ -109,7 +228,6 @@ void openMainControls() {
   pitch.setText(note[noteIndex]);
   volknob1.setLimits(volume*10, 0.0, 10.0);
   psPitch.setSelected(photoPitch);
-  print(envMult);
   envDur_slider1.setLimits(envMult, 0.5, 2.0);
   octave_slider1.setLimits(octIndex, 0.0, 4.0);
 }

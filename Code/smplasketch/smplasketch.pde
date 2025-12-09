@@ -2,7 +2,7 @@ import g4p_controls.*;
 import ddf.minim.*;
 import ddf.minim.ugens.*;
 
-boolean test = true;
+boolean test = false;
 
 //Camera Dimensions Setup
 int[] sizeArr = {661, 480};
